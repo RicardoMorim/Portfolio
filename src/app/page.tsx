@@ -1,101 +1,206 @@
-import Image from "next/image";
+'use client'
+import { useState, useEffect } from "react";
+import "@/styles/main.css";
+import { motion } from "framer-motion";
 
 export default function Home() {
-  return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
+	const [text, setText] = useState("");
+	const [currentSkillIndex, setCurrentSkillIndex] = useState(0);
+	const [isDeleting, setIsDeleting] = useState(false);
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
-        </div>
-      </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
-  );
+	const skills = [
+		"Software Developer",
+		"Full Stack Developer",
+		"Frontend Developer",
+		"Backend Developer",
+		"Database Engineer",
+		"API Developer",
+		"Software Architect"
+	];
+
+	useEffect(() => {
+		let currentIndex = isDeleting ? text.length : 0;
+		const currentSkill = skills[currentSkillIndex];
+
+		const interval = setInterval(() => {
+			if (!isDeleting && currentIndex <= currentSkill.length) {
+				setText(currentSkill.slice(0, currentIndex));
+				currentIndex++;
+			} else if (isDeleting && currentIndex >= 0) {
+				setText(currentSkill.slice(0, currentIndex));
+				currentIndex--;
+			} else {
+				clearInterval(interval);
+				if (isDeleting) {
+					setCurrentSkillIndex((prev) => (prev + 1) % skills.length);
+				}
+				setIsDeleting(!isDeleting);
+			}
+		}, 100);
+
+		return () => clearInterval(interval);
+	}, [currentSkillIndex, isDeleting]);
+
+	return (
+		<>
+			{/* Hero Section */}
+			<div className="flex items-center justify-center min-h-screen" id="home">
+				<div className="hero-container">
+					<div className="hero-name-container">
+						<h1 className="hero-name">
+							RICARDO
+						</h1>
+					</div>
+
+					<div className="hero-caption-container">
+						<h1 className="hero-caption">
+							{text}
+						</h1>
+					</div>
+				</div>
+			</div>
+
+			{/* About Section */}
+			<div className="about-section" id="about">
+				<div className="about-container">
+					<motion.h2
+						initial={{ opacity: 0, y: 20 }}
+						whileInView={{ opacity: 1, y: 0 }}
+						className="about-title"
+					>
+						My Programming Journey
+					</motion.h2>
+
+					<div className="about-content">
+						<motion.div
+							initial={{ opacity: 0, x: -50 }}
+							whileInView={{ opacity: 1, x: 0 }}
+							className="about-image-container"
+						>
+							<img src="me.jpg" alt="Ricardo" className="about-image" />
+						</motion.div>
+
+						<div className="about-text-container">
+							<motion.div
+								initial={{ opacity: 0 }}
+								whileInView={{ opacity: 1 }}
+								className="milestones-container"
+							>
+								<h3 className="milestones-title">Key Milestones</h3>
+
+								<div className="timeline">
+									{/* Milestone 1 */}
+									<div className="timeline-item">
+										<motion.div
+											className="timeline-content"
+											initial={{ opacity: 0, x: -50 }}
+											whileInView={{ opacity: 1, x: 0 }}
+											transition={{ delay: 0.2 }}
+										>
+											<span className="timeline-date">2018</span>
+											<h4>Programming Journey Begins</h4>
+											<p>Inspired by a cousin's C-based card game project.</p>
+										</motion.div>
+									</div>
+
+									{/* Milestone 2 */}
+									<div className="timeline-item">
+										<motion.div
+											className="timeline-content"
+											initial={{ opacity: 0, x: -50 }}
+											whileInView={{ opacity: 1, x: 0 }}
+											transition={{ delay: 0.3 }}
+										>
+											<span className="timeline-date">2019</span>
+											<h4>Grasshopper & CodinGame</h4>
+											<p>Completed Grasshopper and started solving challenges on CodinGame.</p>
+										</motion.div>
+									</div>
+
+									{/* Milestone 3 */}
+									<div className="timeline-item">
+										<motion.div
+											className="timeline-content certificate"
+											initial={{ opacity: 0, x: -50 }}
+											whileInView={{ opacity: 1, x: 0 }}
+											transition={{ delay: 0.4 }}
+										>
+											<span className="timeline-date">2021</span>
+											<h4>CS50X Certificate</h4>
+											<p>Completed Harvard's Introduction to Computer Science.</p>
+											<a href="https://certificates.cs50.io/9a13ae2c-7f89-4ffe-a5c4-9e7e6bcadab2.pdf?size=letter" className="certificate-link">View Certificate →</a>
+										</motion.div>
+									</div>
+
+									{/* Milestone 4 */}
+									<div className="timeline-item">
+										<motion.div
+											className="timeline-content certificate"
+											initial={{ opacity: 0, x: -50 }}
+											whileInView={{ opacity: 1, x: 0 }}
+											transition={{ delay: 0.5 }}
+										>
+											<span className="timeline-date">2023</span>
+											<h4>Front-End Development with React</h4>
+											<p>Completed the University of Hong Kong's course on React development. </p><p>Built a restaurant website with json server to keep track of reviews.</p>
+											<a href="https://restauranteconfusion.vercel.app/home" className="certificate-link">View Demo →</a>
+										</motion.div>
+									</div>
+
+									{/* Milestone 5 */}
+									<div className="timeline-item">
+										<motion.div
+											className="timeline-content certificate"
+											initial={{ opacity: 0, x: -50 }}
+											whileInView={{ opacity: 1, x: 0 }}
+											transition={{ delay: 0.6 }}
+										>
+											<span className="timeline-date">2023</span>
+											<h4>React + Firebase Course</h4>
+											<p>Built a real-time blog with user management during this course.</p>
+											<a href="https://blogricardo.vercel.app/" className="certificate-link">View Demo →</a>
+										</motion.div>
+									</div>
+
+									{/* Milestone 6 */}
+									<div className="timeline-item">
+										<motion.div
+											className="timeline-content certificate"
+											initial={{ opacity: 0, x: -50 }}
+											whileInView={{ opacity: 1, x: 0 }}
+											transition={{ delay: 0.7 }}
+										>
+											<span className="timeline-date">2023/2024</span>
+											<h4>CS50AI Certificate</h4>
+											<p>Completed Harvard's AI course with Python.</p>
+											<a href="https://certificates.cs50.io/3ea075ca-3cac-49e2-be29-281d46d5ba94.pdf?size=letter" className="certificate-link">View Certificate →</a>
+										</motion.div>
+									</div>
+
+									{/* Milestone 7 */}
+									<div className="timeline-item">
+										<motion.div
+											className="timeline-content"
+											initial={{ opacity: 0, x: -50 }}
+											whileInView={{ opacity: 1, x: 0 }}
+											transition={{ delay: 0.8 }}
+										>
+											<span className="timeline-date">Present</span>
+											<h4>Software Engineering Student</h4>
+											<p>Enrolled at ISEP and building personal projects.</p>
+										</motion.div>
+									</div>
+								</div>
+							</motion.div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			{/* Projects Section */}
+
+			{/* Contact Section */}
+
+		</>
+	);
 }

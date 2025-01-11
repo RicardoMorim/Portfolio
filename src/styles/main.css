@@ -1,0 +1,317 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+/* Start of Hero Section */
+.hero-container {
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	gap: 1rem;
+	min-height: 100vh;
+	width: 100%;
+	overflow: hidden;
+}
+
+.hero-name-container {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin-right: 20rem;
+}
+
+.hero-caption-container {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin-right: 20rem;
+}
+
+.hero-name {
+	font-size: 7rem;
+	font-weight: bold;
+	color: var(--text-color);
+	font-family: "Saira Stencil One", cursive;
+}
+
+.hero-caption {
+	font-size: 2rem;
+	color: var(--text-color);
+	border-right: 2px solid var(--text-color);
+	animation: blink-caret 0.75s step-end infinite;
+	white-space: nowrap;
+	min-height: 3rem;
+	font-family: "Special Elite", cursive;
+}
+
+@keyframes blink-caret {
+
+	from,
+	to {
+		border-color: transparent
+	}
+
+	50% {
+		border-color: var(--text-color)
+	}
+}
+
+.hero-container::after {
+	content: "";
+	position: absolute;
+	top: 25%;
+	right: 10%;
+	width: 30%;
+	height: 50%;
+	background-image: url(../../public/rb_2387.png);
+	z-index: -1;
+	background-size: cover;
+	background-position: center;
+}
+
+@media screen and (max-width: 1576px) {
+	.hero-container::after {
+		right: 0%;
+	}
+}
+
+@media screen and (max-width: 1124px) {
+	.hero-name {
+		text-align: left;
+	}
+
+	.hero-caption {
+		text-align: left;
+	}
+
+	.hero-name-container {
+		margin-right: 0;
+	}
+
+	.hero-caption-container {
+		margin-right: 0;
+	}
+
+	.hero-container {
+		align-items: start;
+		margin-left: 1rem;
+	}
+}
+
+@media screen and (max-width: 865px) {
+	.hero-container::after {
+		width: 35%;
+	}
+
+}
+
+
+@media screen and (max-width: 790px) {
+	.hero-container::after {
+		top: 60%;
+		right: 20%;
+		width: 65%;
+	}
+
+	.hero-name {
+		font-size: 5rem;
+	}
+
+}
+
+
+
+/* End of Hero Section */
+
+/* Start of About Section */
+.about-section {
+	min-height: 100vh;
+	background-color: var(--bg-color);
+	padding: 6rem 2rem;
+}
+
+.about-container {
+	max-width: 1200px;
+	margin: 0 auto;
+}
+
+.about-title {
+	font-size: 3rem;
+	font-weight: bold;
+	color: var(--text-color);
+	text-align: center;
+	margin-bottom: 4rem;
+	font-family: "Saira Stencil One", cursive;
+}
+
+.about-content {
+	display: grid;
+	grid-template-columns: 1fr 2fr;
+	gap: 4rem;
+	align-items: start;
+}
+
+.about-image-container {
+	position: sticky;
+	top: 100px;
+}
+
+.about-image {
+    width: 100%;
+    max-width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    object-fit: cover;
+    object-position: center ;
+    box-shadow: 0 10px 30px -15px rgba(0, 0, 0, 0.3);
+}
+
+.about-text-container {
+	color: var(--text-color);
+	font-size: 1.1rem;
+	line-height: 1.8;
+}
+
+.about-text p {
+	margin-bottom: 1.5rem;
+}
+
+@media screen and (max-width: 768px) {
+	.about-content {
+		grid-template-columns: 1fr;
+	}
+
+	.about-image-container {
+		position: relative;
+		top: 0;
+		display: flex;
+		justify-content: center;
+	}
+
+	.about-image {
+		max-width: 250px;
+	}
+
+	.about-title {
+		font-size: 2.5rem;
+	}
+}
+
+@media screen and (max-width: 480px) {
+	.about-section {
+		padding: 4rem 1rem;
+	}
+
+	.about-title {
+		font-size: 2rem;
+	}
+}
+
+
+
+.milestones-container {
+	margin-top: 4rem;
+}
+
+.milestones-title {
+	font-size: 2rem;
+	color: var(--text-color);
+	margin-bottom: 2rem;
+	font-family: "Saira Stencil One", cursive;
+}
+
+.timeline {
+	position: relative;
+	padding: 2rem 0;
+}
+
+.timeline::before {
+	content: '';
+	position: absolute;
+	left: 0;
+	top: 0;
+	height: 100%;
+	width: 2px;
+	background: var(--text-color);
+	opacity: 0.3;
+}
+
+.timeline-item {
+	margin-bottom: 2.5rem;
+	padding-left: 2rem;
+	position: relative;
+}
+
+.timeline-item::before {
+	content: '';
+	position: absolute;
+	left: -4px;
+	top: 0;
+	width: 10px;
+	height: 10px;
+	border-radius: 50%;
+	background: var(--text-color);
+}
+
+.timeline-content {
+	background: var(--bg-color);
+	padding: 1.5rem;
+	border-radius: 0.5rem;
+	border: 1px solid var(--text-color);
+	box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+.timeline-date {
+	font-size: 0.875rem;
+	color: var(--text-color);
+	opacity: 0.8;
+}
+
+.timeline-content h4 {
+	font-size: 1.25rem;
+	margin: 0.5rem 0;
+	color: var(--text-color);
+}
+
+.timeline-content p {
+	margin: 0;
+	color: var(--text-color);
+	opacity: 0.8;
+}
+
+.certificate-link {
+	display: inline-block;
+	margin-top: 0.5rem;
+	color: #6366f1;
+	text-decoration: none;
+	transition: color 0.3s;
+}
+
+.certificate-link:hover {
+	color: #4f46e5;
+}
+
+@media screen and (max-width: 768px) {
+	.timeline::before {
+		left: 50%;
+		transform: translateX(-50%);
+	}
+
+	.timeline-item {
+		padding-left: 0;
+		padding-top: 2rem;
+	}
+
+	.timeline-item::before {
+		left: 50%;
+		transform: translateX(-50%);
+	}
+
+	.timeline-content {
+		max-width: 90%;
+		margin: 0 auto;
+	}
+}

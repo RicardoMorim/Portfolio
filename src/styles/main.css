@@ -160,13 +160,13 @@
 }
 
 .about-image {
-    width: 100%;
-    max-width: 300px;
-    height: 300px;
-    border-radius: 50%;
-    object-fit: cover;
-    object-position: center ;
-    box-shadow: 0 10px 30px -15px rgba(0, 0, 0, 0.3);
+	width: 100%;
+	max-width: 300px;
+	height: 300px;
+	border-radius: 50%;
+	object-fit: cover;
+	object-position: center;
+	box-shadow: 0 10px 30px -15px rgba(0, 0, 0, 0.3);
 }
 
 .about-text-container {
@@ -314,4 +314,170 @@
 		max-width: 90%;
 		margin: 0 auto;
 	}
+}
+
+
+/* End of About Section */
+
+/* Start of Projects Section */
+
+
+.projects-section {
+	min-height: 100vh;
+	background-color: var(--bg-color);
+	padding: 6rem 2rem;
+}
+
+.projects-container {
+	max-width: 1200px;
+	margin: 0 auto;
+}
+
+.projects-title {
+	font-size: 3rem;
+	font-weight: bold;
+	color: var(--text-color);
+	text-align: center;
+	margin-bottom: 4rem;
+	font-family: "Saira Stencil One", cursive;
+}
+
+.projects-grid {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+	gap: 2rem;
+}
+
+.project-card {
+	background: var(--bg-color);
+	border: 1px solid var(--text-color);
+	border-radius: 1rem;
+	transition: all 0.3s ease;
+	height: 100%;
+	position: relative;
+}
+
+.project-content {
+	padding: 1.5rem;
+	display: flex;
+	flex-direction: column;
+	height: 100%;
+}
+
+.project-card h3 {
+	font-size: 1.5rem;
+	color: var(--text-color);
+	margin-bottom: 1rem;
+}
+
+.project-card p {
+	color: var(--text-color);
+	opacity: 0.8;
+	margin-bottom: 1rem;
+}
+
+.tech-stack {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 0.5rem;
+	margin-bottom: 1rem;
+}
+
+.tech-stack span {
+	background: var(--text-color);
+	color: var(--bg-color);
+	padding: 0.25rem 0.75rem;
+	border-radius: 1rem;
+	font-size: 0.875rem;
+}
+
+.project-links {
+	display: flex;
+	gap: 1rem;
+	margin-top: auto;
+	padding-top: 1.5rem;
+}
+
+.project-links a {
+	color: #6366f1;
+	text-decoration: none;
+	transition: color 0.3s;
+}
+
+.project-links a:hover {
+	color: #4f46e5;
+}
+
+.professional {
+	border: 2px solid #6366f1;
+}
+
+.professional-badge {
+	background: #6366f1;
+	color: white;
+	padding: 0.25rem 0.75rem;
+	border-radius: 1rem;
+	display: inline-block;
+	margin-bottom: 1rem;
+	font-size: 0.875rem;
+	width: fit-content;
+}
+
+.closed-source {
+	color: var(--text-color);
+	opacity: 0.6;
+}
+
+@media screen and (max-width: 768px) {
+	.projects-grid {
+		grid-template-columns: 1fr;
+	}
+
+	.projects-title {
+		font-size: 2.5rem;
+	}
+}
+
+.modal-image-container {
+	position: relative;
+	padding: 20px;
+}
+
+.modal-overlay {
+	position: fixed;
+	inset: 0;
+	background: rgba(0, 0, 0, 0.8);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	z-index: 9999;
+}
+
+.modal-image-container {
+	position: relative;
+	padding: 20px;
+	max-width: 90vw;
+	max-height: 90vh;
+}
+
+.modal-image {
+	width: auto;
+	height: auto;
+	max-width: 100%;
+	max-height: 70vh;
+	object-fit: contain;
+	border-radius: 0.5rem;
+}
+
+.project-image {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	border-radius: 0.5rem;
+	cursor: pointer;
+	transition: transform 0.3s ease;
+}
+
+.project-image:hover {
+	transform: scale(1.05);
 }

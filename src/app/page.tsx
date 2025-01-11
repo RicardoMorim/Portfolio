@@ -1,5 +1,5 @@
 'use client'
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import "@/styles/main.css";
 import { motion } from "framer-motion";
 
@@ -7,6 +7,18 @@ export default function Home() {
 	const [text, setText] = useState("");
 	const [currentSkillIndex, setCurrentSkillIndex] = useState(0);
 	const [isDeleting, setIsDeleting] = useState(false);
+	const [modalImage, setModalImage] = useState<string | null>(null);
+	const modalTimeout = useRef<NodeJS.Timeout>();
+
+	const handleMouseLeave = () => {
+		modalTimeout.current = setTimeout(() => setModalImage(null), 100);
+	};
+
+	const handleModalMouseEnter = () => {
+		if (modalTimeout.current) {
+			clearTimeout(modalTimeout.current);
+		}
+	};
 
 	const skills = [
 		"Software Developer",
@@ -197,10 +209,174 @@ export default function Home() {
 				</div>
 			</div>
 
+
 			{/* Projects Section */}
+			<div className="projects-section" id="projects">
+				<div className="projects-container">
+					<motion.h2
+						initial={{ opacity: 0, y: 20 }}
+						whileInView={{ opacity: 1, y: 0 }}
+						className="projects-title"
+					>
+						Featured Projects
+					</motion.h2>
+
+					<div className="projects-grid">
+						{/* Blog Project */}
+						<motion.div
+							className="project-card"
+							initial={{ opacity: 0, y: 20 }}
+							whileInView={{ opacity: 1, y: 0 }}
+							whileHover={{ y: -10 }}
+						>
+							<div className="project-content">
+								<div className="project-image-container">
+									<img
+										src="/blog.jpeg"
+										alt="Blog Platform Preview"
+										className="project-image"
+										onMouseEnter={() => setModalImage("/blog.jpeg")}
+										onMouseLeave={() => {
+											// Add small delay to prevent flickering when moving to modal
+											handleMouseLeave
+										}}
+									/>
+								</div>
+								<h3>Blog Platform</h3>
+								<p>Real-time blog with user management and CRUD operations</p>
+								<div className="tech-stack">
+									<span>React</span>
+									<span>Firebase</span>
+								</div>
+								<div className="project-links">
+									<a href="https://blogricardo.vercel.app/" target="_blank" rel="noopener noreferrer">Live Demo →</a>
+									<a href="https://github.com/yourusername/blog-project" target="_blank" rel="noopener noreferrer">GitHub →</a>
+								</div>
+							</div>
+						</motion.div>
+
+						{/* Restaurant Project */}
+						<motion.div
+							className="project-card"
+							initial={{ opacity: 0, y: 20 }}
+							whileInView={{ opacity: 1, y: 0 }}
+							whileHover={{ y: -10 }}
+						>
+							<div className="project-content">
+								<h3>Restaurant Reviews</h3>
+								<p>Restaurant website with review system and database usage to fetch data</p>
+								<div className="tech-stack">
+									<span>React</span>
+									<span>JSON Server</span>
+								</div>
+								<div className="project-links">
+									<a href="https://restauranteconfusion.vercel.app/home" target="_blank" rel="noopener noreferrer">Live Demo →</a>
+									<a href="https://github.com/yourusername/restaurant-project" target="_blank" rel="noopener noreferrer">GitHub →</a>
+								</div>
+							</div>
+						</motion.div>
+
+						{/* Dating App Project */}
+						<motion.div
+							className="project-card professional"
+							initial={{ opacity: 0, y: 20 }}
+							whileInView={{ opacity: 1, y: 0 }}
+							whileHover={{ y: -10 }}
+						>
+							<div className="project-content">
+								<div className="professional-badge">Professional Work</div>
+								<h3>Match Dinner Mondays</h3>
+								<p>Dating platform with real-time chat functionality.</p>
+								<div className="tech-stack">
+									<span>React</span>
+									<span>Firebase</span>
+									<span>Real-time DB</span>
+								</div>
+								<div className="project-links">
+									<a href="your-demo-link" target="_blank" rel="noopener noreferrer">Live Demo →</a>
+									<span className="closed-source">Closed Source Project</span>
+								</div>
+							</div>
+						</motion.div>
+
+						{/* Financial Data Project */}
+						<motion.div
+							className="project-card"
+							initial={{ opacity: 0, y: 20 }}
+							whileInView={{ opacity: 1, y: 0 }}
+							whileHover={{ y: -10 }}
+						>
+							<div className="project-content">
+								<h3>Stock Information</h3>
+								<p>Financial data platform with real-time updates and portfolio management</p>
+								<div className="tech-stack">
+									<span>Next.js</span>
+									<span>MongoDB</span>
+									<span>External APIs</span>
+								</div>
+								<div className="project-links">
+									<a href="your-demo-link" target="_blank" rel="noopener noreferrer">Live Demo →</a>
+									<a href="your-github-link" target="_blank" rel="noopener noreferrer">GitHub →</a>
+
+								</div>
+							</div>
+						</motion.div>
+
+						{/* Chess AI Project */}
+						<motion.div
+							className="project-card"
+							initial={{ opacity: 0, y: 20 }}
+							whileInView={{ opacity: 1, y: 0 }}
+							whileHover={{ y: -10 }}
+						>
+							<div className="project-content">
+								<h3>Chess AI Neural Network</h3>
+								<p>Neural network-based chess AI trained on 50,000 games</p>
+								<p>My PC is not powerfull enough to train it better, but for now, it plays good in the early game but uses random moves in the late game.</p>
+								<div className="tech-stack">
+									<span>Python</span>
+									<span>TensorFlow</span>
+									<span>PyTorch</span>
+								</div>
+								<div className="project-links">
+									<a href="your-github-link" target="_blank" rel="noopener noreferrer">GitHub →</a>
+								</div>
+							</div>
+						</motion.div>
+					</div>
+				</div>
+			</div>
 
 			{/* Contact Section */}
 
+
+
+			{/* Modal for the image zoom */}
+			{modalImage && (
+				<motion.div
+					className="modal-overlay"
+					initial={{ opacity: 0 }}
+					animate={{ opacity: 1 }}
+					exit={{ opacity: 0 }}
+					transition={{ duration: 0.3 }}
+				>
+					<motion.div
+						className="modal-image-container"
+						initial={{ scale: 0.5 }}
+						animate={{ scale: 1 }}
+						exit={{ scale: 0.5 }}
+						transition={{ duration: 0.3 }}
+						onMouseLeave={handleMouseLeave}
+						onMouseEnter={handleModalMouseEnter}
+					>
+						<img
+							src={modalImage}
+							alt="Project preview"
+							className="modal-image"
+						/>
+					</motion.div>
+				</motion.div>
+			)}
 		</>
 	);
 }

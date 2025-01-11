@@ -8,7 +8,7 @@ interface NavbarProps {
 	title?: string;
 }
 
-const Navbar: React.FC<NavbarProps> = ({ title = 'My App' }) => {
+const Navbar: React.FC<NavbarProps> = ({ title = 'My Portfolio' }) => {
 	const { theme, toggleTheme } = useContext(ThemeContext);
 	const [isOpen, setIsOpen] = useState(false);
 	const [scrolled, setScrolled] = useState(false);
@@ -78,8 +78,6 @@ const Navbar: React.FC<NavbarProps> = ({ title = 'My App' }) => {
 							{theme === 'light' ? '🌙' : '☀️'}
 						</motion.button>
 					</div>
-
-					{/* Rest of the code remains the same */}
 				</div>
 			</div>
 		</nav>

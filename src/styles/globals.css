@@ -19,6 +19,7 @@
 html{
 	scroll-behavior: smooth;
 	overflow-x: hidden;
+	width: 100dvw;
 }
 
 body {
@@ -27,6 +28,7 @@ body {
     background-color: var(--bg-color);
     color: var(--text-color);
     transition: background-color 0.3s, color 0.3s;
+	width:100%;
 }
 
 .container {
@@ -69,7 +71,6 @@ body {
   position: fixed;
   inset: 0;
   background: rgba(0, 0, 0, 0.5);
-  z-index: 40;
 }
 
 /* Mobile menu animation */

@@ -75,7 +75,7 @@ export default function Home() {
   return (
     <>
       {/* Hero Section */}
-      <div className="flex items-center justify-center min-h-screen" id="home">
+      <div className="flex items-center justify-center min-h-screen" id="hero">
         <div className="hero-container">
           <div className="hero-name-container">
             <h1 className="hero-name">RICARDO</h1>
@@ -578,6 +578,7 @@ export default function Home() {
                 width={1200}
                 height={800}
                 quality={100}
+				
               />
             </motion.div>
           </motion.div>

@@ -2,7 +2,7 @@
 import Link from 'next/link';
 import { useContext, useState, useEffect } from 'react';
 import { ThemeContext } from '@/context/ThemeContext';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion } from 'framer-motion';
 
 interface NavbarProps {
 	title?: string;
@@ -10,7 +10,6 @@ interface NavbarProps {
 
 const Navbar: React.FC<NavbarProps> = ({ title = 'My Portfolio' }) => {
 	const { theme, toggleTheme } = useContext(ThemeContext);
-	const [isOpen, setIsOpen] = useState(false);
 	const [scrolled, setScrolled] = useState(false);
 
 	useEffect(() => {

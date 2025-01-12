@@ -53,7 +53,7 @@ export default function ContactSection() {
             initial={{ opacity: 0, x: -50 }}
             whileInView={{ opacity: 1, x: 0 }}
           >
-            <h3>Let's talk about everything!</h3>
+            <h3>Let&apos;s talk about everything!</h3>
             <p>Feel free to reach out for collaborations or just a friendly hello.</p>
             <div className="contact-details">
               <div className="contact-item">

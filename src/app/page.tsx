@@ -1,9 +1,10 @@
 'use client'
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useMemo } from "react";
 import "@/styles/main.css";
 import { motion, AnimatePresence } from "framer-motion";
 import SkillsSection from "@/components/SkillsSection";
 import ContactSection from "@/components/ContactSection";
+import Image from 'next/image';
 
 export default function Home() {
 	const [text, setText] = useState("");
@@ -37,7 +38,7 @@ export default function Home() {
 	};
 
 
-	const skills = [
+	const skills = useMemo(() => [
 		"Software Developer",
 		"Full Stack Developer",
 		"Frontend Developer",
@@ -45,7 +46,7 @@ export default function Home() {
 		"Database Engineer",
 		"API Developer",
 		"Software Architect"
-	];
+	], []);
 
 	useEffect(() => {
 		let currentIndex = isDeleting ? text.length : 0;
@@ -68,7 +69,7 @@ export default function Home() {
 		}, 100);
 
 		return () => clearInterval(interval);
-	}, [currentSkillIndex, isDeleting]);
+	}, [currentSkillIndex, isDeleting, skills, text]);
 
 	return (
 		<>
@@ -106,7 +107,15 @@ export default function Home() {
 							whileInView={{ opacity: 1, x: 0 }}
 							className="about-image-container"
 						>
-							<img src="me.jpg" alt="Ricardo" className="about-image" />
+							<Image
+								src="/me.jpg"
+								alt="Ricardo"
+								className="about-image"
+								width={400}
+								height={400}
+								quality={95}
+								priority
+							/>
 						</motion.div>
 
 						<div className="about-text-container">
@@ -128,7 +137,7 @@ export default function Home() {
 										>
 											<span className="timeline-date">2018</span>
 											<h4>Programming Journey Begins</h4>
-											<p>Inspired by a cousin's C-based card game project.</p>
+											<p>Inspired by a cousin&apos;s C-based card game project.</p>
 										</motion.div>
 									</div>
 
@@ -156,7 +165,7 @@ export default function Home() {
 										>
 											<span className="timeline-date">2021</span>
 											<h4>CS50X Certificate</h4>
-											<p>Completed Harvard's Introduction to Computer Science.</p>
+											<p>Completed Harvard&apos;s Introduction to Computer Science.</p>
 											<a href="https://certificates.cs50.io/9a13ae2c-7f89-4ffe-a5c4-9e7e6bcadab2.pdf?size=letter" className="certificate-link">View Certificate →</a>
 										</motion.div>
 									</div>
@@ -171,7 +180,7 @@ export default function Home() {
 										>
 											<span className="timeline-date">2023</span>
 											<h4>Front-End Development with React</h4>
-											<p>Completed the University of Hong Kong's course on React development. </p><p>Built a restaurant website with json server to keep track of reviews.</p>
+											<p>Completed the University of Hong Kong&apos;s course on React development. </p><p>Built a restaurant website with json server to keep track of reviews.</p>
 											<a href="https://restauranteconfusion.vercel.app/home" className="certificate-link">View Demo →</a>
 										</motion.div>
 									</div>
@@ -201,7 +210,7 @@ export default function Home() {
 										>
 											<span className="timeline-date">2023/2024</span>
 											<h4>CS50AI Certificate</h4>
-											<p>Completed Harvard's AI course with Python.</p>
+											<p>Completed Harvard&apos;s AI course with Python.</p>
 											<a href="https://certificates.cs50.io/3ea075ca-3cac-49e2-be29-281d46d5ba94.pdf?size=letter" className="certificate-link">View Certificate →</a>
 										</motion.div>
 									</div>
@@ -252,7 +261,9 @@ export default function Home() {
 							<div className="project-content">
 								<h3>Blog Platform</h3>
 								<div className="project-image-container">
-									<img
+									<Image
+										width={400}
+										height={300}
 										src="/blog.jpeg"
 										alt="Blog Platform Preview"
 										className="project-image"
@@ -283,7 +294,9 @@ export default function Home() {
 							<div className="project-content">
 								<h3>Ristorante Con Fusion</h3>
 								<div className="project-image-container">
-									<img
+									<Image
+										width={400}
+										height={300}
 										src="/ristorante.jpeg"
 										alt="ristorante con fusion Preview"
 										className="project-image"
@@ -315,7 +328,9 @@ export default function Home() {
 								<h3>Match Dinner Mondays</h3>
 								<div className="professional-badge">Professional Work</div>
 								<div className="project-image-container">
-									<img
+									<Image
+										width={400}
+										height={300}
 										src="/matchdinner.jpeg"
 										alt="matchdinnermondays Preview"
 										className="project-image"
@@ -347,7 +362,9 @@ export default function Home() {
 							<div className="project-content">
 								<h3>Stock Information</h3>
 								<div className="project-image-container">
-									<img
+									<Image
+										width={400}
+										height={300}
 										src="/stockinformation.jpeg"
 										alt="Stock Information website Preview"
 										className="project-image"
@@ -402,7 +419,9 @@ export default function Home() {
 							<div className="project-content">
 								<h3>Garden Management App</h3>
 								<div className="project-image-container">
-									<img
+									<Image
+										width={400}
+										height={300}
 										src="/lapr2.jpeg"
 										alt="Stock Information website Preview"
 										className="project-image"
@@ -449,10 +468,13 @@ export default function Home() {
 							onMouseLeave={handleModalMouseLeave}
 							onClick={(e) => e.stopPropagation()}
 						>
-							<img
+							<Image
 								src={modalImage}
 								alt="Project preview"
 								className="modal-image"
+								width={1200}
+								height={800}
+								quality={100}
 							/>
 						</motion.div>
 					</motion.div>

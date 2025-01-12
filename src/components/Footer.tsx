@@ -2,7 +2,6 @@
 import { motion } from 'framer-motion';
 import { FaGithub, FaLinkedin, FaEnvelope, FaMapMarkerAlt, FaCode } from 'react-icons/fa';
 import Link from 'next/link';
-import { FaReact, FaCode } from 'react-icons/fa';
 import { SiNextdotjs, SiTypescript, SiTailwindcss, SiCss3 } from 'react-icons/si';
 
 const Footer = () => {
@@ -45,7 +44,6 @@ const Footer = () => {
 		<div className="footer-tech">
 		  <h4>Technologies Used</h4>
 		  <div className="tech-tags">
-			<span className="tech-tag"><FaReact /> React</span>
 			<span className="tech-tag"><SiNextdotjs /> Next.js</span>
 			<span className="tech-tag"><SiTypescript /> TypeScript</span>
 			<span className="tech-tag"><SiTailwindcss /> Tailwind CSS</span>

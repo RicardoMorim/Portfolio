@@ -1,7 +1,9 @@
 'use client'
 import { ThemeProvider } from '@/context/ThemeContext'
-import Navbar from '@/components/Navbar'
 import "@/styles/globals.css"
+import Navbar from '@/components/Navbar'
+import Footer from "@/components/Footer";
+
 
 export default function RootLayout({
 	children,
@@ -15,6 +17,7 @@ export default function RootLayout({
 					<div className="app-container">
 						<Navbar />
 						{children}
+						<Footer />
 					</div>
 				</ThemeProvider>
 				<style>

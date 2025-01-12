@@ -1,24 +1,41 @@
 'use client'
 import { useState, useEffect, useRef } from "react";
 import "@/styles/main.css";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
+import SkillsSection from "@/components/SkillsSection";
+import ContactSection from "@/components/ContactSection";
 
 export default function Home() {
 	const [text, setText] = useState("");
 	const [currentSkillIndex, setCurrentSkillIndex] = useState(0);
 	const [isDeleting, setIsDeleting] = useState(false);
 	const [modalImage, setModalImage] = useState<string | null>(null);
-	const modalTimeout = useRef<NodeJS.Timeout>();
 
-	const handleMouseLeave = () => {
-		modalTimeout.current = setTimeout(() => setModalImage(null), 100);
+	const handleThumbnailMouseEnter = (imageSrc: string) => {
+		if (window.matchMedia('(max-width: 768px)').matches) return;
+		setModalImage(imageSrc);
 	};
 
-	const handleModalMouseEnter = () => {
-		if (modalTimeout.current) {
-			clearTimeout(modalTimeout.current);
+
+
+	const handleModalMouseLeave = (e: React.MouseEvent) => {
+		const rect = e.currentTarget.getBoundingClientRect();
+		const isMouseOutsideModal =
+			e.clientY < rect.top ||
+			e.clientY > rect.bottom ||
+			e.clientX < rect.left ||
+			e.clientX > rect.right;
+
+		if (isMouseOutsideModal) {
+			setModalImage(null);
 		}
 	};
+	const handleImageClick = (imageSrc: string) => {
+		if (window.matchMedia('(max-width: 768px)').matches) {
+			setModalImage(imageSrc);
+		}
+	};
+
 
 	const skills = [
 		"Software Developer",
@@ -210,6 +227,9 @@ export default function Home() {
 			</div>
 
 
+			{/* Skills Section */}
+			<SkillsSection />
+
 			{/* Projects Section */}
 			<div className="projects-section" id="projects">
 				<div className="projects-container">
@@ -230,19 +250,17 @@ export default function Home() {
 							whileHover={{ y: -10 }}
 						>
 							<div className="project-content">
+								<h3>Blog Platform</h3>
 								<div className="project-image-container">
 									<img
 										src="/blog.jpeg"
 										alt="Blog Platform Preview"
 										className="project-image"
-										onMouseEnter={() => setModalImage("/blog.jpeg")}
-										onMouseLeave={() => {
-											// Add small delay to prevent flickering when moving to modal
-											handleMouseLeave
-										}}
+										onMouseEnter={() => handleThumbnailMouseEnter("/blog.jpeg")}
+										onClick={() => handleImageClick("/blog.jpeg")}
 									/>
+
 								</div>
-								<h3>Blog Platform</h3>
 								<p>Real-time blog with user management and CRUD operations</p>
 								<div className="tech-stack">
 									<span>React</span>
@@ -263,7 +281,17 @@ export default function Home() {
 							whileHover={{ y: -10 }}
 						>
 							<div className="project-content">
-								<h3>Restaurant Reviews</h3>
+								<h3>Ristorante Con Fusion</h3>
+								<div className="project-image-container">
+									<img
+										src="/ristorante.jpeg"
+										alt="ristorante con fusion Preview"
+										className="project-image"
+										onMouseEnter={() => handleThumbnailMouseEnter("/ristorante.jpeg")}
+										onClick={() => handleImageClick("/ristorante.jpeg")}
+									/>
+
+								</div>
 								<p>Restaurant website with review system and database usage to fetch data</p>
 								<div className="tech-stack">
 									<span>React</span>
@@ -284,8 +312,18 @@ export default function Home() {
 							whileHover={{ y: -10 }}
 						>
 							<div className="project-content">
-								<div className="professional-badge">Professional Work</div>
 								<h3>Match Dinner Mondays</h3>
+								<div className="professional-badge">Professional Work</div>
+								<div className="project-image-container">
+									<img
+										src="/matchdinner.jpeg"
+										alt="matchdinnermondays Preview"
+										className="project-image"
+										onMouseEnter={() => handleThumbnailMouseEnter("/matchdinner.jpeg")}
+										onClick={() => handleImageClick("/matchdinner.jpeg")}
+									/>
+
+								</div>
 								<p>Dating platform with real-time chat functionality.</p>
 								<div className="tech-stack">
 									<span>React</span>
@@ -308,6 +346,16 @@ export default function Home() {
 						>
 							<div className="project-content">
 								<h3>Stock Information</h3>
+								<div className="project-image-container">
+									<img
+										src="/stockinformation.jpeg"
+										alt="Stock Information website Preview"
+										className="project-image"
+										onMouseEnter={() => handleThumbnailMouseEnter("/stockinformation.jpeg")}
+										onClick={() => handleImageClick("/stockinformation.jpeg")}
+									/>
+
+								</div>
 								<p>Financial data platform with real-time updates and portfolio management</p>
 								<div className="tech-stack">
 									<span>Next.js</span>
@@ -343,40 +391,73 @@ export default function Home() {
 								</div>
 							</div>
 						</motion.div>
+
+						{/* LAPR2 ISEP Project */}
+						<motion.div
+							className="project-card"
+							initial={{ opacity: 0, y: 20 }}
+							whileInView={{ opacity: 1, y: 0 }}
+							whileHover={{ y: -10 }}
+						>
+							<div className="project-content">
+								<h3>Garden Management App</h3>
+								<div className="project-image-container">
+									<img
+										src="/lapr2.jpeg"
+										alt="Stock Information website Preview"
+										className="project-image"
+										onMouseEnter={() => handleThumbnailMouseEnter("/lapr2.jpeg")}
+										onClick={() => handleImageClick("/lapr2.jpeg")}
+									/>
+
+								</div>
+								<p>An app made in Java to help companies manage their associates and their cars/machines to schedule tasks to manage their gardens.</p>
+								<div className="tech-stack">
+									<span>Java</span>
+									<span>Maven</span>
+									<span>JavaFX</span>
+								</div>
+								<div className="project-links">
+									<a href="your-github-link" target="_blank" rel="noopener noreferrer">GitHub →</a>
+								</div>
+							</div>
+						</motion.div>
 					</div>
 				</div>
 			</div>
 
 			{/* Contact Section */}
-
+			<ContactSection />
 
 
 			{/* Modal for the image zoom */}
-			{modalImage && (
-				<motion.div
-					className="modal-overlay"
-					initial={{ opacity: 0 }}
-					animate={{ opacity: 1 }}
-					exit={{ opacity: 0 }}
-					transition={{ duration: 0.3 }}
-				>
+			<AnimatePresence>
+				{modalImage && (
 					<motion.div
-						className="modal-image-container"
-						initial={{ scale: 0.5 }}
-						animate={{ scale: 1 }}
-						exit={{ scale: 0.5 }}
-						transition={{ duration: 0.3 }}
-						onMouseLeave={handleMouseLeave}
-						onMouseEnter={handleModalMouseEnter}
+						className="modal-overlay"
+						initial={{ opacity: 0 }}
+						animate={{ opacity: 1 }}
+						exit={{ opacity: 0 }}
+						onClick={() => setModalImage(null)}
 					>
-						<img
-							src={modalImage}
-							alt="Project preview"
-							className="modal-image"
-						/>
+						<motion.div
+							className="modal-image-container"
+							initial={{ scale: 0.5 }}
+							animate={{ scale: 1 }}
+							exit={{ scale: 0.5 }}
+							transition={{ duration: 0.2 }}
+							onMouseLeave={handleModalMouseLeave}
+							onClick={(e) => e.stopPropagation()}
+						>
+							<img
+								src={modalImage}
+								alt="Project preview"
+								className="modal-image"
+							/>
+						</motion.div>
 					</motion.div>
-				</motion.div>
-			)}
+				)}
+			</AnimatePresence>
 		</>
 	);
 }

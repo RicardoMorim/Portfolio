@@ -1,8 +1,10 @@
 'use client'
 import { useState } from 'react';
 import { motion } from 'framer-motion';
+import { useTranslation } from '@/context/LanguageContext';
 
 export default function ContactSection() {
+  const { t } = useTranslation();
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -44,7 +46,7 @@ export default function ContactSection() {
           whileInView={{ opacity: 1, y: 0 }}
           className="contact-title"
         >
-          Get In Touch
+          {t('contact.title')}
         </motion.h2>
         
         <div className="contact-content">
@@ -53,16 +55,16 @@ export default function ContactSection() {
             initial={{ opacity: 0, x: -50 }}
             whileInView={{ opacity: 1, x: 0 }}
           >
-            <h3>Let&apos;s talk about everything!</h3>
-            <p>Feel free to reach out for collaborations or just a friendly hello.</p>
+            <h3>{t('contact.subtitle')}</h3>
+            <p>{t('contact.description')}</p>
             <div className="contact-details">
               <div className="contact-item">
-                <span>Email:</span>
+                <span>{t('contact.email')}:</span>
                 <a href="mailto:ricardomorim05@gmail.com">ricardomorim05@gmail.com</a>
               </div>
               <div className="contact-item">
-                <span>Location:</span>
-                <p>Apulia-Esposende, Portugal</p>
+                <span>{t('contact.location')}:</span>
+                <p>Porto, Portugal</p>
               </div>
             </div>
           </motion.div>
@@ -76,7 +78,7 @@ export default function ContactSection() {
             <div className="form-group">
               <input
                 type="text"
-                placeholder="Your Name"
+                placeholder={t('contact.form.name')}
                 required
                 value={formData.name}
                 onChange={(e) => setFormData({...formData, name: e.target.value})}
@@ -85,7 +87,7 @@ export default function ContactSection() {
             <div className="form-group">
               <input
                 type="email"
-                placeholder="Your Email"
+                placeholder={t('contact.form.email')}
                 required
                 value={formData.email}
                 onChange={(e) => setFormData({...formData, email: e.target.value})}
@@ -94,7 +96,7 @@ export default function ContactSection() {
             <div className="form-group">
               <input
                 type="text"
-                placeholder="Subject"
+                placeholder={t('contact.form.subject')}
                 required
                 value={formData.subject}
                 onChange={(e) => setFormData({...formData, subject: e.target.value})}
@@ -102,7 +104,7 @@ export default function ContactSection() {
             </div>
             <div className="form-group">
               <textarea
-                placeholder="Your Message"
+                placeholder={t('contact.form.message')}
                 required
                 value={formData.message}
                 onChange={(e) => setFormData({...formData, message: e.target.value})}
@@ -113,10 +115,10 @@ export default function ContactSection() {
               className="submit-btn"
               disabled={loading}
             >
-              {loading ? 'Sending...' : 'Send Message'}
+              {loading ? t('contact.form.sending') : t('contact.form.send')}
             </button>
             {submitted && (
-              <p className="success-message">Message sent successfully!</p>
+              <p className="success-message">{t('contact.form.success')}</p>
             )}
           </motion.form>
         </div>

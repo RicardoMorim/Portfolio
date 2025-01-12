@@ -1,31 +1,68 @@
 'use client'
 import Link from 'next/link';
-import { useContext, useState, useEffect, useRef } from 'react';
+import { useContext, useState, useEffect, useRef, memo } from 'react';
 import { ThemeContext } from '@/context/ThemeContext';
 import { motion, AnimatePresence } from 'framer-motion';
 import { IoMenu, IoClose } from "react-icons/io5";
+import { useTranslation } from '@/context/LanguageContext';
 
 interface NavbarProps {
   title?: string;
 }
 
-const Navbar: React.FC<NavbarProps> = ({ title = 'My Portfolio' }) => {
-  const { theme, toggleTheme } = useContext(ThemeContext);
-  const [scrolled, setScrolled] = useState(false);
-  const [isOpen, setIsOpen] = useState(false);
-  const drawerRef = useRef<HTMLDivElement>(null);
+const ThemeSwitch = memo(({ theme, toggleTheme }: { theme: string; toggleTheme: () => void }) => (
+  <div className="theme-switch-wrapper">
+    <button
+      onClick={toggleTheme}
+      className="theme-switch"
+      aria-label="Toggle theme"
+    >
+      <div className={`switch-track ${theme === 'dark' ? 'dark' : ''}`}>
+        <div className="switch-thumb">
+          <span className="switch-icon">
+            {theme === 'light' ? '☀️' : '🌙'}
+          </span>
+        </div>
+      </div>
+    </button>
+  </div>
+));
 
-  const navLinks = [
-	{ href: '#hero', label: 'Home' },
-	{ href: '#about', label: 'About' },
-	{ href: '#projects', label: 'Projects' },
-	{ href: '#contact', label: 'Contact' },
-  ];
+ThemeSwitch.displayName = 'ThemeSwitch';
 
-  useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 20);
-    };
+const LanguageSwitch = memo(({ locale, setLocale }: { locale: string; setLocale: (locale: string) => void }) => (
+  <div className="language-switch-wrapper">
+    <button
+      onClick={() => setLocale(locale === 'en' ? 'pt' : 'en')}
+      className="language-switch"
+    >
+      {locale === 'en' ? '🇵🇹' : '🇬🇧'}
+    </button>
+  </div>
+));
+
+LanguageSwitch.displayName = 'LanguageSwitch';
+
+const Navbar: React.FC<NavbarProps> = () => {
+	const { theme, toggleTheme } = useContext(ThemeContext);
+	const { locale, setLocale, t } = useTranslation();
+	const [scrolled, setScrolled] = useState(false);
+	const [isOpen, setIsOpen] = useState(false);
+	const drawerRef = useRef<HTMLDivElement>(null);
+  
+	const navLinks = [
+	  { href: '#hero', label: t('nav.home') },
+	  { href: '#about', label: t('nav.about') },
+	  { href: '#projects', label: t('nav.projects') },
+	  { href: '#contact', label: t('nav.contact') }
+	];
+	
+	const title = t('title')
+	
+	useEffect(() => {
+		const handleScroll = () => {
+		setScrolled(window.scrollY > 20);
+	};
     
     const handleClickOutside = (event: MouseEvent) => {
       if (drawerRef.current && !drawerRef.current.contains(event.target as Node)) {
@@ -71,7 +108,7 @@ const Navbar: React.FC<NavbarProps> = ({ title = 'My Portfolio' }) => {
             </motion.h1>
 
             {/* Mobile Menu Button */}
-            <div className="md:hidden">
+			<div className="md:hidden">
               <button
                 onClick={() => setIsOpen(!isOpen)}
                 className="text-[var(--text-color)] p-2"
@@ -80,7 +117,7 @@ const Navbar: React.FC<NavbarProps> = ({ title = 'My Portfolio' }) => {
                 {isOpen ? <IoClose size={24} /> : <IoMenu size={24} />}
               </button>
             </div>
-
+			
             {/* Desktop Menu */}
             <div className="hidden md:flex items-center space-x-8">
               {/* Navigation Links */}
@@ -102,16 +139,11 @@ const Navbar: React.FC<NavbarProps> = ({ title = 'My Portfolio' }) => {
                 ))}
               </div>
 
-              {/* Theme Toggle Button */}
-              <motion.button
-                initial={{ opacity: 0, scale: 0.8 }}
-                animate={{ opacity: 1, scale: 1 }}
-                whileHover={{ scale: 1.1 }}
-                onClick={toggleTheme}
-                className="p-2.5 rounded-full bg-[var(--text-color)] text-[var(--bg-color)] hover:opacity-80 transition-opacity"
-              >
-                {theme === 'light' ? '🌙' : '☀️'}
-              </motion.button>
+              {/* Theme and Laguage Toggle Button */}
+              <div className="flex items-center space-x-4">
+                <LanguageSwitch locale={locale} setLocale={setLocale} />
+                <ThemeSwitch theme={theme} toggleTheme={toggleTheme} />
+              </div>
             </div>
           </div>
         </div>
@@ -167,14 +199,11 @@ const Navbar: React.FC<NavbarProps> = ({ title = 'My Portfolio' }) => {
                 ))}
                 
                 {/* Mobile Theme Toggle */}
-                <motion.button
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  onClick={toggleTheme}
-                  className="mt-4 p-2.5 rounded-full bg-[var(--text-color)] text-[var(--bg-color)] hover:opacity-80 transition-opacity w-full"
-                >
-                  {theme === 'light' ? '🌙 Dark Mode' : '☀️ Light Mode'}
-                </motion.button>
+
+				<div className="flex items-center space-x-4">
+                <LanguageSwitch locale={locale} setLocale={setLocale} />
+                <ThemeSwitch theme={theme} toggleTheme={toggleTheme} />
+              </div>
               </div>
             </motion.div>
           </>
@@ -185,4 +214,4 @@ const Navbar: React.FC<NavbarProps> = ({ title = 'My Portfolio' }) => {
 };
 
 
-export default Navbar;
+export default memo(Navbar);

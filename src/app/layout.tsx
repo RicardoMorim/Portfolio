@@ -1,30 +1,40 @@
-'use client'
 import { ThemeProvider } from '@/context/ThemeContext'
 import "@/styles/globals.css"
 import Navbar from '@/components/Navbar'
-import Footer from "@/components/Footer";
+import Footer from "@/components/Footer"
+import { Londrina_Shadow, Saira_Stencil_One, Special_Elite } from 'next/font/google'
 
+const londrinaShadow = Londrina_Shadow({
+  weight: '400',
+  subsets: ['latin'],
+})
+
+const sairaStencil = Saira_Stencil_One({
+  weight: '400',
+  subsets: ['latin'],
+})
+
+const specialElite = Special_Elite({
+  weight: '400',
+  subsets: ['latin'],
+})
 
 export default function RootLayout({
-	children,
+  children,
 }: {
-	children: React.ReactNode
+  children: React.ReactNode
 }) {
-	return (
-		<html lang="en">
-			<body>
-				<ThemeProvider>
-					<div className="app-container">
-						<Navbar />
-						{children}
-						<Footer />
-					</div>
-				</ThemeProvider>
-				<style>
-					{`@import url("https://fonts.googleapis.com/css2?family=Londrina+Shadow&family=Saira+Stencil+One&family=Special+Elite&display=swap");`}
-					{`@import url("https://fonts.googleapis.com/css2?family=Special+Elite&display=swap");`}
-				</style>
-			</body>
-		</html>
-	)
+  return (
+    <html lang="en">
+      <body>
+        <ThemeProvider>
+          <div className={`app-container ${londrinaShadow.className} ${sairaStencil.className} ${specialElite.className}`}>
+            <Navbar />
+            {children}
+            <Footer />
+          </div>
+        </ThemeProvider>
+      </body>
+    </html>
+  )
 }

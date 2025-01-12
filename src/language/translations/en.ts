@@ -195,6 +195,7 @@ export const en = {
       backend: "Backend",
       database: "Database",
       tools: "Tools",
+	  concepts: "Core Concepts",
     },
     frontend: {
       react: "React",
@@ -221,6 +222,12 @@ export const en = {
       github: "GitHub",
       docker: "Docker",
       terminal: "Terminal",
+    },
+    concepts: {
+      oop: "Object-Oriented Programming",
+      functional: "Functional Programming",
+      documentation: "Software Documentation",
+      design: "Software Design Patterns",
     },
   },
 };

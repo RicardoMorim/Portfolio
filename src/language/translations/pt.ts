@@ -200,6 +200,7 @@ export const pt = {
       backend: "Backend",
       database: "Base de Dados",
       tools: "Ferramentas",
+	  concepts: "Conceitos Importantes",
     },
     frontend: {
       react: "React",
@@ -226,6 +227,13 @@ export const pt = {
       github: "GitHub",
       docker: "Docker",
       terminal: "Terminal",
+    },
+    concepts: {
+      title: "Conceitos Fundamentais",
+      oop: "Programação Orientada a Objetos",
+      functional: "Programação Funcional",
+      documentation: "Documentação de Software",
+      design: "Padrões de Design de Software",
     },
   },
 };

@@ -343,10 +343,11 @@
 
 .skills-grid {
 	display: grid;
-	grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+	grid-template-columns: repeat(3, 1fr);
 	gap: 2rem;
 	padding: 2rem;
 }
+
 
 .skill-category {
 	background: var(--bg-color);
@@ -388,6 +389,19 @@
 
 .skill-tag:hover {
 	transform: scale(1.05);
+}
+
+
+@media screen and (max-width: 1024px) {
+	.skills-grid {
+		grid-template-columns: repeat(2, 1fr);
+	}
+}
+
+@media screen and (max-width: 640px) {
+	.skills-grid {
+		grid-template-columns: 1fr;
+	}
 }
 
 /* End of Skills Section */
@@ -638,7 +652,7 @@
 	background-color: var(--bg-color);
 	padding: 6rem 2rem;
 	position: relative;
-	font-family: ""
+
 }
 
 .contact-container {

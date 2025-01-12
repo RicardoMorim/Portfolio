@@ -1,10 +1,11 @@
 import { 
-  FaReact, FaNodeJs, FaPython, FaJava, FaGithub, FaDocker, 
-  FaTerminal, FaGit 
-} from 'react-icons/fa';
+	FaReact, FaNodeJs, FaPython, FaJava, FaGithub, FaDocker, 
+	FaTerminal, FaGit, FaBook
+  } from 'react-icons/fa';
+  import { TbHierarchy } from 'react-icons/tb';
 import { 
   SiTypescript, SiJavascript, SiHtml5, SiCss3, SiTailwindcss, 
-  SiNextdotjs, SiFirebase, SiMongodb 
+  SiNextdotjs, SiFirebase, SiMongodb, SiPython
 } from 'react-icons/si';
 import { TbApi } from 'react-icons/tb';
 import { AiOutlineConsoleSql } from 'react-icons/ai';
@@ -40,6 +41,12 @@ export default function SkillsSection() {
       { name: t('skills.tools.docker'), icon: <FaDocker className="skill-icon" /> },
       { name: t('skills.tools.terminal'), icon: <FaTerminal className="skill-icon" /> },
     ],
+	concepts: [
+		{ name: t('skills.concepts.oop'), icon: <FaJava className="skill-icon" /> }, 
+		{ name: t('skills.concepts.functional'), icon: <SiPython className="skill-icon" /> }, 
+		{ name: t('skills.concepts.documentation'), icon: <FaBook className="skill-icon" /> },
+		{ name: t('skills.concepts.design'), icon: <TbHierarchy className="skill-icon" /> },
+	  ]
   };
 
   return (

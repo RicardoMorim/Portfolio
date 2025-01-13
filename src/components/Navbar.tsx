@@ -60,8 +60,9 @@ const Navbar: React.FC<NavbarProps> = () => {
 	const navLinks = [
 		{ href: '#hero', label: nav.home },
 		{ href: '#about', label: nav.about },
+		{ href: "#skills", label: nav.skills },
 		{ href: '#projects', label: nav.projects },
-		{ href: '#contact', label: nav.contact }
+		{ href: '#contact', label: nav.contact },
 	];
 
 
@@ -100,8 +101,8 @@ const Navbar: React.FC<NavbarProps> = () => {
 			className="fixed w-full top-0 z-50 transition-all duration-300"
 		>
 			<div className={`w-full border-b ${scrolled
-					? 'backdrop-blur-lg border-[var(--border-color)] bg-[var(--nav-bg)]'
-					: 'border-transparent bg-transparent'
+				? 'backdrop-blur-lg border-[var(--border-color)] bg-[var(--nav-bg)]'
+				: 'border-transparent bg-transparent'
 				}`}>
 				<div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 					<div className="flex justify-between items-center h-16">

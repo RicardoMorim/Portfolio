@@ -121,6 +121,7 @@ export interface Navigation {
   about: string;
   projects: string;
   contact: string;
+  skills: string;
 }
 
 export interface Theme {

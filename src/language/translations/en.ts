@@ -237,6 +237,7 @@ export const en: Translations = {
     about: "About",
     projects: "Projects",
     contact: "Contact",
+	skills: "Skills",
   },
   theme: {
     light: "Light Mode",

@@ -57,7 +57,7 @@ const projects: Project = {
     {
       description: "Chess AI Neural Network",
       longDescription:
-        "Neural network-based chess AI trained on about 20,000 games\nMy PC is not powerful enough to train it better, but for now, it plays good in the early game but uses random moves in the late game.",
+        "Neural network-based chess AI trained on about 20,000 games\n«, its still in development, but for now, it plays good in the early game but uses random moves in the late game.",
       tech: ["Python", "TensorFlow", "PyTorch"],
       links: {
         github: "GitHub →",
@@ -100,7 +100,7 @@ const milestones: Milestone[] = [
     title: "Front-End Development with React",
     description: [
       "Completed the University of Hong Kong's course on React development.",
-      "Built a restaurant website with json server to keep track of reviews.",
+      " Built a restaurant website with json server to keep track of reviews.",
     ],
   },
   {
@@ -242,4 +242,5 @@ export const en: Translations = {
     light: "Light Mode",
     dark: "Dark Mode",
   },
+  zoom: "Click to Zoom"
 };

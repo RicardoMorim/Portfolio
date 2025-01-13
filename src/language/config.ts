@@ -151,4 +151,5 @@ export interface Translations {
   theme: Theme;
   footer: Footer;
   skills: Skills;
+  zoom: string;
 }

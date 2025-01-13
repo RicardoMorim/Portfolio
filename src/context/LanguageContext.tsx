@@ -30,6 +30,7 @@ interface LanguageContextType {
 	getHero: () => Hero;
 	getAbout: () => About;
 	getTheme: () => Theme;
+	getZoom: () => string;
 }
 
 const translations: Record<Locale, Translations> = { en, pt };
@@ -47,6 +48,7 @@ export const LanguageContext = createContext<LanguageContextType>({
 	getHero: () => ({} as Hero),
 	getAbout: () => ({} as About),
 	getTheme: () => ({} as Theme),
+	getZoom: () => '',
 });
 
 export function LanguageProvider({ children }: { children: React.ReactNode }) {
@@ -88,6 +90,8 @@ export function LanguageProvider({ children }: { children: React.ReactNode }) {
 
 	const getTheme = () => translations[locale].theme;
 
+	const getZoom = () => translations[locale].zoom;
+
 	return (
 		<LanguageContext.Provider value={{
 			locale,
@@ -101,7 +105,8 @@ export function LanguageProvider({ children }: { children: React.ReactNode }) {
 			getFooter,
 			getHero,
 			getAbout,
-			getTheme
+			getTheme,
+			getZoom
 		}}>
 			{children}
 		</LanguageContext.Provider>

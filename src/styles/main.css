@@ -102,9 +102,10 @@
 }
 
 @media screen and (max-width: 865px) {
-	.hero-caption{
+	.hero-caption {
 		font-size: 1.5rem;
 	}
+
 	.hero-container::after {
 		width: 35%;
 	}
@@ -123,7 +124,7 @@
 		font-size: 4rem;
 	}
 
-	.hero-capition{
+	.hero-capition {
 		font-size: 1rem;
 	}
 
@@ -533,9 +534,46 @@
 	}
 }
 
-.modal-image-container {
+.project-image-container {
 	position: relative;
-	padding: 20px;
+	overflow: hidden;
+	border-radius: 0.5rem;
+	transition: all 1s cubic-bezier(0.23, 1, 0.320, 1);
+	transform-origin: right bottom;
+
+}
+
+.project-image-container:hover {
+	rotate: 2deg;
+	background: linear-gradient(#212121, #212121) padding-box,
+		linear-gradient(145deg, transparent 35%, #e81cff, #40c9ff) border-box;
+	border: 3px solid transparent;
+	border-radius: 8px;
+	display: flex;
+	flex-direction: column;
+	cursor: pointer;
+}
+
+.project-image-container::after {
+	content: attr(data-text-zoom);
+	position: absolute;
+	inset: 0;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background: rgba(0, 0, 0, 0.5);
+	color: white;
+	font-size: 1.2rem;
+	opacity: 0;
+	transition: opacity 0.3s ease;
+}
+
+.project-image-container:hover .project-image {
+	transform: scale(1.02);
+}
+
+.project-image-container:hover::after {
+	opacity: 1;
 }
 
 .modal-overlay {
@@ -546,7 +584,9 @@
 	justify-content: center;
 	align-items: center;
 	z-index: 9999;
+	cursor: zoom-out;
 }
+
 
 .modal-image-container {
 	position: relative;
@@ -569,7 +609,7 @@
 	height: 100%;
 	object-fit: cover;
 	border-radius: 0.5rem;
-	cursor: pointer;
+	cursor: zoom-in;
 	transition: transform 0.3s ease;
 }
 

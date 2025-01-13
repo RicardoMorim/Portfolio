@@ -59,7 +59,7 @@ const projects: Project = {
       description: "Rede Neural de Xadrez IA",
       longDescription:
         "IA de xadrez baseada em rede neural treinada com cerca de 20.000 jogos\n" +
-        "O meu PC não é suficientemente potente para um melhor treino, mas por agora, " +
+        "Ainda está em desenvolvimento, mas por agora, " +
         "joga bem no início do jogo mas usa jogadas aleatórias no fim de jogo.",
       tech: ["Python", "TensorFlow", "PyTorch"],
       links: {
@@ -185,7 +185,7 @@ export const pt: Translations = {
     ],
   },
   about: {
-    title: "Minha Jornada na Programação",
+    title: "A Minha Jornada na Programação",
     milestones: {
       title: "Marcos Importantes",
       items: milestones,
@@ -246,4 +246,5 @@ export const pt: Translations = {
     light: "Modo Claro",
     dark: "Modo Escuro",
   },
+  zoom: "Clique para Aumentar"
 };

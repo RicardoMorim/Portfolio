@@ -6,8 +6,8 @@ import { SiNextdotjs, SiTypescript, SiTailwindcss, SiCss3 } from 'react-icons/si
 import { useTranslation } from '@/context/LanguageContext';
 
 const Footer = () => {
-  const { t } = useTranslation();
-  const currentYear = new Date().getFullYear();
+  const { getFooter } = useTranslation();
+  const footer = getFooter();
 
   return (
     <motion.footer 
@@ -20,31 +20,31 @@ const Footer = () => {
         <div className="footer-content">
           {/* Brand Section */}
           <div className="footer-brand">
-            <h3>{t('footer.brand.name')}</h3>
-            <p>{t('footer.brand.role')}</p>
+            <h3>{footer.brand.name}</h3>
+            <p>{footer.brand.role}</p>
             <p className="footer-description">
-              {t('footer.brand.description')}
+              {footer.brand.description}
             </p>
             <div className="footer-location">
               <FaMapMarkerAlt />
-              <span>{t('footer.brand.location')}</span>
+              <span>{footer.brand.location}</span>
             </div>
           </div>
           
           {/* Quick Links */}
           <div className="footer-links">
-            <h4>{t('footer.links.title')}</h4>
+            <h4>{footer.links.title}</h4>
             <nav>
-              <Link href="/">{t('footer.links.home')}</Link>
-              <Link href="/about">{t('footer.links.about')}</Link>
-              <Link href="/projects">{t('footer.links.projects')}</Link>
-              <Link href="/contact">{t('footer.links.contact')}</Link>
+              <Link href="/">{footer.links.home}</Link>
+              <Link href="/about">{footer.links.about}</Link>
+              <Link href="/projects">{footer.links.projects}</Link>
+              <Link href="/contact">{footer.links.contact}</Link>
             </nav>
           </div>
           
           {/* Technologies */}
           <div className="footer-tech">
-            <h4>{t('footer.tech.title')}</h4>
+            <h4>{footer.tech.title}</h4>
             <div className="tech-tags">
               <span className="tech-tag"><SiNextdotjs /> Next.js</span>
               <span className="tech-tag"><SiTypescript /> TypeScript</span>
@@ -56,7 +56,7 @@ const Footer = () => {
 
           {/* Contact */}
           <div className="footer-contact">
-            <h4>{t('footer.contact.title')}</h4>
+            <h4>{footer.contact.title}</h4>
             <a href="mailto:ricardomorim05@gmail.com" className="footer-email">
               <FaEnvelope />
               ricardomorim05@gmail.com
@@ -67,7 +67,7 @@ const Footer = () => {
                 target="_blank" 
                 rel="noopener noreferrer"
                 className="social-link"
-                aria-label={t('footer.social.github')}
+                aria-label={footer.social.github}
               >
                 <FaGithub />
               </a>
@@ -76,7 +76,7 @@ const Footer = () => {
                 target="_blank" 
                 rel="noopener noreferrer"
                 className="social-link"
-                aria-label={t('footer.social.linkedin')}
+                aria-label={footer.social.linkedin}
               >
                 <FaLinkedin />
               </a>
@@ -85,7 +85,7 @@ const Footer = () => {
         </div>
         
         <div className="footer-bottom">
-          <p>{t('footer.copyright', { year: currentYear })}</p>
+          <p>{footer.copyright}</p>
         </div>
       </div>
     </motion.footer>

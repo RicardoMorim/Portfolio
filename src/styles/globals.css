@@ -161,19 +161,23 @@ body {
 }
 
 .language-switch {
-	padding: 6px 12px;
-	border: 1px solid var(--text-color);
+	padding: 4px;
 	border-radius: 8px;
 	background: transparent;
-	font-size: 1.2rem;
 	cursor: pointer;
 	transition: all 0.3s;
+	display: flex;
+	align-items: center;
+	justify-content: center;
 }
 
 .language-switch:hover {
-	transform: scale(1.05);
+	transform: scale(1.1);
 }
 
+.language-flag {
+	width: 24px;
+}
 
 /* Fix width on mobile */
 @media screen and (max-width: 766px) {

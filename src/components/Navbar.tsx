@@ -6,6 +6,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { IoMenu, IoClose } from "react-icons/io5";
 import { useTranslation } from '@/context/LanguageContext';
 import { Locale } from '@/language/config';
+import Image from 'next/image';
 
 interface NavbarProps {
 	title?: string;
@@ -38,14 +39,21 @@ ThemeSwitch.displayName = 'ThemeSwitch';
 
 const LanguageSwitch = memo(({ locale, setLocale }: LanguageSwitchProps) => (
 	<div className="language-switch-wrapper">
-		<button
-			onClick={() => setLocale(locale === 'en' ? 'pt' : 'en')}
-			className="language-switch"
-		>
-			{locale === 'en' ? '🇵🇹' : '🇬🇧'}
-		</button>
+	  <button
+		onClick={() => setLocale(locale === 'en' ? 'pt' : 'en')}
+		className="language-switch"
+		aria-label={locale === 'en' ? 'Switch to Portuguese' : 'Switch to English'}
+	  >
+		<Image
+		  src={locale === 'en' ? '/flags/pt-flag.svg' : '/flags/gb-flag.svg'}
+		  alt={locale === 'en' ? 'PT' : 'EN'}
+		  width={24}
+		  height={24}
+		  className="language-flag"
+		/>
+	  </button>
 	</div>
-));
+  ));
 
 LanguageSwitch.displayName = 'LanguageSwitch';
 

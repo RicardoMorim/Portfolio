@@ -4,7 +4,8 @@ import Navbar from '@/components/Navbar'
 import Footer from "@/components/Footer"
 import { Londrina_Shadow, Saira_Stencil_One, Special_Elite } from 'next/font/google'
 import { LanguageProvider } from '@/context/LanguageContext';
-import { Metadata } from 'next';
+import { Metadata, Viewport } from 'next';
+
 
 const londrinaShadow = Londrina_Shadow({
 	weight: '400',
@@ -23,8 +24,8 @@ const specialElite = Special_Elite({
 
 export const metadata: Metadata = {
 	title: 'Ricardo Morim | Software Engineer',
-	description: 'Full Stack Developer specialized in React, Next.js, and TypeScript. Looking for a software engineer? You came to the right place!',
-	manifest: '/icons/site.webmanifest',
+	description: 'Full Stack Developer specialized in React, Next.js, and TypeScript',
+	metadataBase: new URL('https://ricardoportfolio.vercel.app'),
 	icons: {
 		icon: [
 			{ url: '/icons/favicon.ico' },
@@ -58,15 +59,19 @@ export const metadata: Metadata = {
 		description: 'Full Stack Developer specialized in React, Next.js, and TypeScript',
 		images: ['/icons/android-chrome-512x512.png'],
 	},
-	themeColor: [
-		{ media: '(prefers-color-scheme: light)', color: '#ffffff' },
-		{ media: '(prefers-color-scheme: dark)', color: '#000000' },
-	],
 	robots: {
 		index: true,
 		follow: true
 	}
 }
+
+export const viewport: Viewport = {
+	themeColor: [
+	  { media: '(prefers-color-scheme: light)', color: '#ffffff' },
+	  { media: '(prefers-color-scheme: dark)', color: '#000000' }
+	]
+  };
+  
 
 export default function RootLayout({
 	children,
@@ -94,8 +99,8 @@ export default function RootLayout({
 					dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
 				/>
 				<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
-				<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
-				<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+				<link rel="icon" type="image/png" sizes="32x32" href="/icons/favicon-32x32.png" />
+				<link rel="icon" type="image/png" sizes="16x16" href="/icons/favicon-16x16.png" />
 				<link rel="manifest" href="/icons/site.webmanifest" />
 				<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5" />
 				<meta name="msapplication-TileColor" content="#da532c" />

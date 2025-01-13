@@ -16,10 +16,11 @@
 	--button-text: #333333;
 }
 
+
 html {
 	scroll-behavior: smooth;
 	overflow-x: hidden;
-	width: 100%;
+	width: 100dvw;
 	position: relative;
 }
 
@@ -29,7 +30,7 @@ body {
 	background-color: var(--bg-color);
 	color: var(--text-color);
 	transition: background-color 0.3s, color 0.3s;
-	width: 100%;
+	width: 100dvw;
 	overflow-x: hidden;
 	position: relative;
 }
@@ -171,4 +172,56 @@ body {
 
 .language-switch:hover {
 	transform: scale(1.05);
+}
+
+
+/* Fix width on mobile */
+@media screen and (max-width: 766px) {
+	:root {
+		--scrollbar-width: calc(100vw - 100%);
+	}
+
+	html {
+		margin-right: calc(-1 * var(--scrollbar-width));
+		overflow-x: hidden;
+		width: 100vw;
+	}
+
+	body {
+		overflow-x: hidden;
+		width: 100%;
+		position: relative;
+	}
+
+	.contact-container,
+	.projects-container,
+	.skills-container,
+	.about-container,
+	.hero-container {
+		max-width: min(1200px, 100%);
+		width: 100%;
+		margin: 0 auto;
+		padding: 0 1rem;
+		position: relative;
+		overflow-x: hidden;
+		overflow-y: hidden;
+	}
+
+	.fixed {
+		width: calc(100% - var(--scrollbar-width));
+	}
+
+	.modal-overlay {
+		width: 100vw;
+		position: fixed;
+		inset: 0;
+		background: rgba(0, 0, 0, 0.8);
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		z-index: 9999;
+		touch-action: none;
+		padding-right: var(--scrollbar-width);
+		/* Compensate for scrollbar */
+	}
 }

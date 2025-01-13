@@ -12,7 +12,7 @@ const projects: Project = {
       links: {
         demo: "Live Demo →",
         github: "GitHub →",
-        demoUrl: "blogricardo.vercel.app",
+        demoUrl: "https://blogricardo.vercel.app",
         githubUrl: "https://github.com/RicardoMorim/Blog",
       },
     },

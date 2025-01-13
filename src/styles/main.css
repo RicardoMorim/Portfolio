@@ -66,11 +66,19 @@
 	right: 10%;
 	width: 30%;
 	height: 50%;
-	background-image: url(../../public/rb_2387.png);
+	background-image: url(../../public/logo.png);
 	z-index: -1;
 	background-size: cover;
 	background-position: center;
 }
+
+[data-theme='dark'] .hero-container::after {
+	filter: invert(0.8);
+  }
+  
+  [data-theme='light'] .hero-container::after {
+	filter: none;
+  }
 
 @media screen and (max-width: 1576px) {
 	.hero-container::after {

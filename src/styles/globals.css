@@ -19,7 +19,8 @@
 html {
 	scroll-behavior: smooth;
 	overflow-x: hidden;
-	width: 100dvw;
+	width: 100%;
+	position: relative;
 }
 
 body {
@@ -29,6 +30,8 @@ body {
 	color: var(--text-color);
 	transition: background-color 0.3s, color 0.3s;
 	width: 100%;
+	overflow-x: hidden;
+	position: relative;
 }
 
 .container {

@@ -74,11 +74,11 @@
 
 [data-theme='dark'] .hero-container::after {
 	filter: invert(0.8);
-  }
-  
-  [data-theme='light'] .hero-container::after {
+}
+
+[data-theme='light'] .hero-container::after {
 	filter: none;
-  }
+}
 
 @media screen and (max-width: 1576px) {
 	.hero-container::after {
@@ -124,8 +124,8 @@
 @media screen and (max-width: 790px) {
 	.hero-container::after {
 		top: 60%;
-		right: 20%;
-		width: 65%;
+		width: 80%;
+		right:14%;
 	}
 
 	.hero-name {

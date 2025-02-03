@@ -92,12 +92,16 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 5,
+  userScalable: true,
+  viewportFit: "cover",
   themeColor: [
     { media: "(prefers-color-scheme: light)", color: "#ffffff" },
     { media: "(prefers-color-scheme: dark)", color: "#000000" },
   ],
 };
-
 export default function RootLayout({
   children,
 }: {
@@ -144,7 +148,6 @@ export default function RootLayout({
         <meta name="msapplication-TileColor" content="#da532c" />
         <meta name="theme-color" content="#ffffff" />
         <link rel="canonical" href="https://ricardoportfolio.vercel.app" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       </head>
       <body>
         <ThemeProvider>

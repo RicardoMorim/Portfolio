@@ -13,19 +13,19 @@ export interface Milestone {
 export interface Project {
   title: string;
   items: {
-	  description: string;
-	  longDescription?: string;
-	  badge?: string;
-	  tech: string[];
-	  image?: string;
-	  links: {
-		  demo?: string;
-		  github?: string;
-		  closed?: string;
-		  demoUrl?: string;
-		  githubUrl?: string;
-		};
-	}[]
+    description: string;
+    longDescription?: string;
+    badge?: string;
+    tech: string[];
+    image?: string;
+    links: {
+      demo?: string;
+      github?: string;
+      closed?: string;
+      demoUrl?: string;
+      githubUrl?: string;
+    };
+  }[];
 }
 
 export interface Skills {
@@ -112,6 +112,11 @@ export interface Theme {
 export interface Hero {
   name: string;
   skills: string[];
+  resumeButton: string;
+  socials: {
+    platform: string;
+    url: string;
+  }[];
 }
 
 export interface About {

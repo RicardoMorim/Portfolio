@@ -55,13 +55,15 @@ const projects: Project = {
       },
     },
     {
-      description: "Chess AI Neural Network",
+      description: "Resume Scorer",
+      image: "/resume_builder.png",
       longDescription:
-        "Neural network-based chess AI trained on about 20,000 games, its still in development, but for now, it plays good in the early game but uses random moves in the late game.",
-      tech: ["Python", "TensorFlow", "PyTorch"],
+        "A platform to allow candidates score their resume, and to help them tailor resumes to specific jobs, and create a cover letter.",
+      tech: ["Next.js", "TypeScript", "Node.js", "Tailwind CSS"],
       links: {
-        github: "GitHub →",
-        githubUrl: "https://github.com/RicardoMorim/Chess-Engine",
+        github: "Live Demo →",
+        demoUrl: "https://jobresumebuilder.vercel.app",
+        closed: "Closed Source Project",
       },
     },
     {
@@ -80,22 +82,22 @@ const projects: Project = {
 
 const milestones: Milestone[] = [
   {
-    date: "2018",
-    title: "Programming Journey Begins",
-    description: "Inspired by a cousin's C-based card game project.",
+    date: "Present",
+    title: "Software Engineering Student",
+    description: "Enrolled at ISEP and building personal projects.",
   },
   {
-    date: "2019",
-    title: "Grasshopper & CodinGame",
-    description:
-      "Completed Grasshopper, where I learned Javascript, and started solving coding challenges on online platforms.",
-  },
-  {
-    date: "2021",
-    title: "CS50X Certificate",
-    description: "Completed Harvard's Introduction to Computer Science.",
+    date: "2023/2024",
+    title: "CS50AI Certificate",
+    description: "Completed Harvard's AI course with Python.",
     link: "View Certificate →",
-    url: "https://certificates.cs50.io/9a13ae2c-7f89-4ffe-a5c4-9e7e6bcadab2.pdf?size=letter",
+    url: "https://certificates.cs50.io/3ea075ca-3cac-49e2-be29-281d46d5ba94.pdf?size=letter",
+  },
+  {
+    date: "2023",
+    title: "React + Firebase Course",
+    description:
+      "Built a real-time blog with user management during this course.",
   },
   {
     date: "2023",
@@ -106,22 +108,22 @@ const milestones: Milestone[] = [
     ],
   },
   {
-    date: "2023",
-    title: "React + Firebase Course",
-    description:
-      "Built a real-time blog with user management during this course.",
-  },
-  {
-    date: "2023/2024",
-    title: "CS50AI Certificate",
-    description: "Completed Harvard's AI course with Python.",
+    date: "2021",
+    title: "CS50X Certificate",
+    description: "Completed Harvard's Introduction to Computer Science.",
     link: "View Certificate →",
-    url: "https://certificates.cs50.io/3ea075ca-3cac-49e2-be29-281d46d5ba94.pdf?size=letter",
+    url: "https://certificates.cs50.io/9a13ae2c-7f89-4ffe-a5c4-9e7e6bcadab2.pdf?size=letter",
   },
   {
-    date: "Present",
-    title: "Software Engineering Student",
-    description: "Enrolled at ISEP and building personal projects.",
+    date: "2019",
+    title: "Grasshopper & CodinGame",
+    description:
+      "Completed Grasshopper, where I learned Javascript, and started solving coding challenges on online platforms.",
+  },
+  {
+    date: "2018",
+    title: "Programming Journey Begins",
+    description: "Inspired by a cousin's C-based card game project.",
   },
 ];
 
@@ -154,6 +156,14 @@ export const en: Translations = {
   hero: {
     name: "RICARDO",
     skills: ["Full Stack Developer"],
+    resumeButton: "Resume",
+    socials: [
+      { platform: "github", url: "https://github.com/RicardoMorim" },
+      {
+        platform: "linkedin",
+        url: "https://www.linkedin.com/in/ricardo-morim-208368251/",
+      },
+    ],
   },
   about: {
     title: "My Programming Journey",
@@ -185,7 +195,8 @@ export const en: Translations = {
     brand: {
       name: "Ricardo Morim",
       role: "Full Stack Developer",
-      description: "Building digital experiences with passion and precision.",
+      description:
+        "Full Stack Developer specialized in React, Next.js, and TypeScript.",
       location: "Porto, Portugal",
     },
     links: {

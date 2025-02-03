@@ -56,15 +56,15 @@ const projects: Project = {
       },
     },
     {
-      description: "Rede Neural de Xadrez IA",
+      description: "Avaliador de Curriculos",
+      image: "/resume_builder.png",
       longDescription:
-        "IA de xadrez baseada em rede neural treinada com cerca de 20.000 jogos\n" +
-        "Ainda está em desenvolvimento, mas por agora, " +
-        "joga bem no início do jogo mas usa jogadas aleatórias no fim de jogo.",
-      tech: ["Python", "TensorFlow", "PyTorch"],
+        "Plataforma de avaliação de curriculos e escrita de cartas de apresentação com Inteligência Artificial.",
+      tech: ["Next.js", "TypeScript", "Node.js", "Tailwind CSS"],
       links: {
-        github: "GitHub →",
-        githubUrl: "https://github.com/RicardoMorim/Chess-Engine",
+        github: "Demonstração →",
+        demoUrl: "https://jobresumebuilder.vercel.app",
+        closed: "Projecto Fechado",
       },
     },
     {
@@ -83,23 +83,22 @@ const projects: Project = {
 
 const milestones: Milestone[] = [
   {
-    date: "2018",
-    title: "Início da Jornada",
-    description: "Inspirado pelo projeto de jogo de cartas em C de um primo.",
+    date: "Presente",
+    title: "Estudante de Engenharia Informática",
+    description: "Matriculado no ISEP e a desenvolver projetos pessoais.",
   },
   {
-    date: "2019",
-    title: "Grasshopper & CodinGame",
-    description:
-      "Completei o Grasshopper, onde aprendi Javascript e comecei a resolver desafios em plataformas online.",
-  },
-  {
-    date: "2021",
-    title: "Certificado CS50X",
-    description:
-      "Completei o curso de Introdução à Ciência da Computação de Harvard.",
+    date: "2023/2024",
+    title: "Certificado CS50AI",
+    description: "Completei o curso de IA de Harvard com Python.",
     link: "Ver Diploma →",
-    url: "https://certificates.cs50.io/9a13ae2c-7f89-4ffe-a5c4-9e7e6bcadab2.pdf?size=letter",
+    url: "https://certificates.cs50.io/3ea075ca-3cac-49e2-be29-281d46d5ba94.pdf?size=letter",
+  },
+  {
+    date: "2023",
+    title: "Curso de React + Firebase",
+    description:
+      "Construí um blog em tempo real com gestão de utilizadores durante este curso.",
   },
   {
     date: "2023",
@@ -110,22 +109,23 @@ const milestones: Milestone[] = [
     ],
   },
   {
-    date: "2023",
-    title: "Curso de React + Firebase",
+    date: "2021",
+    title: "Certificado CS50X",
     description:
-      "Construí um blog em tempo real com gestão de utilizadores durante este curso.",
-  },
-  {
-    date: "2023/2024",
-    title: "Certificado CS50AI",
-    description: "Completei o curso de IA de Harvard com Python.",
+      "Completei o curso de Introdução à Ciência da Computação de Harvard.",
     link: "Ver Diploma →",
-    url: "https://certificates.cs50.io/3ea075ca-3cac-49e2-be29-281d46d5ba94.pdf?size=letter",
+    url: "https://certificates.cs50.io/9a13ae2c-7f89-4ffe-a5c4-9e7e6bcadab2.pdf?size=letter",
   },
   {
-    date: "Presente",
-    title: "Estudante de Engenharia Informática",
-    description: "Matriculado no ISEP e a desenvolver projetos pessoais.",
+    date: "2019",
+    title: "Grasshopper & CodinGame",
+    description:
+      "Completei o Grasshopper, onde aprendi Javascript e comecei a resolver desafios em plataformas online.",
+  },
+  {
+    date: "2018",
+    title: "Início da Jornada",
+    description: "Inspirado pelo projeto de jogo de cartas em C de um primo.",
   },
 ];
 
@@ -158,6 +158,14 @@ export const pt: Translations = {
   hero: {
     name: "RICARDO",
     skills: ["Desenvolvedor Full Stack"],
+    resumeButton: "Currículo",
+    socials: [
+      { platform: "github", url: "https://github.com/RicardoMorim" },
+      {
+        platform: "linkedin",
+        url: "https://www.linkedin.com/in/ricardo-morim-208368251/",
+      },
+    ],
   },
   about: {
     title: "A Minha Jornada na Programação",
@@ -189,7 +197,8 @@ export const pt: Translations = {
     brand: {
       name: "Ricardo Morim",
       role: "Desenvolvedor de Software",
-      description: "Construindo experiências digitais com paixão e precisão.",
+      description:
+        "Desenvolvedor FullStack, expecializado em React.js, Next.js e Typescript.",
       location: "Porto, Portugal",
     },
     links: {

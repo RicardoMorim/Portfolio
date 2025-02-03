@@ -16,7 +16,8 @@
   isolation: isolate;
 }
 
-.hero-name-container {
+.hero-name-container,
+.hero-socials {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -47,6 +48,39 @@
   white-space: nowrap;
   min-height: 3rem;
   padding-right: 0.5em;
+}
+
+.resume-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  background: var(--accent-color);
+  color: white;
+  border-radius: 0.5rem;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.resume-button:hover {
+  background: var(--accent-hover);
+  transform: translateY(-2px);
+}
+
+.social-links {
+  display: flex;
+  gap: 1rem;
+}
+
+.social-link {
+  color: var(--text-color);
+  opacity: 0.8;
+  transition: all 0.3s ease;
+}
+
+.social-link:hover {
+  opacity: 1;
+  color: var(--accent-color);
 }
 
 @keyframes blink-caret {
@@ -97,7 +131,8 @@
     text-align: left;
   }
 
-  .hero-name-container {
+  .hero-name-container,
+  .hero-socials {
     margin-right: 0;
   }
 
@@ -110,7 +145,7 @@
     margin-left: 1rem;
   }
   .hero-container::after {
-    width: 35%;
+    width: 60%;
   }
 }
 
@@ -123,6 +158,24 @@
     top: 52%;
     width: 80%;
     right: 14%;
+  }
+  .hero-name-container {
+    top: 27%;
+    position: absolute;
+  }
+  .hero-caption-container {
+    top: 38%;
+    position: absolute;
+  }
+
+  .hero-socials {
+    position: absolute;
+    top: 40%;
+  }
+
+  .hero-container::after {
+    width: 100%;
+    right: 5%;
   }
 }
 
@@ -243,7 +296,6 @@
   margin-bottom: 2.5rem;
   padding-left: 2rem;
   position: relative;
-
 }
 
 .timeline-item::before {
@@ -399,6 +451,7 @@
   font-size: 0.9rem;
   transition: transform 0.3s ease;
   width: fit-content;
+  cursor: default;
 }
 
 .skill-icon {
@@ -459,6 +512,7 @@
   transition: all 0.3s ease;
   height: 100%;
   position: relative;
+  overflow: hidden;
 }
 
 .project-content {
@@ -501,20 +555,141 @@
   gap: 1rem;
   margin-top: auto;
   padding-top: 1.5rem;
+  position: relative;
+  width: fit-content;
+  font-size: 15px;
+  align-self: center;
 }
 
 .project-links a {
   color: #6366f1;
   text-decoration: none;
-  transition: color 0.3s;
+  position: relative;
+  padding: 0.5rem 1.5rem;
+  border-radius: 0.5rem;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  overflow: hidden;
+  background: transparent;
+  border: 2px solid transparent;
+  transform: translateY(10px);
+  opacity: 0.7;
+  isolation: isolate; /* Contains pseudo-elements to each link */
 }
 
+/* Card hover effects */
+.project-card:hover .project-links a {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+/* Staggered animation for links */
+.project-card:hover .project-links a:nth-child(1) {
+  transition-delay: 0.1s;
+}
+.project-card:hover .project-links a:nth-child(2) {
+  transition-delay: 0.2s;
+}
+.project-card:hover .project-links a:nth-child(3) {
+  transition-delay: 0.3s;
+}
+
+/* Border animation on CARD HOVER */
+.project-card:hover .project-links a::before {
+  content: "";
+  position: absolute;
+  inset: -2px;
+  border: 2px solid currentColor !important;
+  border-radius: 0.5rem;
+  animation: borderFlow 2s linear infinite;
+  box-shadow: 0 4px 15px rgba(99, 102, 241, 0.2);
+  opacity: 0.3;
+  z-index: -1;
+}
+
+/* Background expansion on CARD HOVER */
+.project-card:hover .project-links a::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(99, 102, 241, 0.05);
+  border-radius: 0.5rem;
+  clip-path: inset(100% 0 0 0);
+  background: linear-gradient(
+    45deg,
+    rgba(99, 102, 241, 0.1) 0%,
+    rgba(79, 70, 229, 0.05) 100%
+  );
+  border-color: currentColor;
+  z-index: -2;
+  animation: borderFlow 0.6s forwards;
+}
+
+/* Shine effect on LINK HOVER */
+.project-links a:hover .shine-effect {
+  opacity: 1;
+  animation: shine 1.5s ease-out forwards;
+}
+
+/* Keyframes */
+@keyframes borderFlow {
+  0% {
+    clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
+  }
+  50% {
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+  }
+  100% {
+    clip-path: polygon(0 100%, 100% 100%, 100% 100%, 0 100%);
+  }
+}
+
+@keyframes backgroundReveal {
+  to {
+    clip-path: inset(0 0 0 0);
+  }
+}
+
+@keyframes shine {
+  0% {
+    transform: translateX(-100%) rotate(45deg);
+  }
+  100% {
+    transform: translateX(100%) rotate(45deg);
+  }
+}
+
+/* Individual link hover effects */
 .project-links a:hover {
   color: #4f46e5;
+  background: linear-gradient(
+    45deg,
+    rgba(99, 102, 241, 0.1) 0%,
+    rgba(79, 70, 229, 0.05) 100%
+  );
+  border-color: currentColor;
+  transform: translateY(-2px) scale(1.05);
+  box-shadow: 0 4px 15px rgba(99, 102, 241, 0.2);
 }
 
-.professional {
-  border: 2px solid #6366f1;
+/* Shine element */
+.shine-effect {
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(
+    45deg,
+    transparent 25%,
+    rgba(255, 255, 255, 0.1) 50%,
+    transparent 75%
+  );
+  transform: rotate(45deg);
+  opacity: 0;
+  pointer-events: none;
 }
 
 .professional-badge {
@@ -531,6 +706,14 @@
 .closed-source {
   color: var(--text-color);
   opacity: 0.6;
+  display: flex;
+  gap: 1rem;
+  margin-top: auto;
+  padding-top: 1.5rem;
+  position: relative;
+  width: fit-content;
+  font-size: 15px;
+  align-self: center;
 }
 
 @media screen and (max-width: 768px) {
@@ -593,6 +776,7 @@
   align-items: center;
   z-index: 9999;
   cursor: zoom-out;
+  overflow-x: hidden;
 }
 
 .modal-image-container {
@@ -600,6 +784,7 @@
   padding: 20px;
   width: min(90vw, 1200px);
   height: min(90vh, 800px);
+  overflow-x: hidden;
 }
 
 .modal-close-button {
@@ -640,6 +825,7 @@
   object-fit: contain;
   border-radius: 0.5rem;
   cursor: zoom-in;
+  overflow-x: hidden;
 }
 
 .project-image {

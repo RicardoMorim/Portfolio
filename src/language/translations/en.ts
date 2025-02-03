@@ -38,7 +38,7 @@ const projects: Project = {
       links: {
         demo: "Live Demo →",
         closed: "Closed Source Project",
-		demoUrl: "https://matchdinnermondays.pt",
+        demoUrl: "https://matchdinnermondays.pt",
       },
     },
     {
@@ -50,18 +50,18 @@ const projects: Project = {
       links: {
         demo: "Live Demo →",
         github: "GitHub →",
-		demoUrl: "https://stockinformation.vercel.app/",
+        demoUrl: "https://stockinformation.vercel.app/",
         githubUrl: "https://github.com/RicardoMorim/Stock_Information",
       },
     },
     {
       description: "Chess AI Neural Network",
       longDescription:
-        "Neural network-based chess AI trained on about 20,000 games\n«, its still in development, but for now, it plays good in the early game but uses random moves in the late game.",
+        "Neural network-based chess AI trained on about 20,000 games, its still in development, but for now, it plays good in the early game but uses random moves in the late game.",
       tech: ["Python", "TensorFlow", "PyTorch"],
       links: {
         github: "GitHub →",
-		githubUrl: "https://github.com/RicardoMorim/Chess-Engine",
+        githubUrl: "https://github.com/RicardoMorim/Chess-Engine",
       },
     },
     {
@@ -72,7 +72,7 @@ const projects: Project = {
       tech: ["Java", "Maven", "JavaFX"],
       links: {
         github: "GitHub →",
-		githubUrl: "https://github.com/RicardoMorim/lapr2-ISEP-Project",
+        githubUrl: "https://github.com/RicardoMorim/lapr2-ISEP-Project",
       },
     },
   ],
@@ -94,13 +94,15 @@ const milestones: Milestone[] = [
     date: "2021",
     title: "CS50X Certificate",
     description: "Completed Harvard's Introduction to Computer Science.",
+    link: "View Certificate →",
+    url: "https://certificates.cs50.io/9a13ae2c-7f89-4ffe-a5c4-9e7e6bcadab2.pdf?size=letter",
   },
   {
     date: "2023",
     title: "Front-End Development with React",
     description: [
       "Completed the University of Hong Kong's course on React development.",
-      " Built a restaurant website with json server to keep track of reviews.",
+      " Built a restaurant website with JSON server to keep track of reviews.",
     ],
   },
   {
@@ -113,6 +115,8 @@ const milestones: Milestone[] = [
     date: "2023/2024",
     title: "CS50AI Certificate",
     description: "Completed Harvard's AI course with Python.",
+    link: "View Certificate →",
+    url: "https://certificates.cs50.io/3ea075ca-3cac-49e2-be29-281d46d5ba94.pdf?size=letter",
   },
   {
     date: "Present",
@@ -127,41 +131,21 @@ const skills: Skills = {
     frontend: "Frontend",
     backend: "Backend",
     database: "Database",
-    tools: "Tools",
-    concepts: "Core Concepts",
   },
   frontend: {
-    react: "React",
+    react: "React.js",
     nextjs: "Next.js",
     typescript: "TypeScript",
     javascript: "JavaScript",
-    html: "HTML5",
-    css: "CSS3",
     tailwind: "Tailwind CSS",
   },
   backend: {
     nodejs: "Node.js",
-    python: "Python",
-    java: "Java",
     api: "REST APIs",
   },
   database: {
     sql: "SQL",
     mongodb: "MongoDB",
-    firebase: "Firebase",
-  },
-  tools: {
-    git: "Git",
-    github: "GitHub",
-    docker: "Docker",
-    terminal: "Terminal",
-  },
-  concepts: {
-    title: "Coneitos Fundamentais",
-    oop: "Object-Oriented Programming",
-    functional: "Functional Programming",
-    documentation: "Software Documentation",
-    design: "Software Design Patterns",
   },
 };
 
@@ -169,16 +153,7 @@ export const en: Translations = {
   title: "My Portfolio",
   hero: {
     name: "RICARDO",
-    skills: [
-      "Software Developer",
-      "Full Stack Developer",
-      "Frontend Developer",
-      "Backend Developer",
-      "Database Engineer",
-      "AI Enthusiast",
-      "Software Architect",
-      "Software Engineer",
-    ],
+    skills: ["Full Stack Developer"],
   },
   about: {
     title: "My Programming Journey",
@@ -209,7 +184,7 @@ export const en: Translations = {
   footer: {
     brand: {
       name: "Ricardo Morim",
-      role: "Software Developer",
+      role: "Full Stack Developer",
       description: "Building digital experiences with passion and precision.",
       location: "Porto, Portugal",
     },
@@ -237,11 +212,11 @@ export const en: Translations = {
     about: "About",
     projects: "Projects",
     contact: "Contact",
-	skills: "Skills",
+    skills: "Skills",
   },
   theme: {
     light: "Light Mode",
     dark: "Dark Mode",
   },
-  zoom: "Click to Zoom"
+  zoom: "Click to Zoom",
 };

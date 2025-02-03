@@ -98,13 +98,15 @@ const milestones: Milestone[] = [
     title: "Certificado CS50X",
     description:
       "Completei o curso de Introdução à Ciência da Computação de Harvard.",
+    link: "Ver Diploma →",
+    url: "https://certificates.cs50.io/9a13ae2c-7f89-4ffe-a5c4-9e7e6bcadab2.pdf?size=letter",
   },
   {
     date: "2023",
     title: "Desenvolvimento Frontend com React",
     description: [
       "Completei o curso de desenvolvimento React da Universidade de Hong Kong.",
-      "Construí um website de restaurante com json server para gerir avaliações.",
+      "Construí um website de restaurante com JSON server para gerir avaliações.",
     ],
   },
   {
@@ -117,6 +119,8 @@ const milestones: Milestone[] = [
     date: "2023/2024",
     title: "Certificado CS50AI",
     description: "Completei o curso de IA de Harvard com Python.",
+    link: "Ver Diploma →",
+    url: "https://certificates.cs50.io/3ea075ca-3cac-49e2-be29-281d46d5ba94.pdf?size=letter",
   },
   {
     date: "Presente",
@@ -131,41 +135,21 @@ const skills: Skills = {
     frontend: "Frontend",
     backend: "Backend",
     database: "Base de Dados",
-    tools: "Ferramentas",
-    concepts: "Conceitos Importantes",
   },
   frontend: {
     react: "React",
     nextjs: "Next.js",
     typescript: "TypeScript",
     javascript: "JavaScript",
-    html: "HTML5",
-    css: "CSS3",
     tailwind: "Tailwind CSS",
   },
   backend: {
     nodejs: "Node.js",
-    python: "Python",
-    java: "Java",
     api: "APIs REST",
   },
   database: {
     sql: "SQL",
     mongodb: "MongoDB",
-    firebase: "Firebase",
-  },
-  tools: {
-    git: "Git",
-    github: "GitHub",
-    docker: "Docker",
-    terminal: "Terminal",
-  },
-  concepts: {
-    title: "Conceitos Fundamentais",
-    oop: "Programação Orientada a Objetos",
-    functional: "Programação Funcional",
-    documentation: "Documentação de Software",
-    design: "Padrões de Design de Software",
   },
 };
 
@@ -173,16 +157,7 @@ export const pt: Translations = {
   title: "Meu Portfólio",
   hero: {
     name: "RICARDO",
-    skills: [
-      "Desenvolvedor de Software",
-      "Desenvolvedor Full Stack",
-      "Desenvolvedor Frontend",
-      "Desenvolvedor Backend",
-      "Engenheiro de Base de Dados",
-      "Entusiasta de IA",
-      "Arquiteto de Software",
-      "Engenheiro de Software",
-    ],
+    skills: ["Desenvolvedor Full Stack"],
   },
   about: {
     title: "A Minha Jornada na Programação",
@@ -241,11 +216,11 @@ export const pt: Translations = {
     about: "Sobre",
     projects: "Projetos",
     contact: "Contacto",
-	skills: "Competências"
+    skills: "Competências",
   },
   theme: {
     light: "Modo Claro",
     dark: "Modo Escuro",
   },
-  zoom: "Clique para Aumentar"
+  zoom: "Clique para Aumentar",
 };

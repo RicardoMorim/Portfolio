@@ -35,10 +35,10 @@ const Footer = () => {
           <div className="footer-links">
             <h4>{footer.links.title}</h4>
             <nav>
-              <Link href="/">{footer.links.home}</Link>
-              <Link href="/about">{footer.links.about}</Link>
-              <Link href="/projects">{footer.links.projects}</Link>
-              <Link href="/contact">{footer.links.contact}</Link>
+              <Link href="#hero">{footer.links.home}</Link>
+              <Link href="#about">{footer.links.about}</Link>
+              <Link href="#projects">{footer.links.projects}</Link>
+              <Link href="#contact">{footer.links.contact}</Link>
             </nav>
           </div>
           

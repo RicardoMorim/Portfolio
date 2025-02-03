@@ -34,41 +34,21 @@ export interface Skills {
     frontend: string;
     backend: string;
     database: string;
-    tools: string;
-    concepts: string;
   };
   frontend: {
     react: string;
     nextjs: string;
     typescript: string;
     javascript: string;
-    html: string;
-    css: string;
     tailwind: string;
   };
   backend: {
     nodejs: string;
-    python: string;
-    java: string;
     api: string;
   };
   database: {
     sql: string;
     mongodb: string;
-    firebase: string;
-  };
-  tools: {
-    git: string;
-    github: string;
-    docker: string;
-    terminal: string;
-  };
-  concepts: {
-    title: string;
-    oop: string;
-    functional: string;
-    documentation: string;
-    design: string;
   };
 }
 

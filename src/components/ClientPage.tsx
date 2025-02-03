@@ -138,6 +138,7 @@ export default function ClientPage() {
           {/* Social & Resume Links */}
           <HeroLinks
             resumeButton={hero.resumeButton}
+            resumeurl={hero.resume_url}
             socials={hero.socials}
           />
         </div>

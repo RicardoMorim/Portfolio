@@ -159,6 +159,7 @@ export const pt: Translations = {
     name: "RICARDO",
     skills: ["Desenvolvedor Full Stack"],
     resumeButton: "Currículo",
+    resume_url: "curriculo-pt.pdf",
     socials: [
       { platform: "github", url: "https://github.com/RicardoMorim" },
       {

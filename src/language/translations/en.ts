@@ -157,6 +157,7 @@ export const en: Translations = {
     name: "RICARDO",
     skills: ["Full Stack Developer"],
     resumeButton: "Resume",
+    resume_url: "resume.pdf",
     socials: [
       { platform: "github", url: "https://github.com/RicardoMorim" },
       {

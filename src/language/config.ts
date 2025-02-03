@@ -113,6 +113,7 @@ export interface Hero {
   name: string;
   skills: string[];
   resumeButton: string;
+  resume_url: string;
   socials: {
     platform: string;
     url: string;

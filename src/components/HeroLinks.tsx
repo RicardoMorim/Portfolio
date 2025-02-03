@@ -3,13 +3,14 @@ import SocialIcon from "./SocialIcon";
 
 interface HeroLinksProps {
   resumeButton: string;
+  resumeurl: string;
   socials: Array<{
     platform: string;
     url: string;
   }>;
 }
 
-const HeroLinks = ({ resumeButton, socials }: HeroLinksProps) => {
+const HeroLinks = ({ resumeButton, resumeurl, socials }: HeroLinksProps) => {
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
@@ -17,7 +18,7 @@ const HeroLinks = ({ resumeButton, socials }: HeroLinksProps) => {
       className="flex items-center justify-center gap-6 mt-12 hero-socials"
     >
       <motion.a
-        href="/resume.pdf"
+        href={`/${resumeurl}`}
         download="Resume.pdf"
         className="resume-button"
         whileHover={{ y: -2 }}

@@ -24,7 +24,27 @@ const inter = Inter({
 export const metadata: Metadata = {
   title: "Ricardo Morim | Software Engineer",
   description:
-    "Full Stack Developer specialized in React, Next.js, and TypeScript",
+    "Hi there! I'm Ricardo Morim a Full Stack Developer specialized in React, Next.js, and TypeScript and this is my Portfolio",
+  keywords: [
+    "Ricardo Morim",
+    "Ricardo",
+    "Morim",
+    "Software Engineer",
+    "Full Stack Developer",
+    "Web Developer",
+    "React Developer",
+    "Next.js Developer",
+    "TypeScript Developer",
+    "Portfolio",
+    "Ricardo Portfolio",
+    "Developer Portfolio",
+    "Software Development",
+    "Frontend Developer",
+    "Backend Developer",
+    "JavaScript",
+    "Web Development",
+    "Portfolio Website",
+  ],
   metadataBase: new URL("https://ricardoportfolio.vercel.app"),
   icons: {
     icon: [

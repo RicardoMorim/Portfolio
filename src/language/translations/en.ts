@@ -88,7 +88,7 @@ const milestones: Milestone[] = [
     date: "2019",
     title: "Grasshopper & CodinGame",
     description:
-      "Completed Grasshopper and started solving challenges on CodinGame.",
+      "Completed Grasshopper, where I learned Javascript, and started solving coding challenges on online platforms.",
   },
   {
     date: "2021",

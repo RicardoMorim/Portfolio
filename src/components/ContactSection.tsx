@@ -46,7 +46,7 @@ export default function ContactSection(contact: Contact) {
 					whileInView={{ opacity: 1, y: 0 }}
 					className="contact-title"
 				>
-					{contact.title}
+					{contact.subtitle}
 				</motion.h2>
 
 				<div className="contact-content">
@@ -55,7 +55,6 @@ export default function ContactSection(contact: Contact) {
 						initial={{ opacity: 0, x: -50 }}
 						whileInView={{ opacity: 1, x: 0 }}
 					>
-						<h3>{contact.subtitle}</h3>
 						<p>{contact.description}</p>
 						<div className="contact-details">
 							<div className="contact-item">

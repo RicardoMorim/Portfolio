@@ -4,6 +4,44 @@ const projects: Project = {
   title: "Projects",
   items: [
     {
+      description: "Resume Scorer",
+      image: "/resume_builder.png",
+      longDescription:
+        "A platform to allow candidates score their resume, and to help them tailor resumes to specific jobs, and create a cover letter.",
+      tech: ["Next.js", "TypeScript", "Node.js", "Tailwind CSS"],
+      links: {
+        github: "Live Demo →",
+        demoUrl: "https://jobresumebuilder.vercel.app",
+        closed: "Closed Source Project",
+      },
+    },
+    {
+      image: "/stockinformation.jpeg",
+      description: "Stock Information",
+      longDescription:
+        "Financial data platform with real-time updates and portfolio management",
+      tech: ["Next.js", "MongoDB", "External APIs"],
+      links: {
+        demo: "Live Demo →",
+        github: "GitHub →",
+        demoUrl: "https://stockinformation.vercel.app/",
+        githubUrl: "https://github.com/RicardoMorim/Stock_Information",
+      },
+    },
+    {
+      image: "/matchdinner.jpeg",
+      description: "Match Dinner Mondays",
+      badge: "Professional Work",
+      longDescription: "Dating platform with real-time chat functionality.",
+      tech: ["React", "Firebase", "Real-time DB"],
+      links: {
+        demo: "Live Demo →",
+        closed: "Closed Source Project",
+        demoUrl: "https://matchdinnermondays.pt",
+      },
+    },
+
+    {
       image: "/blog.jpeg",
       description: "Blog Platform",
       longDescription:
@@ -29,54 +67,6 @@ const projects: Project = {
         githubUrl: "https://github.com/RicardoMorim/First-react-app",
       },
     },
-    {
-      image: "/matchdinner.jpeg",
-      description: "Match Dinner Mondays",
-      badge: "Professional Work",
-      longDescription: "Dating platform with real-time chat functionality.",
-      tech: ["React", "Firebase", "Real-time DB"],
-      links: {
-        demo: "Live Demo →",
-        closed: "Closed Source Project",
-        demoUrl: "https://matchdinnermondays.pt",
-      },
-    },
-    {
-      image: "/stockinformation.jpeg",
-      description: "Stock Information",
-      longDescription:
-        "Financial data platform with real-time updates and portfolio management",
-      tech: ["Next.js", "MongoDB", "External APIs"],
-      links: {
-        demo: "Live Demo →",
-        github: "GitHub →",
-        demoUrl: "https://stockinformation.vercel.app/",
-        githubUrl: "https://github.com/RicardoMorim/Stock_Information",
-      },
-    },
-    {
-      description: "Resume Scorer",
-      image: "/resume_builder.png",
-      longDescription:
-        "A platform to allow candidates score their resume, and to help them tailor resumes to specific jobs, and create a cover letter.",
-      tech: ["Next.js", "TypeScript", "Node.js", "Tailwind CSS"],
-      links: {
-        github: "Live Demo →",
-        demoUrl: "https://jobresumebuilder.vercel.app",
-        closed: "Closed Source Project",
-      },
-    },
-    {
-      image: "/lapr2.jpeg",
-      description: "Garden Management App",
-      longDescription:
-        "An app made in Java to help companies manage their associates and their cars/machines to schedule tasks to manage their gardens.",
-      tech: ["Java", "Maven", "JavaFX"],
-      links: {
-        github: "GitHub →",
-        githubUrl: "https://github.com/RicardoMorim/lapr2-ISEP-Project",
-      },
-    },
   ],
 };
 
@@ -85,6 +75,11 @@ const milestones: Milestone[] = [
     date: "Present",
     title: "Software Engineering Student",
     description: "Enrolled at ISEP and building personal projects.",
+  },
+  {
+    date: "2024",
+    title: "Match Dinner Mondays",
+    description: "Launched my first professional website for a business.",
   },
   {
     date: "2023/2024",

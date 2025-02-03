@@ -4,6 +4,44 @@ const projects: Project = {
   title: "Projetos",
   items: [
     {
+      description: "Avaliador de Curriculos",
+      image: "/resume_builder.png",
+      longDescription:
+        "Plataforma de avaliação de curriculos e escrita de cartas de apresentação com Inteligência Artificial.",
+      tech: ["Next.js", "TypeScript", "Node.js", "Tailwind CSS"],
+      links: {
+        github: "Demonstração →",
+        demoUrl: "https://jobresumebuilder.vercel.app",
+        closed: "Projecto Fechado",
+      },
+    },
+    {
+      image: "/stockinformation.jpeg",
+      description: "Informação de Ações",
+      longDescription:
+        "Plataforma de dados financeiros com atualizações em tempo real e gestão de portfólio",
+      tech: ["Next.js", "MongoDB", "APIs Externas"],
+      links: {
+        demo: "Ver Demo →",
+        github: "GitHub →",
+        demoUrl: "https://stockinformation.vercel.app/",
+        githubUrl: "https://github.com/RicardoMorim/Stock_Information",
+      },
+    },
+    {
+      image: "/matchdinner.jpeg",
+      description: "Match Dinner Mondays",
+      badge: "Trabalho Profissional",
+      longDescription:
+        "Plataforma de encontros com funcionalidade de chat em tempo real.",
+      tech: ["React", "Firebase", "Real-time DB"],
+      links: {
+        demo: "Ver Demo →",
+        closed: "Projeto Fechado",
+        demoUrl: "https://matchdinnermondays.pt",
+      },
+    },
+    {
       image: "/blog.jpeg",
       description: "Plataforma de Blog",
       longDescription:
@@ -29,55 +67,6 @@ const projects: Project = {
         githubUrl: "https://github.com/RicardoMorim/First-react-app",
       },
     },
-    {
-      image: "/matchdinner.jpeg",
-      description: "Match Dinner Mondays",
-      badge: "Trabalho Profissional",
-      longDescription:
-        "Plataforma de encontros com funcionalidade de chat em tempo real.",
-      tech: ["React", "Firebase", "Real-time DB"],
-      links: {
-        demo: "Ver Demo →",
-        closed: "Projeto Fechado",
-        demoUrl: "https://matchdinnermondays.pt",
-      },
-    },
-    {
-      image: "/stockinformation.jpeg",
-      description: "Informação de Ações",
-      longDescription:
-        "Plataforma de dados financeiros com atualizações em tempo real e gestão de portfólio",
-      tech: ["Next.js", "MongoDB", "APIs Externas"],
-      links: {
-        demo: "Ver Demo →",
-        github: "GitHub →",
-        demoUrl: "https://stockinformation.vercel.app/",
-        githubUrl: "https://github.com/RicardoMorim/Stock_Information",
-      },
-    },
-    {
-      description: "Avaliador de Curriculos",
-      image: "/resume_builder.png",
-      longDescription:
-        "Plataforma de avaliação de curriculos e escrita de cartas de apresentação com Inteligência Artificial.",
-      tech: ["Next.js", "TypeScript", "Node.js", "Tailwind CSS"],
-      links: {
-        github: "Demonstração →",
-        demoUrl: "https://jobresumebuilder.vercel.app",
-        closed: "Projecto Fechado",
-      },
-    },
-    {
-      image: "/lapr2.jpeg",
-      description: "App de Gestão de Jardins",
-      longDescription:
-        "Uma aplicação feita em Java para ajudar empresas a gerir os seus associados e os seus carros/máquinas para agendar tarefas de gestão de jardins.",
-      tech: ["Java", "Maven", "JavaFX"],
-      links: {
-        github: "GitHub →",
-        githubUrl: "https://github.com/RicardoMorim/lapr2-ISEP-Project",
-      },
-    },
   ],
 };
 
@@ -86,6 +75,11 @@ const milestones: Milestone[] = [
     date: "Presente",
     title: "Estudante de Engenharia Informática",
     description: "Matriculado no ISEP e a desenvolver projetos pessoais.",
+  },
+  {
+    date: "2024",
+    title: "Match Dinner Mondays",
+    description: "Lancei o meu primeiro website profissional para uma empresa."
   },
   {
     date: "2023/2024",

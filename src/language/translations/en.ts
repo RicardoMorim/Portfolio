@@ -77,6 +77,18 @@ const milestones: Milestone[] = [
     description: "Enrolled at ISEP and building personal projects.",
   },
   {
+    date: "2025", 
+    title: "HackerRank Certifications (Intermediate)",
+    description: [
+      "Software Engineering",
+      "JavaScript",
+      "Angular",
+      "Problem Solving",
+    ],
+    link: "View on HackerRank →",
+    url: "https://www.hackerrank.com/profile/ricardomorim05"
+  },
+  {
     date: "2024",
     title: "Match Dinner Mondays",
     description: "Launched my first professional website for a business.",

@@ -81,9 +81,9 @@ const milestones: Milestone[] = [
     title: "Certificações HackerRank (Intermediário)",
     description: [
       "Engenharia de Software",
-      "JavaScript",
-      "Angular",
-      "Resolução de Problemas",
+      " JavaScript",
+      " Angular",
+      " Resolução de Problemas",
     ],
     link: "Veja em HackerRank →",
     url: "https://www.hackerrank.com/profile/ricardomorim05"

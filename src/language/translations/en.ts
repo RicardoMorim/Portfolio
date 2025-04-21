@@ -80,10 +80,10 @@ const milestones: Milestone[] = [
     date: "2025", 
     title: "HackerRank Certifications (Intermediate)",
     description: [
-      "Software Engineering",
-      "JavaScript",
-      "Angular",
-      "Problem Solving",
+      " Software Engineering",
+      " JavaScript",
+      " Angular",
+      " Problem Solving",
     ],
     link: "View on HackerRank →",
     url: "https://www.hackerrank.com/profile/ricardomorim05"

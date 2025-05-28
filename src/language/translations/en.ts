@@ -10,7 +10,7 @@ const projects: Project = {
         "A platform to allow candidates score their resume, and to help them tailor resumes to specific jobs, and create a cover letter.",
       tech: ["Next.js", "TypeScript", "Node.js", "Tailwind CSS"],
       links: {
-        github: "Live Demo →",
+        demo: "Live Demo →",
         demoUrl: "https://jobresumebuilder.vercel.app",
         closed: "Closed Source Project",
       },

@@ -88,13 +88,13 @@ const milestones: Milestone[] = [
     date: "Present",
     title: "Software Engineering Student",
     description: "Enrolled at ISEP and building personal projects.",
-    link: "INESC TEC →",
-    url: "https://www.inesctec.pt/pt",
   },
   {
     date: "2025",
     title: "Software Engineering Internship at INESC TEC",
     description: "Developing an indoor navigation mobile application in augmented reality with AI.",
+    link: "INESC TEC →",
+    url: "https://www.inesctec.pt/pt",
   },
   {
     date: "2025",

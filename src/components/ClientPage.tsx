@@ -225,91 +225,105 @@ export default function ClientPage() {
             {projects.items.map((project, index: number) => (
               <motion.div
                 key={index}
-                className={`project-card ${
-                  project.badge ? "professional" : ""
-                }`}
+                className={`project-card ${project.badge ? "professional" : ""}`}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 whileHover={{ y: -10 }}
               >
                 <div className="project-content">
-                  <h3>{project.description}</h3>
-                  {project.badge && (
-                    <div
-                      className={`
-                        ${
-                          project.badge === "Open Source Library"
-                            ? "open-source-badge"
-                            : project.badge === "Professional Work"
-                            ? "professional-badge"
-                            : "professional-badge"
-                        }
-                      `}
-                    >
-                      {project.badge}
-                    </div>
-                  )}
-                  {project.image && (
-                    <div
-                      className="project-image-container"
-                      onClick={() => handleImageClick(project.image!)}
-                      data-text-zoom={zoomText}
-                    >
-                      <Image
-                        width={400}
-                        height={300}
-                        src={project.image}
-                        alt={`${project.description} Preview`}
-                        className="project-image"
-                        onClick={() => handleImageClick(project.image!)}
-                      />
-                    </div>
-                  )}
-                  <br />
-                  <p>{project.description}</p>
-                  {project.longDescription && <p>{project.longDescription}</p>}
-                  <div className="tech-stack">
-                    {project.tech.map((tech: string, i: number) => (
-                      <span key={i}>{tech}</span>
-                    ))}
+                  {/* Header - Always at top */}
+                  <div className="project-header">
+                    <h3>{project.description}</h3>
+                    {project.badge && (
+                      <div className="project-badge">
+                        <div
+                          className={`
+                            ${
+                              project.badge === "Open Source Library"
+                                ? "open-source-badge"
+                                : project.badge === "Professional Work"
+                                ? "professional-badge"
+                                : "professional-badge"
+                            }
+                          `}
+                        >
+                          {project.badge}
+                        </div>
+                      </div>
+                    )}
                   </div>
-                  <div className="project-links">
-                    {project.links.demo && (
-                      <a
-                        href={project.links.demoUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
+
+                  {/* Middle content - Flexible space */}
+                  <div className="project-middle">
+                    {project.image && (
+                      <div
+                        className="project-image-container"
+                        onClick={() => handleImageClick(project.image!)}
+                        data-text-zoom={zoomText}
                       >
-                        {project.links.demo}
-                        <div className="shine-effect" />
-                      </a>
+                        <Image
+                          width={400}
+                          height={200}
+                          src={project.image}
+                          alt={`${project.description} Preview`}
+                          className="project-image"
+                          onClick={() => handleImageClick(project.image!)}
+                        />
+                      </div>
                     )}
-                    {project.links.github && (
-                      <a
-                        href={project.links.githubUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                      >
-                        {project.links.github}
-                        <div className="shine-effect" />
-                      </a>
-                    )}
-                    {project.links.diagram && project.links.diagramUrl && (
-                      <a
-                        href={project.links.diagramUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="project-link diagram-link"
-                      >
-                        {project.links.diagram}
-                        <div className="shine-effect" />
-                      </a>
-                    )}
-                    {project.links.closed && (
-                      <span className="closed-source">
-                        {project.links.closed}
-                      </span>
-                    )}
+
+                    <div className="project-description">
+                      <p>{project.description}</p>
+                      {project.longDescription && <p>{project.longDescription}</p>}
+                    </div>
+                  </div>
+
+                  {/* Footer - Always at bottom */}
+                  <div className="project-footer">
+                    <div className="tech-stack">
+                      {project.tech.map((tech: string, i: number) => (
+                        <span key={i}>{tech}</span>
+                      ))}
+                    </div>
+
+                    <div className="project-links">
+                      {project.links.demo && (
+                        <a
+                          href={project.links.demoUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
+                          {project.links.demo}
+                          <div className="shine-effect" />
+                        </a>
+                      )}
+                      {project.links.github && (
+                        <a
+                          href={project.links.githubUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
+                          {project.links.github}
+                          <div className="shine-effect" />
+                        </a>
+                      )}
+                      {project.links.diagram && project.links.diagramUrl && (
+                        <a
+                          href={project.links.diagramUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="project-link diagram-link"
+                        >
+                          {project.links.diagram}
+                          <div className="shine-effect" />
+                        </a>
+                      )}
+                      {project.links.closed && (
+                        <span className="closed-source">
+                          {project.links.closed}
+                        </span>
+                      )}
+                    </div>
                   </div>
                 </div>
               </motion.div>

@@ -235,7 +235,19 @@ export default function ClientPage() {
                 <div className="project-content">
                   <h3>{project.description}</h3>
                   {project.badge && (
-                    <div className="professional-badge">{project.badge}</div>
+                    <div
+                      className={`
+                        ${
+                          project.badge === "Open Source Library"
+                            ? "open-source-badge"
+                            : project.badge === "Professional Work"
+                            ? "professional-badge"
+                            : "professional-badge"
+                        }
+                      `}
+                    >
+                      {project.badge}
+                    </div>
                   )}
                   {project.image && (
                     <div
@@ -279,6 +291,17 @@ export default function ClientPage() {
                         rel="noopener noreferrer"
                       >
                         {project.links.github}
+                        <div className="shine-effect" />
+                      </a>
+                    )}
+                    {project.links.diagram && project.links.diagramUrl && (
+                      <a
+                        href={project.links.diagramUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="project-link diagram-link"
+                      >
+                        {project.links.diagram}
                         <div className="shine-effect" />
                       </a>
                     )}

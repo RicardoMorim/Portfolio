@@ -24,6 +24,8 @@ export interface Project {
       closed?: string;
       demoUrl?: string;
       githubUrl?: string;
+      diagram?: string;
+      diagramUrl?: string;
     };
   }[];
 }
@@ -45,10 +47,12 @@ export interface Skills {
   backend: {
     nodejs: string;
     api: string;
+    SpringBoot: string;
   };
   database: {
     sql: string;
     mongodb: string;
+    firebase: string;
   };
 }
 

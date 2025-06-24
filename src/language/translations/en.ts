@@ -4,6 +4,19 @@ const projects: Project = {
   title: "Projects",
   items: [
     {
+      description: "Modular Auth Library",
+      image: "/core_class_diagram_Auth.png",
+      longDescription: "Production-ready Spring Boot authentication system with JWT and role-based access control. Available in Maven Central and on Github Packages for easy use.",
+      tech: ["Java", "Spring Boot", "JWT", "PostgreSQL", "Maven", "JUnit"],
+      badge: "Open Source Library",
+      links: {
+        github: "GitHub →",
+        githubUrl: "https://github.com/RicardoMorim/auth-Provider/",
+        diagram: "Full Architecture →",
+        diagramUrl: "https://github.com/RicardoMorim/Auth-Provider/blob/main/docs/class-diagram/class%20diagram.svg"
+      }
+    },
+    {
       description: "Resume Scorer",
       image: "/resume_builder.png",
       longDescription:
@@ -75,9 +88,16 @@ const milestones: Milestone[] = [
     date: "Present",
     title: "Software Engineering Student",
     description: "Enrolled at ISEP and building personal projects.",
+    link: "INESC TEC →",
+    url: "https://www.inesctec.pt/pt",
   },
   {
-    date: "2025", 
+    date: "2025",
+    title: "Software Engineering Internship at INESC TEC",
+    description: "Developing an indoor navigation mobile application in augmented reality with AI.",
+  },
+  {
+    date: "2025",
     title: "HackerRank Certifications (Intermediate)",
     description: [
       " Software Engineering",
@@ -151,10 +171,12 @@ const skills: Skills = {
   backend: {
     nodejs: "Node.js",
     api: "REST APIs",
+    SpringBoot: "Spring Boot",
   },
   database: {
-    sql: "SQL",
+    PostgreSQL: "PostgreSQL",
     mongodb: "MongoDB",
+    firebase: "Firebase",
   },
 };
 

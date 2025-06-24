@@ -1,11 +1,13 @@
 import { FaReact, FaNodeJs } from "react-icons/fa";
-import { FaDatabase } from "react-icons/fa6";
 import {
   SiTypescript,
   SiJavascript,
   SiTailwindcss,
   SiNextdotjs,
   SiMongodb,
+  SiPostgresql,
+  SiFirebase,
+  SiSpring,
 } from "react-icons/si";
 import { TbApi } from "react-icons/tb";
 import { Skills } from "@/language/config";
@@ -37,15 +39,23 @@ export default function SkillsSection(skills: Skills) {
         icon: <FaNodeJs className="skill-icon" />,
       },
       { name: skills.backend.api, icon: <TbApi className="skill-icon" /> },
+      {
+        name: skills.backend.SpringBoot,
+        icon: <SiSpring className="skill-icon" />,
+      },
     ],
     database: [
       {
-        name: skills.database.sql,
-        icon: <FaDatabase className="skill-icon" />,
+        name: skills.database.PostgreSQL,
+        icon: <SiPostgresql className="skill-icon" />,
       },
       {
         name: skills.database.mongodb,
         icon: <SiMongodb className="skill-icon" />,
+      },
+      {
+        name: skills.database.firebase,
+        icon: <SiFirebase className="skill-icon" />,
       },
     ],
   };

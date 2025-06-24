@@ -4,6 +4,19 @@ const projects: Project = {
   title: "Projetos",
   items: [
     {
+      description: "Biblioteca de Autenticação Modular",
+      image: "/core_class_diagram_Auth.png",
+      longDescription: "Sistema de autenticação Spring Boot pronto para produção com JWT e controle de acesso baseado em funções. Disponível no Maven Central e no Github Packages para fácil uso.",
+      tech: ["Java", "Spring Boot", "JWT", "PostgreSQL", "Maven", "JUnit"],
+      badge: "Biblioteca de Código Aberto",
+      links: {
+        github: "GitHub →",
+        githubUrl: "https://github.com/RicardoMorim/auth-Provider/",
+        diagram: "Arquitetura Completa →",
+        diagramUrl: "https://github.com/RicardoMorim/Auth-Provider/blob/main/docs/class-diagram/class%20diagram.svg"
+      }
+    },
+    {
       description: "Avaliador de Curriculos",
       image: "/resume_builder.png",
       longDescription:
@@ -75,6 +88,13 @@ const milestones: Milestone[] = [
     date: "Presente",
     title: "Estudante de Engenharia Informática",
     description: "Matriculado no ISEP e a desenvolver projetos pessoais.",
+  },
+  {
+    date: "2025",
+    title: "Estágio de Engenharia Informática na INESC TEC",
+    description: "Estágio em Engenharia de Software. Desenvolvendo uma aplicação móvel de navegação interior em realidade aumentada com IA.",
+    link: "INESC TEC →",
+    url: "https://www.inesctec.pt/pt",
   },
   {
     date: "2025",
@@ -151,11 +171,13 @@ const skills: Skills = {
   },
   backend: {
     nodejs: "Node.js",
-    api: "APIs REST",
+    api: "API REST",
+    SpringBoot: "Spring Boot",
   },
   database: {
-    sql: "SQL",
+    PostgreSQL: "PostgreSQL",
     mongodb: "MongoDB",
+    firebase: "Firebase",
   },
 };
 

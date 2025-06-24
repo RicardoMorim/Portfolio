@@ -50,9 +50,9 @@ export interface Skills {
     SpringBoot: string;
   };
   database: {
-    sql: string;
     mongodb: string;
     firebase: string;
+    PostgreSQL: string;
   };
 }
 

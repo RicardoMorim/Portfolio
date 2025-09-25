@@ -22,28 +22,31 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Ricardo Morim | Software Engineer",
+  title: "Ricardo Morim | Backend Engineer",
   description:
-    "Hi there! I'm Ricardo Morim a Full Stack Developer specialized in React, Next.js, and TypeScript and this is my Portfolio",
+    "Backend Engineer specialized in Spring Boot, system architecture, and high-performance applications. Published authentication library on Maven Central with production experience in Java, Node.js, and database optimization.",
   keywords: [
     "Ricardo Morim",
-    "Ricardo",
-    "Morim",
-    "Software Engineer",
-    "Full Stack Developer",
-    "Web Developer",
-    "React Developer",
-    "Next.js Developer",
-    "TypeScript Developer",
+    "Backend Engineer",
+    "Systems Architect",
+    "Spring Boot Developer",
+    "Java Developer",
+    "Database Optimization",
+    "API Development",
+    "Performance Optimization",
+    "Authentication Systems",
+    "System Architecture",
+    "PostgreSQL",
+    "Redis",
+    "Node.js",
+    "Maven Central",
+    "Production Systems",
+    "Software Engineering",
+    "OWASP Security",
+    "CI/CD",
+    "Docker",
+    "AWS",
     "Portfolio",
-    "Ricardo Portfolio",
-    "Developer Portfolio",
-    "Software Development",
-    "Frontend Developer",
-    "Backend Developer",
-    "JavaScript",
-    "Web Development",
-    "Portfolio Website",
   ],
   metadataBase: new URL("https://ricardoportfolio.vercel.app"),
   icons: {
@@ -65,9 +68,9 @@ export const metadata: Metadata = {
     type: "website",
     locale: "en_US",
     url: "https://ricardoportfolio.vercel.app/",
-    title: "Ricardo Morim | Software Engineer",
+    title: "Ricardo Morim | Backend Engineer",
     description:
-      "Full Stack Developer specialized in React, Next.js, and TypeScript",
+      "Backend Engineer specialized in Spring Boot, system architecture, and high-performance applications with production experience.",
     siteName: "Ricardo Morim Portfolio",
     images: [
       {
@@ -80,9 +83,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Ricardo Morim | Software Engineer",
+    title: "Ricardo Morim | Backend Engineer",
     description:
-      "Full Stack Developer specialized in React, Next.js, and TypeScript",
+      "Backend Engineer specialized in Spring Boot, system architecture, and high-performance applications",
     images: ["/icons/android-chrome-512x512.png"],
   },
   robots: {
@@ -112,11 +115,165 @@ export default function RootLayout({
     "@type": "Person",
     name: "Ricardo Morim",
     url: "https://ricardoportfolio.vercel.app",
-    jobTitle: "Software Developer",
+    jobTitle: "Backend Engineer",
+    description: "Backend Engineer specialized in Spring Boot, system architecture, and high-performance applications",
+    knowsAbout: [
+      "Backend Development",
+      "System Architecture", 
+      "Spring Boot",
+      "Java Programming",
+      "Database Optimization",
+      "API Development",
+      "Performance Optimization",
+      "Authentication Systems",
+      "PostgreSQL",
+      "Redis",
+      "Node.js",
+      "CI/CD",
+      "Docker",
+      "AWS"
+    ],
+    hasCredential: [
+      {
+        "@type": "EducationalOccupationalCredential",
+        name: "CS50AI - Introduction to Artificial Intelligence",
+        credentialCategory: "certificate",
+        recognizedBy: {
+          "@type": "Organization", 
+          name: "Harvard University"
+        },
+        url: "https://certificates.cs50.io/3ea075ca-3cac-49e2-be29-281d46d5ba94.pdf"
+      },
+      {
+        "@type": "EducationalOccupationalCredential",
+        name: "CS50X - Introduction to Computer Science", 
+        credentialCategory: "certificate",
+        recognizedBy: {
+          "@type": "Organization",
+          name: "Harvard University"
+        },
+        url: "https://certificates.cs50.io/9a13ae2c-7f89-4ffe-a5c4-9e7e6bcadab2.pdf"
+      }
+    ],
+    alumniOf: {
+      "@type": "Organization",
+      name: "Harvard University",
+      description: "CS50 Computer Science and AI Certifications"
+    },
+    workLocation: {
+      "@type": "Place",
+      name: "Porto, Portugal"
+    },
     sameAs: [
       "https://github.com/RicardoMorim",
       "https://www.linkedin.com/in/ricardo-morim-208368251/",
     ],
+    mainEntityOfPage: {
+      "@type": "WebPage",
+      "@id": "https://ricardoportfolio.vercel.app"
+    },
+    additionalType: "https://schema.org/SoftwareApplication",
+    applicationCategory: "Portfolio Website",
+    operatingSystem: "Web Browser",
+    offers: {
+      "@type": "Offer",
+      description: "Backend Engineering Services",
+      availability: "https://schema.org/InStock"
+    }
+  };
+
+  // Schema.org CreativeWork objects for projects
+  const projectsJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    name: "Backend Engineering Projects by Ricardo Morim",
+    description: "Production-ready backend projects demonstrating system architecture, performance optimization, and enterprise solutions",
+    itemListElement: [
+      {
+        "@type": "CreativeWork",
+        "@id": "https://ricardomorim.vercel.app/#auth-library",
+        name: "Production Authentication Library",
+        description: "Enterprise-grade Spring Boot authentication library published to Maven Central with zero-code integration, CSRF protection, and 12ms overhead",
+        creator: {
+          "@type": "Person",
+          name: "Ricardo Morim"
+        },
+        programmingLanguage: ["Java", "Spring Boot"],
+        about: ["Authentication", "Security", "Performance Optimization", "Open Source"],
+        url: "https://github.com/RicardoMorim/auth-Provider",
+        additionalType: "SoftwareSourceCode",
+        codeRepository: "https://github.com/RicardoMorim/auth-Provider",
+        keywords: "Spring Boot, Authentication, Security, Maven Central, OWASP, JWT, Redis",
+        applicationCategory: "Library",
+        operatingSystem: "Java Virtual Machine"
+      },
+      {
+        "@type": "CreativeWork", 
+        "@id": "https://ricardomorim.vercel.app/#resume-optimizer",
+        name: "AI Resume Optimizer",
+        description: "AI-powered resume optimization using NVIDIA's Llama-3.1 Nemotron Ultra with advanced prompt engineering and token optimization",
+        creator: {
+          "@type": "Person",
+          name: "Ricardo Morim"
+        },
+        programmingLanguage: ["TypeScript", "Node.js"],
+        about: ["Artificial Intelligence", "LLM Integration", "Prompt Engineering", "Resume Optimization"],
+        url: "https://jobresumebuilder.vercel.app",
+        additionalType: "WebApplication",
+        keywords: "AI, LLM, NVIDIA, Prompt Engineering, Resume, Optimization",
+        applicationCategory: "Productivity"
+      },
+      {
+        "@type": "CreativeWork",
+        "@id": "https://ricardomorim.vercel.app/#stock-platform", 
+        name: "Real-time Stock Platform",
+        description: "High-performance stock portfolio tracker with Redis caching reducing load times from 20+ seconds to sub-second responses",
+        creator: {
+          "@type": "Person", 
+          name: "Ricardo Morim"
+        },
+        programmingLanguage: ["Node.js", "JavaScript"],
+        about: ["Performance Optimization", "Real-time Data", "Financial APIs", "Caching"],
+        url: "https://stockinformation.vercel.app",
+        codeRepository: "https://github.com/RicardoMorim/Stock_Information",
+        additionalType: "WebApplication",
+        keywords: "Redis, Performance, Financial Data, Real-time, API Integration",
+        applicationCategory: "Finance"
+      },
+      {
+        "@type": "CreativeWork",
+        "@id": "https://ricardomorim.vercel.app/#match-dinner",
+        name: "Match Dinner Mondays",
+        description: "Performance-optimized dating platform with 95% image compression and first-page Google SEO rankings",
+        creator: {
+          "@type": "Person",
+          name: "Ricardo Morim"
+        },
+        programmingLanguage: ["React", "JavaScript"],
+        about: ["Performance Optimization", "SEO", "Image Compression", "PWA"],
+        url: "https://matchdinnermondays.pt",
+        additionalType: "WebApplication", 
+        keywords: "Performance, SEO, Image Optimization, PWA, Client Project",
+        applicationCategory: "Social"
+      },
+      {
+        "@type": "CreativeWork",
+        "@id": "https://ricardomorim.vercel.app/#blog-platform",
+        name: "Real-time Blog Platform", 
+        description: "Full-stack blog platform with real-time updates, authentication, and complete CRUD operations",
+        creator: {
+          "@type": "Person",
+          name: "Ricardo Morim"
+        },
+        programmingLanguage: ["React", "JavaScript"],
+        about: ["Real-time Systems", "Authentication", "CRUD Operations", "Full-stack Development"],
+        url: "https://blogricardo.vercel.app",
+        codeRepository: "https://github.com/RicardoMorim/Blog",
+        additionalType: "WebApplication",
+        keywords: "Real-time, Firebase, Authentication, Blog, CRUD",
+        applicationCategory: "Publishing"
+      }
+    ]
   };
 
   return (
@@ -125,6 +282,10 @@ export default function RootLayout({
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(projectsJsonLd) }}
         />
         <link
           rel="apple-touch-icon"

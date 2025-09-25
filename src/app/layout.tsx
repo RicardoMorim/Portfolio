@@ -191,7 +191,7 @@ export default function RootLayout({
     itemListElement: [
       {
         "@type": "CreativeWork",
-        "@id": "https://ricardomorim.vercel.app/#auth-library",
+        "@id": "https://ricardoportfolio.vercel.app/#auth-library",
         name: "Production Authentication Library",
         description: "Enterprise-grade Spring Boot authentication library published to Maven Central with zero-code integration, CSRF protection, and 12ms overhead",
         creator: {
@@ -209,7 +209,7 @@ export default function RootLayout({
       },
       {
         "@type": "CreativeWork", 
-        "@id": "https://ricardomorim.vercel.app/#resume-optimizer",
+        "@id": "https://ricardoportfolio.vercel.app/#resume-optimizer",
         name: "AI Resume Optimizer",
         description: "AI-powered resume optimization using NVIDIA's Llama-3.1 Nemotron Ultra with advanced prompt engineering and token optimization",
         creator: {
@@ -225,7 +225,7 @@ export default function RootLayout({
       },
       {
         "@type": "CreativeWork",
-        "@id": "https://ricardomorim.vercel.app/#stock-platform", 
+        "@id": "https://ricardoportfolio.vercel.app/#stock-platform", 
         name: "Real-time Stock Platform",
         description: "High-performance stock portfolio tracker with Redis caching reducing load times from 20+ seconds to sub-second responses",
         creator: {
@@ -242,7 +242,7 @@ export default function RootLayout({
       },
       {
         "@type": "CreativeWork",
-        "@id": "https://ricardomorim.vercel.app/#match-dinner",
+        "@id": "https://ricardoportfolio.vercel.app/#match-dinner",
         name: "Match Dinner Mondays",
         description: "Performance-optimized dating platform with 95% image compression and first-page Google SEO rankings",
         creator: {
@@ -258,7 +258,7 @@ export default function RootLayout({
       },
       {
         "@type": "CreativeWork",
-        "@id": "https://ricardomorim.vercel.app/#blog-platform",
+        "@id": "https://ricardoportfolio.vercel.app/#blog-platform",
         name: "Real-time Blog Platform", 
         description: "Full-stack blog platform with real-time updates, authentication, and complete CRUD operations",
         creator: {
@@ -272,6 +272,16 @@ export default function RootLayout({
         additionalType: "WebApplication",
         keywords: "Real-time, Firebase, Authentication, Blog, CRUD",
         applicationCategory: "Publishing"
+      },
+      {
+        "@type": "Person",
+        "name": "Ricardo Morim",
+        "url": "https://ricardoportfolio.vercel.app",
+        "hasPart": {
+          "@type": "WebAPI",
+          "name": "Ricardo Morim Portfolio API",
+          "url": "https://ricardoportfolio.vercel.app/well-known/portfolio"
+        }
       }
     ]
   };
@@ -304,6 +314,18 @@ export default function RootLayout({
           sizes="16x16"
           href="/icons/favicon-16x16.png"
         />
+        <link 
+          rel="manifest" 
+          href="/well-known/portfolio" 
+          type="application/json" 
+        />
+        <link 
+          rel="api-docs" 
+          href="/well-known/portfolio" 
+        />
+
+        <meta name="api-base-url" content="https://ricardoportfolio.vercel.app/api" />
+
         <link rel="manifest" href="/icons/site.webmanifest" />
         <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5" />
         <meta name="msapplication-TileColor" content="#da532c" />

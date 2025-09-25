@@ -72,8 +72,8 @@ export async function GET() {
     contact: {
       github: "https://github.com/RicardoMorim",
       linkedin: "https://www.linkedin.com/in/ricardo-morim-208368251/",
-      portfolio: "https://ricardomorim.vercel.app",
-      resume: "https://ricardomorim.vercel.app/resume.pdf"
+      portfolio: "https://ricardoportfolio.vercel.app/",
+      resume: "https://ricardoportfolio.vercel.app/resume.pdf"
     },
     
     // API metadata for agents

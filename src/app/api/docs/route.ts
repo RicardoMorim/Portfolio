@@ -176,7 +176,7 @@ export async function GET() {
     
     // Contact and verification
     contact_verification: {
-      portfolio_website: "https://ricardomorim.vercel.app",
+      portfolio_website: "https://ricardoportfolio.vercel.app/",
       github_profile: "https://github.com/RicardoMorim",
       linkedin_profile: "https://www.linkedin.com/in/ricardo-morim-208368251/",
       location: "Porto, Portugal",

@@ -77,58 +77,46 @@ const searchableData = {
     {
       name: 'Production Authentication Library',
       keywords: ['Spring Boot', 'Authentication', 'Security', 'Maven Central', 'OWASP', 'JWT', 'Redis', 'Performance', 'Library', 'Open Source'],
-      description: 'Enterprise-grade Spring Boot authentication library with zero-code integration and 12ms overhead',
+      description: 'Enterprise-grade Spring Boot authentication library with zero-code integration and only 12ms overhead for the auth process.\n \n• CSRF protection and Redis-backed rate limiting\n• JWT security with OWASP compliance\n• Benchmarked with 100k users: 22% query improvement, 73x faster pagination\n• Full CI/CD with automated testing and security scanning',
       category: 'Backend Library'
     },
     {
       name: 'AI Resume Optimizer',
-      keywords: ['AI', 'LLM', 'NVIDIA', 'Prompt Engineering', 'TypeScript', 'Node.js', 'Optimization'],
-      description: 'AI-powered resume optimization using NVIDIA Llama-3.1 Nemotron Ultra with advanced prompt engineering',
+      keywords: ['AI', 'LLM', 'Prompt Engineering', 'TypeScript', 'Node.js', 'Optimization'],
+      description: 'AI-powered resume optimization using NVIDIA Llama-3.1 Nemotron Ultra with advanced prompt engineering and error handling for reliable feedback.\n\n• Consistent JSON responses with structured scoring\n• Token consumption optimization\n• 4 comprehensive evaluation criteria\n• MongoDB backend for user data persistence',
       category: 'AI Application'
     },
     {
       name: 'Real-time Stock Platform', 
       keywords: ['Performance', 'Redis', 'Financial Data', 'Real-time', 'API Integration', 'Caching', 'Node.js'],
-      description: 'High-performance stock portfolio tracker with Redis caching reducing load times to sub-second responses',
+      description: 'High-performance stock portfolio tracker with Redis caching reducing load times to sub-second responses and parallel API processing across multiple financial data providers.\n\n• Intelligent fallback strategies for data consistency\n• Real-time portfolio tracking and analytics\n• Optimized for high-frequency data updates',
       category: 'Financial Platform'
-    },
-    {
-      name: 'Match Dinner Mondays',
-      keywords: ['Performance', 'SEO', 'Image Optimization', 'PWA', 'Client Project', 'React'],
-      description: 'Performance-optimized dating platform with 95% image compression and first-page Google SEO rankings',
-      category: 'Client Project'
     },
     {
       name: 'Real-time Blog Platform',
       keywords: ['Real-time', 'Firebase', 'Authentication', 'Blog', 'CRUD', 'React'],
-      description: 'Full-stack blog platform with real-time updates, authentication, and complete CRUD operations',
+      description: 'Full-stack blog platform with real-time updates, authentication, and complete CRUD operations for content management.',
       category: 'Full-stack Platform'
-    },
-    {
-      name: 'LAPR2 Restaurant Management',
-      keywords: ['Java', 'OOP', 'Design Patterns', 'UML', 'Software Engineering', 'Enterprise'],
-      description: 'Object-oriented restaurant management system with comprehensive design patterns implementation',
-      category: 'Academic Project'
     },
     {
       name: 'Ristorante Ordering System',
       keywords: ['Node.js', 'Express', 'MongoDB', 'Real-time', 'WebSockets', 'Restaurant', 'Ordering'],
-      description: 'Real-time restaurant ordering system with live updates and comprehensive order management',
+      description: 'Real-time restaurant ordering system with live updates and comprehensive comment system. ',
       category: 'Restaurant System'
     }
   ] as ProjectItem[],
-  experience: [
+  professional_experience: [
     {
       role: 'Research Intern',
       company: 'INESC TEC',
-      keywords: ['PostgreSQL', 'Performance', 'Database Optimization', 'Query Optimization', 'Research'],
-      achievements: ['22% query performance improvement', '73x pagination speedup', 'Database optimization research']
+      keywords: ["Unity", "AR", "Augmented Reality", "Python", "Backend", "Research"],
+      achievements: ["Full AR system created in Unity in less than 4 weeks", "TTS integration"]
     },
     {
-      role: 'Open Source Contributor',
-      company: 'Maven Central',
-      keywords: ['Spring Boot', 'Authentication', 'Library Development', 'Open Source', 'Maven'],
-      achievements: ['Published authentication library', 'Zero-code integration', '12ms overhead performance']
+      role: 'Freelance Full Stack Developer',
+      company: 'Match Dinner Mondays',
+      keywords: ['Performance', 'SEO', 'Image Optimization', 'PWA', 'Client Project', 'React'],
+      achievements: ['95% image compression with WebP', 'First-page Google SEO rankings', 'PWA implementation for mobile users']
     }
   ] as ExperienceItem[],
   focus_areas: [
@@ -271,7 +259,7 @@ export async function GET(request: NextRequest) {
 
   // Search experience
   if (category === 'all' || category === 'experience') {
-    for (const exp of searchableData.experience) {
+    for (const exp of searchableData.professional_experience) {
       const score = calculateRelevanceScore(query, exp);
       if (score > minScore || exp.keywords.some((k: string) => fuzzyMatch(query, k))) {
         results.results.experience.push({

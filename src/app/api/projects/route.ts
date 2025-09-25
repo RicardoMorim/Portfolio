@@ -16,7 +16,7 @@ export async function GET() {
         description: "Enterprise-grade Spring Boot authentication library with zero-code integration",
         
         technical_highlights: [
-          "Published to Maven Central with 500+ downloads",
+          "Published to Maven Central and GitHub Packages",
           "CSRF protection and Redis-backed rate limiting",
           "JWT security with OWASP compliance", 
           "12ms average request overhead",

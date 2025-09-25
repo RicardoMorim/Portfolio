@@ -13,13 +13,13 @@ export async function GET() {
             },
 
             performance_optimization: {
-                level: "Advanced",
-                achievements: ["22% query improvement", "73x faster pagination", "Sub-second API responses"],
+                level: "Good",
+                achievements: ["22% query improvement", "73x faster pagination", "21% improved throughput"],
                 techniques: ["Database Indexing", "Redis Caching", "Query Optimization", "Load Testing"]
             },
 
             security_implementation: {
-                level: "Advanced",
+                level: "Good",
                 implementations: ["JWT Authentication", "CSRF Protection", "Rate Limiting", "OWASP Compliance"],
                 experience: "Production authentication library with enterprise security standards"
             }
@@ -40,12 +40,12 @@ export async function GET() {
 
             proficient: {
                 typescript: {
-                    years_experience: 3,
+                    years_experience: 2,
                     confidence_level: "Good - Competent but less preferred for backend work",
                     environments: ["Node.js", "Express.js", "Backend APIs", "Next.js"],
                     achievements: ["High-performance stock platform", "Real-time applications", "Portfolio projects"],
                     use_cases: ["Full-stack projects", "API development", "Performance optimization"],
-                    experience_note: "Started actual project development post-CS50X (2021), comfortable but prefer Java for backend systems"
+                    experience_note: "Started With typescript after Java showed me how good a typed language can be"
                 },
 
                 javascript: {
@@ -61,10 +61,10 @@ export async function GET() {
 
                 python: {
                     years_experience: 2,
-                    confidence_level: "Good - Comfortable for specific use cases",
-                    frameworks: ["FastAPI", "Flask", "Backend Services"],
+                    confidence_level: "Good - Comfortable for specific use cases | Small projects done with Pytorch",
+                    frameworks: ["FastAPI", "Flask", "Backend Services", "Pytorch"],
                     achievements: ["AR navigation backend", "Extensible architecture design"],
-                    use_cases: ["Research projects", "API development", "System integration", "Prototyping"]
+                    use_cases: ["Research projects", "API development", "System integration", "Prototyping", "Machine Learning"]
                 }
             },
 
@@ -82,7 +82,7 @@ export async function GET() {
         backend_technologies: {
             frameworks: {
                 spring_boot: {
-                    proficiency: "Expert",
+                    proficiency: "Advanced",
                     experience: "2+ years",
                     confidence_level: "Very High - Preferred backend framework",
                     achievements: ["Production library on Maven Central", "Authentication systems", "Microservices"],
@@ -129,7 +129,7 @@ export async function GET() {
 
             caching: {
                 redis: {
-                    proficiency: "Advanced",
+                    proficiency: "Good",
                     achievements: ["20s → sub-second response times", "Rate limiting implementation"],
                     skills: ["Caching strategies", "Session management", "Rate limiting", "Performance optimization"]
                 }
@@ -155,7 +155,7 @@ export async function GET() {
 
             cicd: {
                 github_actions: {
-                    proficiency: "Advanced",
+                    proficiency: "Good",
                     achievements: ["Automated testing", "Security scanning", "Maven Central publishing"],
                     implementations: ["Test automation", "Security scanning", "Dependency management"]
                 }
@@ -187,10 +187,10 @@ export async function GET() {
 
         // Industry knowledge
         domain_knowledge: {
-            authentication_systems: "Expert - Production library with enterprise features",
-            performance_optimization: "Advanced - Measurable improvements across multiple projects",
+            authentication_systems: "Good - Production library with enterprise features",
+            performance_optimization: "Good - Measurable improvements across multiple projects",
             api_design: "Advanced - RESTful APIs with proper documentation and security",
-            system_integration: "Advanced - Multiple external API integrations with fallback strategies",
+            system_integration: "Good - Multiple external API integrations with fallback strategies",
             financial_systems: "Intermediate - Stock trading platform with real-time data"
         },
 

@@ -515,6 +515,7 @@
   overflow: hidden;
   display: flex;
   flex-direction: column;
+  z-index: 5;
 }
 
 .project-content {
@@ -557,7 +558,8 @@
   color: var(--text-color);
   opacity: 0.8;
   margin: 0;
-  line-height: 1.5;
+  line-height: 1.6;
+  white-space: pre-line;
 }
 .project-footer {
   margin-top: auto;
@@ -941,12 +943,12 @@
 .projects-container::before {
   content: "";
   position: absolute;
-  width: 30%;
-  height: 20%;
+  width: 40%;
+  height: 15%;
   left: -15%;
   top: -2%;
   background-image: url(/rb_3863.png);
-  z-index: 0;
+  z-index: 1;
   background-size: cover;
   background-position: top left;
 }

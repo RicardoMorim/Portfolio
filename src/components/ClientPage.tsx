@@ -239,8 +239,8 @@ export default function ClientPage() {
                         <div
                           className={`
                             ${
-                              project.badge === "Open Source Library"
-                                ? "open-source-badge"
+                              project.badge === "Open Source Library" || project.badge === "Biblioteca Open Source" 
+                                ? "open-source-badge" 
                                 : project.badge === "Professional Work"
                                 ? "professional-badge"
                                 : "professional-badge"
@@ -273,8 +273,7 @@ export default function ClientPage() {
                     )}
 
                     <div className="project-description">
-                      <p>{project.description}</p>
-                      {project.longDescription && <p>{project.longDescription}</p>}
+                      {<p>{project.longDescription}</p>}
                     </div>
                   </div>
 

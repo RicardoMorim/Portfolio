@@ -1,61 +1,57 @@
-import { FaReact, FaNodeJs } from "react-icons/fa";
+import { FaNodeJs, FaDocker, FaAws, FaJava } from "react-icons/fa";
 import {
-  SiTypescript,
-  SiJavascript,
-  SiTailwindcss,
-  SiNextdotjs,
+  SiSpringboot,
   SiMongodb,
   SiPostgresql,
-  SiFirebase,
-  SiSpring,
+  SiRedis,
+  SiGithubactions,
+  SiDotnet
 } from "react-icons/si";
-import { TbApi } from "react-icons/tb";
 import { Skills } from "@/language/config";
 
 export default function SkillsSection(skills: Skills) {
   const skillCategories = {
-    frontend: [
-      { name: skills.frontend.react, icon: <FaReact className="skill-icon" /> },
-      {
-        name: skills.frontend.nextjs,
-        icon: <SiNextdotjs className="skill-icon" />,
-      },
-      {
-        name: skills.frontend.typescript,
-        icon: <SiTypescript className="skill-icon" />,
-      },
-      {
-        name: skills.frontend.javascript,
-        icon: <SiJavascript className="skill-icon" />,
-      },
-      {
-        name: skills.frontend.tailwind,
-        icon: <SiTailwindcss className="skill-icon" />,
-      },
-    ],
     backend: [
+      { name: skills.backend.springBoot, icon: <SiSpringboot className="skill-icon" /> },
       {
-        name: skills.backend.nodejs,
+        name: skills.backend.nodeJs,
         icon: <FaNodeJs className="skill-icon" />,
       },
-      { name: skills.backend.api, icon: <TbApi className="skill-icon" /> },
       {
-        name: skills.backend.SpringBoot,
-        icon: <SiSpring className="skill-icon" />,
+        name: skills.backend.java,
+        icon: <FaJava className="skill-icon" />,
+      },
+      {
+        name: skills.backend.dotNet,
+        icon: <SiDotnet className="skill-icon" />,
+      },
+    ],
+    cloud_DevOps: [
+      {
+        name: skills.cloud_DevOps.docker,
+        icon: <FaDocker className="skill-icon" />,
+      },
+      { 
+        name: skills.cloud_DevOps.aws, 
+        icon: <FaAws className="skill-icon" /> 
+      },
+      {
+        name: skills.cloud_DevOps.ci_cd,
+        icon: <SiGithubactions className="skill-icon" />,
       },
     ],
     database: [
       {
-        name: skills.database.PostgreSQL,
+        name: skills.database.postgreSQL,
         icon: <SiPostgresql className="skill-icon" />,
       },
       {
-        name: skills.database.mongodb,
+        name: skills.database.mongoDB,
         icon: <SiMongodb className="skill-icon" />,
       },
       {
-        name: skills.database.firebase,
-        icon: <SiFirebase className="skill-icon" />,
+        name: skills.database.redis,
+        icon: <SiRedis className="skill-icon" />,
       },
     ],
   };

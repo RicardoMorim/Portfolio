@@ -14,7 +14,7 @@ export interface Project {
   title: string;
   items: {
     description: string;
-    longDescription?: string;
+    longDescription: string;
     badge?: string;
     tech: string[];
     image?: string;
@@ -33,26 +33,25 @@ export interface Project {
 export interface Skills {
   title: string;
   categories: {
-    frontend: string;
+    cloud_DevOps: string;
     backend: string;
     database: string;
   };
-  frontend: {
-    react: string;
-    nextjs: string;
-    typescript: string;
-    javascript: string;
-    tailwind: string;
+  cloud_DevOps: {
+    docker: string;
+    aws: string;
+    ci_cd: string;
   };
   backend: {
-    nodejs: string;
-    api: string;
-    SpringBoot: string;
+    nodeJs: string;
+    springBoot: string;
+    java: string;
+    dotNet: string;
   };
   database: {
-    mongodb: string;
-    firebase: string;
-    PostgreSQL: string;
+    mongoDB: string;
+    redis: string;
+    postgreSQL: string;
   };
 }
 

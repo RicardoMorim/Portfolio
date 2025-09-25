@@ -45,11 +45,6 @@ export async function GET() {
           description: "Keyword search across projects, skills, and experience",
           method: "GET",
           parameters: ["q (required)", "limit (optional)"]
-        },
-        analytics: {
-          url: "/api/analytics",
-          description: "Log agent activity and usage patterns",
-          method: "POST"
         }
       }
     },

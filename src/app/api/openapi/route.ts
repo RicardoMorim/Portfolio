@@ -155,32 +155,6 @@ export async function GET() {
           }
         }
       },
-      "/analytics": {
-        post: {
-          summary: "Log agent activity",
-          description: "Lightweight endpoint for tracking AI agent interactions and usage patterns",
-          operationId: "logAnalytics",
-          tags: ["Analytics"],
-          requestBody: {
-            required: true,
-            content: {
-              "application/json": {
-                schema: {
-                  $ref: "#/components/schemas/AnalyticsEvent"
-                }
-              }
-            }
-          },
-          responses: {
-            "200": {
-              description: "Analytics event logged successfully"
-            },
-            "400": {
-              description: "Invalid analytics data"
-            }
-          }
-        }
-      },
       "/docs": {
         get: {
           summary: "Get API documentation",
@@ -309,23 +283,6 @@ export async function GET() {
               }
             }
           }
-        },
-        AnalyticsEvent: {
-          type: "object",
-          required: ["event_type", "timestamp"],
-          properties: {
-            event_type: { 
-              type: "string", 
-              enum: ["api_access", "profile_view", "search_query", "project_view"],
-              example: "api_access"
-            },
-            endpoint: { type: "string", example: "/api/profile" },
-            user_agent: { type: "string" },
-            query_params: { type: "object" },
-            timestamp: { type: "string", format: "date-time" },
-            session_id: { type: "string" },
-            referrer: { type: "string" }
-          }
         }
       }
     },
@@ -349,10 +306,6 @@ export async function GET() {
       {
         name: "Search",
         description: "Content search and discovery"
-      },
-      {
-        name: "Analytics",
-        description: "Usage tracking and analytics"
       },
       {
         name: "Documentation",

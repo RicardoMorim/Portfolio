@@ -1,5 +1,68 @@
 import { NextRequest, NextResponse } from 'next/server';
 
+// Define proper types for the searchable data
+interface ProjectItem {
+  name: string;
+  keywords: string[];
+  description: string;
+  category: string;
+}
+
+interface ExperienceItem {
+  role: string;
+  company: string;
+  keywords: string[];
+  achievements: string[];
+}
+
+interface SkillResult {
+  skill: string;
+  relevance_score: number;
+  match_type: 'exact' | 'fuzzy';
+}
+
+interface ProjectResult extends ProjectItem {
+  relevance_score: number;
+  matched_keywords: string[];
+}
+
+interface ExperienceResult extends ExperienceItem {
+  relevance_score: number;
+  matched_keywords: string[];
+}
+
+interface FocusAreaResult {
+  area: string;
+  relevance_score: number;
+  match_type: 'exact' | 'fuzzy';
+}
+
+interface SearchResults {
+  query: string;
+  category: string;
+  total_results: number;
+  execution_time_ms: number;
+  results: {
+    skills: SkillResult[];
+    projects: ProjectResult[];
+    experience: ExperienceResult[];
+    focus_areas: FocusAreaResult[];
+  };
+  suggestions: string[];
+}
+
+// Union type for items that can be searched
+type SearchableItem = string | ProjectItem | ExperienceItem;
+
+// Type guard functions to narrow the type
+function isProjectItem(item: SearchableItem): item is ProjectItem {
+  return typeof item === 'object' && item !== null && 'name' in item && 'keywords' in item && 'description' in item;
+}
+
+function isExperienceItem(item: SearchableItem): item is ExperienceItem {
+  return typeof item === 'object' && item !== null && 'role' in item && 'company' in item && 'keywords' in item;
+}
+
 // Searchable content aggregated from all API endpoints
 const searchableData = {
   skills: [
@@ -53,7 +116,7 @@ const searchableData = {
       description: 'Real-time restaurant ordering system with live updates and comprehensive order management',
       category: 'Restaurant System'
     }
-  ],
+  ] as ProjectItem[],
   experience: [
     {
       role: 'Research Intern',
@@ -67,7 +130,7 @@ const searchableData = {
       keywords: ['Spring Boot', 'Authentication', 'Library Development', 'Open Source', 'Maven'],
       achievements: ['Published authentication library', 'Zero-code integration', '12ms overhead performance']
     }
-  ],
+  ] as ExperienceItem[],
   focus_areas: [
     'Backend Engineering', 'System Architecture', 'Performance Optimization',
     'Authentication Systems', 'Database Design', 'API Development',
@@ -76,7 +139,7 @@ const searchableData = {
 };
 
 // Function to calculate relevance score based on keyword matches
-function calculateRelevanceScore(query: string, item: any): number {
+function calculateRelevanceScore(query: string, item: SearchableItem): number {
   const queryTerms = query.toLowerCase().split(/\s+/).filter(term => term.length > 2);
   let score = 0;
   const maxScore = queryTerms.length * 10; // Base scoring system
@@ -85,18 +148,24 @@ function calculateRelevanceScore(query: string, item: any): number {
     // Check different fields with different weights
     if (typeof item === 'string') {
       if (item.toLowerCase().includes(term)) score += 10;
-    } else if (item.keywords) {
+    } else if (isProjectItem(item)) {
       // Keywords get highest weight
       for (const keyword of item.keywords) {
         if (keyword.toLowerCase().includes(term)) score += 15;
       }
-    }
 
-    if (item.name && item.name.toLowerCase().includes(term)) score += 12;
-    if (item.description && item.description.toLowerCase().includes(term)) score += 8;
-    if (item.role && item.role.toLowerCase().includes(term)) score += 10;
-    if (item.company && item.company.toLowerCase().includes(term)) score += 8;
-    if (item.category && item.category.toLowerCase().includes(term)) score += 6;
+      if (item.name.toLowerCase().includes(term)) score += 12;
+      if (item.description.toLowerCase().includes(term)) score += 8;
+      if (item.category.toLowerCase().includes(term)) score += 6;
+    } else if (isExperienceItem(item)) {
+      // Keywords get highest weight
+      for (const keyword of item.keywords) {
+        if (keyword.toLowerCase().includes(term)) score += 15;
+      }
+
+      if (item.role.toLowerCase().includes(term)) score += 10;
+      if (item.company.toLowerCase().includes(term)) score += 8;
+    }
   }
 
   return Math.min(score / maxScore * 100, 100); // Normalize to 0-100 scale
@@ -150,7 +219,7 @@ export async function GET(request: NextRequest) {
     );
   }
 
-  const results: any = {
+  const results: SearchResults = {
     query,
     category,
     total_results: 0,
@@ -178,7 +247,7 @@ export async function GET(request: NextRequest) {
         });
       }
     }
-    results.results.skills.sort((a: any, b: any) => b.relevance_score - a.relevance_score);
+    results.results.skills.sort((a: SkillResult, b: SkillResult) => b.relevance_score - a.relevance_score);
     results.results.skills = results.results.skills.slice(0, limit);
   }
 
@@ -196,7 +265,7 @@ export async function GET(request: NextRequest) {
         });
       }
     }
-    results.results.projects.sort((a: any, b: any) => b.relevance_score - a.relevance_score);
+    results.results.projects.sort((a: ProjectResult, b: ProjectResult) => b.relevance_score - a.relevance_score);
     results.results.projects = results.results.projects.slice(0, limit);
   }
 
@@ -214,7 +283,7 @@ export async function GET(request: NextRequest) {
         });
       }
     }
-    results.results.experience.sort((a: any, b: any) => b.relevance_score - a.relevance_score);
+    results.results.experience.sort((a: ExperienceResult, b: ExperienceResult) => b.relevance_score - a.relevance_score);
     results.results.experience = results.results.experience.slice(0, limit);
   }
 
@@ -230,16 +299,16 @@ export async function GET(request: NextRequest) {
         });
       }
     }
-    results.results.focus_areas.sort((a: any, b: any) => b.relevance_score - a.relevance_score);
+    results.results.focus_areas.sort((a: FocusAreaResult, b: FocusAreaResult) => b.relevance_score - a.relevance_score);
     results.results.focus_areas = results.results.focus_areas.slice(0, limit);
   }
 
   // Calculate total results
-  results.total_results = Object.values(results.results).reduce((sum: number, arr: any) => sum + arr.length, 0);
+  results.total_results = Object.values(results.results).reduce((sum: number, arr: SkillResult[] | ProjectResult[] | ExperienceResult[] | FocusAreaResult[]) => sum + arr.length, 0);
 
   // Add suggestions for no results
   if (results.total_results === 0) {
-    const suggestions = [];
+    const suggestions: string[] = [];
     
     // Suggest similar skills
     for (const skill of searchableData.skills.slice(0, 3)) {

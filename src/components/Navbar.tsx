@@ -70,6 +70,7 @@ const Navbar: React.FC<NavbarProps> = () => {
 		{ href: '#about', label: nav.about },
 		{ href: "#skills", label: nav.skills },
 		{ href: '#projects', label: nav.projects },
+		{ href: '#recommendations', label: nav.recommendations },
 		{ href: '#contact', label: nav.contact },
 	];
 

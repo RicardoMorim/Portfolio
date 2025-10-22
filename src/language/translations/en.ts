@@ -175,6 +175,21 @@ export const en: Translations = {
       items: milestones,
     },
   },
+  recommendations: {
+    title: "Recommendations",
+    subtitle: "Mentor testimonial from my latest internship",
+    // Placeholder excerpt – replace with your preferred lines from the PDF
+    quote:
+      "Ricardo consistently demonstrated ownership, technical depth, and a proactive mindset, delivering a working MVP within weeks and exceeding expectations.",
+    author: {
+      name: "Fernando Cassola Marques",
+      title: "Phd Researcher at INESC TEC, Invited Professor at FEUP",
+    },
+    pdf: {
+      label: "Read full letter (PDF)",
+      url: "/RicardoMorim_ReferenceLetter2025.pdf",
+    },
+  },
   projects: projects,
   skills,
   contact: {
@@ -227,6 +242,7 @@ export const en: Translations = {
     projects: "Projects",
     contact: "Contact",
     skills: "Skills",
+    recommendations: "Recommendations",
   },
   theme: {
     light: "Light Mode",

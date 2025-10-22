@@ -175,6 +175,21 @@ export const pt: Translations = {
       items: milestones,
     },
   },
+  recommendations: {
+    title: "Recomendações",
+    subtitle: "Testemunho do meu mentor de estágio",
+    // Excerto de exemplo – substitua pelas linhas preferidas do PDF
+    quote:
+      "O Ricardo demonstrou constantemente sentido de responsabilidade, profundidade técnica e proatividade, entregando um MVP funcional em poucas semanas e superando expectativas.",
+    author: {
+      name: "Fernando Cassola Marques",
+      title: "Investigador Doutorado no INESC TEC, Professor Convidado na FEUP",
+    },
+    pdf: {
+      label: "Ler carta completa (PDF)",
+      url: "/RicardoMorim_CartaRecomendacao2025.pdf",
+    },
+  },
   projects: projects,
   skills,
   contact: {
@@ -227,6 +242,7 @@ export const pt: Translations = {
     projects: "Projetos",
     contact: "Contacto",
     skills: "Competências",
+    recommendations: "Recomendações",
   },
   theme: {
     light: "Modo Claro",

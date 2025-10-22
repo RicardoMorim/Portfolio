@@ -105,6 +105,21 @@ export interface Navigation {
   projects: string;
   contact: string;
   skills: string;
+  recommendations: string;
+}
+
+export interface Recommendations {
+  title: string;
+  subtitle: string;
+  quote: string;
+  author: {
+    name: string;
+    title: string;
+  };
+  pdf: {
+    label: string;
+    url: string;
+  };
 }
 
 export interface Theme {
@@ -135,6 +150,7 @@ export interface Translations {
   title: string;
   hero: Hero;
   about: About;
+  recommendations: Recommendations;
   projects: Project;
   contact: Contact;
   nav: Navigation;

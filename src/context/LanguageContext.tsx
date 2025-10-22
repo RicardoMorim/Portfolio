@@ -31,6 +31,7 @@ interface LanguageContextType {
 	getAbout: () => About;
 	getTheme: () => Theme;
 	getZoom: () => string;
+		getRecommendations: () => Translations['recommendations'];
 }
 
 const translations: Record<Locale, Translations> = { en, pt };
@@ -49,6 +50,13 @@ export const LanguageContext = createContext<LanguageContextType>({
 	getAbout: () => ({} as About),
 	getTheme: () => ({} as Theme),
 	getZoom: () => '',
+	getRecommendations: () => ({
+		title: '',
+		subtitle: '',
+		quote: '',
+		author: { name: '', title: '' },
+		pdf: { label: '', url: '' }
+	})
 });
 
 export function LanguageProvider({ children }: { children: React.ReactNode }) {
@@ -82,6 +90,7 @@ export function LanguageProvider({ children }: { children: React.ReactNode }) {
 	const getFooter = () => translations[locale].footer;
 	const getHero = () => translations[locale].hero;
 	const getAbout = () => translations[locale].about;
+		const getRecommendations = () => translations[locale].recommendations;
 
 	const handleSetLocale = (newLocale: Locale) => {
 		setLocale(newLocale);
@@ -106,7 +115,8 @@ export function LanguageProvider({ children }: { children: React.ReactNode }) {
 			getHero,
 			getAbout,
 			getTheme,
-			getZoom
+					getZoom,
+					getRecommendations
 		}}>
 			{children}
 		</LanguageContext.Provider>

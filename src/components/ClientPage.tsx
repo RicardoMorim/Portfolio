@@ -4,6 +4,7 @@ import "@/styles/main.css";
 import { motion, AnimatePresence } from "framer-motion";
 import SkillsSection from "@/components/SkillsSection";
 import ContactSection from "@/components/ContactSection";
+import RecommendationsSection from "@/components/RecommendationsSection";
 import Image from "next/image";
 import { useTranslation } from "@/context/LanguageContext";
 import { Milestone } from "@/language/config";
@@ -330,6 +331,9 @@ export default function ClientPage() {
           </div>
         </div>
       </div>
+
+      {/* Recommendations Section */}
+      <RecommendationsSection />
 
       {/* Contact Section */}
       <ContactSection {...contact} />

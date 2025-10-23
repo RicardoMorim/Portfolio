@@ -178,13 +178,15 @@ export const en: Translations = {
   recommendations: {
     title: "Recommendations",
     subtitle: "Mentor testimonial from my latest internship",
-    // Placeholder excerpt – replace with your preferred lines from the PDF
     quote:
-      "Ricardo consistently demonstrated ownership, technical depth, and a proactive mindset, delivering a working MVP within weeks and exceeding expectations.",
+      "My overall assessment is very positive: he is a young engineer with excellent potential, autonomy, and technical maturity above the average for his level, ready to join international teams and demanding environments.",
     author: {
-      name: "Fernando Cassola Marques",
-      title: "Phd Researcher at INESC TEC, Invited Professor at FEUP",
+      name: "Prof. Fernando Cassola Marques",
+      title: "Phd researcher INESC TEC / Invited Professor FEUP",
+      // Mentor email taken from the PDF
+      email: "fernando.c.marques@inesctec.pt",
     },
+    date: "Porto, 15 October 2025",
     pdf: {
       label: "Read full letter (PDF)",
       url: "/RicardoMorim_ReferenceLetter2025.pdf",

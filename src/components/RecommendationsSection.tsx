@@ -40,17 +40,25 @@ export default function RecommendationsSection() {
 
             <div className="relative p-8 md:p-12">
               <FaQuoteLeft className="text-3xl text-[var(--text-color)]/40" />
-              <p className="mt-6 text-lg md:text-xl leading-relaxed text-[var(--text-color)]">
-                {data.quote}
-              </p>
+              <blockquote className="mt-6 text-lg md:text-xl leading-relaxed text-[var(--text-color)] border-l-4 border-indigo-400/30 pl-6 py-4 bg-[color:rgba(var(--text-color-rgb),0.02)] rounded-lg">
+                <p className="italic">{data.quote}</p>
+              </blockquote>
 
-              <div className="mt-6 flex items-center gap-3 text-[var(--text-color)]/80">
-                <div className="h-10 w-160 rounded-full" >
-                    <Image src="http://artefacto.artech-international.org/wp-content/uploads/2018/06/inesc.png" alt={data.author.name} className="h-10 w-160 rounded-full " width={160} height={10} />
-                    </div>
+              <div className="mt-6 flex items-center gap-3 text-[var(--text-color)]/90">
+                <div className="h-10 w-150 rounded-full">
+                    <Image src="http://artefacto.artech-international.org/wp-content/uploads/2018/06/inesc.png" alt={data.author.name} className="h-10 w-150 rounded-full " width={150} height={10}  />
+                </div>
                 <div>
-                  <p className="font-medium text-[var(--text-color)]">{data.author.name}</p>
-                  <p className="text-sm">{data.author.title}</p>
+                  <p className="font-semibold text-[var(--text-color)]">{data.author.name}</p>
+                  <p className="text-sm opacity-80">{data.author.title} · <span className="ml-1 text-xs">{data.date}</span></p>
+                  {data.author.email && (
+                    <a
+                      href={`mailto:${data.author.email}`}
+                      className="text-xs text-indigo-400 hover:underline mt-1 block"
+                    >
+                      {data.author.email}
+                    </a>
+                  )}
                 </div>
               </div>
 

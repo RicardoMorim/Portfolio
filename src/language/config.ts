@@ -115,11 +115,13 @@ export interface Recommendations {
   author: {
     name: string;
     title: string;
+    email?: string;
   };
   pdf: {
     label: string;
     url: string;
   };
+  date?: string;
 }
 
 export interface Theme {

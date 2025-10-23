@@ -178,13 +178,14 @@ export const pt: Translations = {
   recommendations: {
     title: "Recomendações",
     subtitle: "Testemunho do meu mentor de estágio",
-    // Excerto de exemplo – substitua pelas linhas preferidas do PDF
     quote:
-      "O Ricardo demonstrou constantemente sentido de responsabilidade, profundidade técnica e proatividade, entregando um MVP funcional em poucas semanas e superando expectativas.",
+      "A minha apreciação global é muito positiva: pois ele é um jovem engenheiro com excelente potencial, autonomia e maturidade técnica acima da média para o seu nível, apto a integrar equipas internacionais e ambientes de elevada exigência.",
     author: {
-      name: "Fernando Cassola Marques",
-      title: "Investigador Doutorado no INESC TEC, Professor Convidado na FEUP",
+      name: "Prof. Fernando Cassola Marques",
+      title: "Pesquisador doutorado INESC TEC / Professor convidado FEUP",
+      email: "fernando.c.marques@inesctec.pt",
     },
+    date: "Porto, 15 de outubro de 2025",
     pdf: {
       label: "Ler carta completa (PDF)",
       url: "/RicardoMorim_CartaRecomendacao2025.pdf",

@@ -54,8 +54,9 @@ export const LanguageContext = createContext<LanguageContextType>({
 		title: '',
 		subtitle: '',
 		quote: '',
-		author: { name: '', title: '' },
-		pdf: { label: '', url: '' }
+			author: { name: '', title: '', email: '' },
+			date: '',
+			pdf: { label: '', url: '' }
 	})
 });
 

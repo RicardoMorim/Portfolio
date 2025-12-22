@@ -17,6 +17,17 @@ const projects: Project = {
       }
     },
     {
+      description: "IA para Jogo de Xadrez",
+      image: "/ChessAI.jpg",
+      longDescription: "Motor de Reinforcement Learning construído de raiz utilizando Monte Carlo Tree Search (MCTS) e Dual-Head ResNets.\n\n• Arquitetura de pipeline de RL customizada com MCTS e PyTorch\n• Bootstrapping de policy networks via Knowledge Distillation do Stockfish\n• Otimização com dynamic batch sizing e precisão mista (AMP) para eficiência de GPU\n• Visualização em tempo real da expansão da árvore de busca e avaliação de nós\n• Performance competitiva contra motores standard de xadrez",
+      tech: ["Python", "PyTorch", "Reinforcement Learning", "MCTS", "Cython"],
+      badge: "Deep Learning",
+      links: {
+        github: "GitHub →",
+        githubUrl: "https://github.com/RicardoMorim/Chess",
+      }
+    },
+    {
       description: "Otimizador de Currículos com IA",
       image: "/resume_builder.png",
       longDescription: "Otimização de currículos potenciada por IA usando NVIDIA's Llama-3.1 Nemotron Ultra (253B parâmetros).\n\n• Engenharia de prompts otimizada para respostas JSON consistentes\n• Consumo reduzido de tokens com pontuação estruturada\n• 4 critérios abrangentes de avaliação\n• Tratamento avançado de erros para feedback confiável\n• Otimizado para melhoramento profissional de currículos",
@@ -63,19 +74,7 @@ const projects: Project = {
         demoUrl: "https://blogricardo.vercel.app",
         githubUrl: "https://github.com/RicardoMorim/Blog",
       },
-    },
-    {
-      image: "/ristorante.jpeg",
-      description: "Ristorante Con Fusion",
-      longDescription: "Website de restaurante desenvolvido durante curso Udemy focado em fundamentos de React.\n\n• Componentes React modulares e reutilizáveis\n• Redux Store para gestão de estado global\n• Sistema de avaliações e comentários\n• Base de dados JSON para informações do restaurante\n• Interface responsiva para menu e comentários",
-      tech: ["React", "Redux", "JSON Server", "Bootstrap"],
-      links: {
-        demo: "Ver Demo →",
-        github: "GitHub →",
-        demoUrl: "https://restauranteconfusion.vercel.app/home",
-        githubUrl: "https://github.com/RicardoMorim/First-react-app",
-      },
-    },
+    }
   ],
 };
 

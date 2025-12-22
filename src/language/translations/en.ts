@@ -17,6 +17,17 @@ const projects: Project = {
       }
     },
     {
+      description: "Chess AI Engine",
+      image: "/ChessAI.jpg",
+      longDescription: "Reinforcement Learning pipeline built from scratch using Monte Carlo Tree Search (MCTS) and dual-head ResNets.\n\n• Architected a custom RL pipeline using MCTS and PyTorch\n• Bootstrapped policy networks using Knowledge Distillation from Stockfish\n• Implemented dynamic batch sizing and mixed-precision (AMP) for GPU efficiency\n• Visualized real-time search tree expansion and node evaluation\n• Achieved competitive play vs standard engines",
+      tech: ["Python", "PyTorch", "Reinforcement Learning", "MCTS", "Cython"],
+      badge: "Deep Learning",
+      links: {
+        github: "GitHub →",
+        githubUrl: "https://github.com/RicardoMorim/Chess",
+      }
+    },
+    {
       description: "AI Resume Optimizer",
       image: "/resume_builder.png",
       longDescription: "AI-powered resume optimization using NVIDIA's Llama-3.1 Nemotron Ultra (253B parameters).\n\n• Engineered prompt optimization for consistent JSON responses\n• Reduced token consumption with structured scoring\n• 4 comprehensive evaluation criteria\n• Advanced error handling for reliable AI feedback\n• Optimized for professional resume enhancement",
@@ -63,19 +74,7 @@ const projects: Project = {
         demoUrl: "https://blogricardo.vercel.app",
         githubUrl: "https://github.com/RicardoMorim/Blog",
       },
-    },
-    {
-      image: "/ristorante.jpeg",
-      description: "Ristorante Con Fusion",
-      longDescription: "Restaurant website developed during Udemy course focused on React fundamentals.\n\n• Modular and reusable React components\n• Redux Store for global state management\n• Rating and review system implementation\n• JSON database for restaurant information\n• Responsive interface for menu and comments",
-      tech: ["React", "Redux", "JSON Server", "Bootstrap"],
-      links: {
-        demo: "Live Demo →",
-        github: "GitHub →",
-        demoUrl: "https://restauranteconfusion.vercel.app/home",
-        githubUrl: "https://github.com/RicardoMorim/First-react-app",
-      },
-    },
+    }
   ],
 };
 

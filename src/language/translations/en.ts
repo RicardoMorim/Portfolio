@@ -197,6 +197,11 @@ export const en: Translations = {
       // Mentor email taken from the PDF
       email: "fernando.c.marques@inesctec.pt",
     },
+    date: "Porto, 15 October 2025",
+    pdf: {
+      label: "Read full letter (PDF)",
+      url: "/RicardoMorim_ReferenceLetter2025.pdf",
+    },
   },
   careerHighlights: {
     title: "Career Highlights",
@@ -220,12 +225,6 @@ export const en: Translations = {
           "AWS SAA certification covering cloud architecture, core AWS services, and best practices for scalable backend systems.",
       },
     ],
-  },
-    date: "Porto, 15 October 2025",
-    pdf: {
-      label: "Read full letter (PDF)",
-      url: "/RicardoMorim_ReferenceLetter2025.pdf",
-    },
   },
   projects: projects,
   skills,
@@ -271,7 +270,7 @@ export const en: Translations = {
       github: "Visit GitHub Profile",
       linkedin: "Visit LinkedIn Profile",
     },
-    copyright: `© ${new Date().getFullYear()} Ricardo Morim. All rights reserved.`,
+    copyright: "© 2026 Ricardo Morim. All rights reserved.",
   },
   nav: {
     home: "Home",

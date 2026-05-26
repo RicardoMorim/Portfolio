@@ -196,6 +196,11 @@ export const pt: Translations = {
       title: "Pesquisador doutorado INESC TEC / Professor convidado FEUP",
       email: "fernando.c.marques@inesctec.pt",
     },
+    date: "Porto, 15 de outubro de 2025",
+    pdf: {
+      label: "Ler carta completa (PDF)",
+      url: "/RicardoMorim_CartaRecomendacao2025.pdf",
+    },
   },
   careerHighlights: {
     title: "Destaques da Carreira",
@@ -219,12 +224,6 @@ export const pt: Translations = {
           "Certificação AWS SAA cobrindo arquitetura cloud, serviços AWS fundamentais e boas práticas para sistemas backend escaláveis.",
       },
     ],
-  },
-    date: "Porto, 15 de outubro de 2025",
-    pdf: {
-      label: "Ler carta completa (PDF)",
-      url: "/RicardoMorim_CartaRecomendacao2025.pdf",
-    },
   },
   projects: projects,
   skills,
@@ -270,7 +269,7 @@ export const pt: Translations = {
       github: "Visitar Perfil GitHub",
       linkedin: "Visitar Perfil LinkedIn",
     },
-    copyright: `© ${new Date().getFullYear()} Ricardo Morim. Todos os direitos reservados.`,
+    copyright: "© 2026 Ricardo Morim. Todos os direitos reservados.",
   },
   nav: {
     home: "Início",

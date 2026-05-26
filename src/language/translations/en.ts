@@ -197,6 +197,30 @@ export const en: Translations = {
       // Mentor email taken from the PDF
       email: "fernando.c.marques@inesctec.pt",
     },
+  },
+  careerHighlights: {
+    title: "Career Highlights",
+    items: [
+      {
+        id: "celfocus-2026",
+        date: "2026",
+        title: "Software Engineering Internship at Celfocus",
+        description:
+          "Internship focusing on backend services, cloud migrations, and scalable API design. Contributed to service improvements and automation.",
+        bullets: [
+          "Contributed to backend feature development and automation",
+          "Supported cloud migration and reliability improvements",
+        ],
+      },
+      {
+        id: "aws-saa-2026",
+        date: "2026",
+        title: "AWS Solutions Architect – Associate (SAA)",
+        description:
+          "AWS SAA certification covering cloud architecture, core AWS services, and best practices for scalable backend systems.",
+      },
+    ],
+  },
     date: "Porto, 15 October 2025",
     pdf: {
       label: "Read full letter (PDF)",

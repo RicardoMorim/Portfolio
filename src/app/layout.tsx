@@ -107,9 +107,9 @@ export const viewport: Viewport = {
 };
 export default function RootLayout({
   children,
-}: {
+}: Readonly<{
   children: React.ReactNode;
-}) {
+}>) {
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "Person",

@@ -196,6 +196,30 @@ export const pt: Translations = {
       title: "Pesquisador doutorado INESC TEC / Professor convidado FEUP",
       email: "fernando.c.marques@inesctec.pt",
     },
+  },
+  careerHighlights: {
+    title: "Destaques da Carreira",
+    items: [
+      {
+        id: "celfocus-2026",
+        date: "2026",
+        title: "Estágio de Engenharia de Software na Celfocus",
+        description:
+          "Estágio focado em serviços backend, migrações para cloud e desenho de APIs escaláveis. Contribuí para melhorias de serviço e automação.",
+        bullets: [
+          "Contribuí para desenvolvimento de funcionalidades backend e automação",
+          "Apoiei tarefas de migração para cloud e melhorias de fiabilidade",
+        ],
+      },
+      {
+        id: "aws-saa-2026",
+        date: "2026",
+        title: "AWS Solutions Architect – Associate (SAA)",
+        description:
+          "Certificação AWS SAA cobrindo arquitetura cloud, serviços AWS fundamentais e boas práticas para sistemas backend escaláveis.",
+      },
+    ],
+  },
     date: "Porto, 15 de outubro de 2025",
     pdf: {
       label: "Ler carta completa (PDF)",

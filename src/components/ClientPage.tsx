@@ -3,6 +3,7 @@ import { useState, useEffect, useRef } from "react";
 import "@/styles/main.css";
 import { motion, AnimatePresence } from "framer-motion";
 import SkillsSection from "@/components/SkillsSection";
+import CareerHighlights from "@/components/CareerHighlights";
 import ContactSection from "@/components/ContactSection";
 import RecommendationsSection from "@/components/RecommendationsSection";
 import Image from "next/image";
@@ -214,6 +215,9 @@ export default function ClientPage() {
           </div>
         </div>
       </div>
+
+      {/* Career Highlights Section */}
+      <CareerHighlights />
 
       {/* Skills Section */}
       <SkillsSection {...skills} />

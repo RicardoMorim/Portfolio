@@ -10,8 +10,13 @@ This audit covers crawlability, indexability, Core Web Vitals (measurement requi
 - sitemap.xml: lists only root and /well-known/portfolio — coverage gap for project-level content
 - No JSON-LD structured data detected on homepage snapshot
 - Images use Next.js optimization; content references aggressive image compression and lazy loading
-- No PageSpeed/Lighthouse metrics were measured during fetch — run PageSpeed Insights for concrete CWV
+- PageSpeed/Lighthouse metrics collected on 2026-05-26:
+	- Mobile: Performance 0.92, Accessibility 0.93, Best Practices 0.96, SEO 1.00
+	- Mobile metrics: FCP 1.1s, LCP 3.2s, TBT 30ms, CLS 0.003
+	- Desktop: Performance 1.00, Accessibility 0.93, Best Practices 0.96, SEO 1.00
+	- Desktop metrics: FCP 0.4s, LCP 0.7s, TBT 0ms, CLS 0.001
 - HTTPS in use; security headers not inspected here (run header check)
+- Live Lighthouse console errors still include a React hydration mismatch (#418) and a 404 on /well-known/portfolio until the site redeploys the new route
 
 ## Prioritized fixes
 1. Expand sitemap to include project pages and resume.pdf; submit to Google Search Console.
@@ -19,6 +24,8 @@ This audit covers crawlability, indexability, Core Web Vitals (measurement requi
 3. Add JSON-LD Person and Project/SoftwareSourceCode entries and OG/Twitter meta tags.
 4. Verify canonical tags and meta descriptions per page.
 5. Check HTTP security headers (HSTS, CSP, X-Frame-Options) and add if missing.
+6. Redeploy the site so the new /well-known/portfolio endpoint removes the live 404 in Lighthouse.
+7. Investigate the React hydration mismatch (#418) in the client UI; likely a server/client text mismatch in a client component or provider boundary.
 
 ## Evidence
 - robots.txt: `User-agent: *\nAllow: /\nSitemap: https://ricardoportfolio.vercel.app/sitemap.xml`
@@ -26,8 +33,9 @@ This audit covers crawlability, indexability, Core Web Vitals (measurement requi
 - Homepage content: Next.js app, sections: hero, about, skills, projects, recommendations, contact. Images served via `_next/image` URLs.
 
 ## Next steps
-- I can add Person JSON-LD and a sitemap template (created in repo under `seo/`).
-- Run PageSpeed Insights (mobile + desktop) and append measured CWV metrics.
+- Person JSON-LD and sitemap template have been created in repo under `seo/`.
+- PageSpeed Insights / Lighthouse metrics have been measured and appended above.
+- Next debugging target: hydration mismatch #418 and redeploying the new well-known route.
 
 ---
 

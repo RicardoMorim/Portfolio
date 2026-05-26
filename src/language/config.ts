@@ -148,11 +148,24 @@ export interface About {
   };
 }
 
+export interface CareerHighlight {
+  id?: string;
+  date?: string;
+  title: string;
+  description: string;
+  bullets?: string[];
+  links?: { label: string; url: string }[];
+}
+
 export interface Translations {
   title: string;
   hero: Hero;
   about: About;
   recommendations: Recommendations;
+  careerHighlights: {
+    title: string;
+    items: CareerHighlight[];
+  };
   projects: Project;
   contact: Contact;
   nav: Navigation;

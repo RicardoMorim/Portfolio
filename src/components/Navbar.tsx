@@ -7,6 +7,7 @@ import { IoMenu, IoClose } from "react-icons/io5";
 import { useTranslation } from '@/context/LanguageContext';
 import { Locale } from '@/language/config';
 import Image from 'next/image';
+import useHydrated from '@/lib/useHydrated';
 
 interface NavbarProps {
 	title?: string;
@@ -60,6 +61,7 @@ LanguageSwitch.displayName = 'LanguageSwitch';
 const Navbar: React.FC<NavbarProps> = () => {
 	const { theme, toggleTheme } = useContext(ThemeContext);
 	const { locale, setLocale, getNavigation, getTitle } = useTranslation();
+	const hydrated = useHydrated();
 	const [scrolled, setScrolled] = useState(false);
 	const [isOpen, setIsOpen] = useState(false);
 	const drawerRef = useRef<HTMLDivElement>(null);
@@ -116,12 +118,12 @@ const Navbar: React.FC<NavbarProps> = () => {
 				<div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 					<div className="flex justify-between items-center h-16">
 						{/* Logo/Title */}
-						<motion.h1
+					    <motion.h1
 							initial={{ opacity: 0, x: -20 }}
 							animate={{ opacity: 1, x: 0 }}
 							className="text-2xl font-bold text-[var(--text-color)]"
 						>
-							{getTitle()}
+									{hydrated ? getTitle() : ''}
 						</motion.h1>
 
 						{/* Mobile Menu Button */}
@@ -139,7 +141,7 @@ const Navbar: React.FC<NavbarProps> = () => {
 						<div className="hidden md:flex items-center space-x-8">
 							{/* Navigation Links */}
 							<div className="flex space-x-8">
-								{navLinks.map((link, index) => (
+                                {navLinks.map((link, index) => (
 									<motion.div
 										key={link.href}
 										initial={{ opacity: 0, y: -20 }}
@@ -150,10 +152,10 @@ const Navbar: React.FC<NavbarProps> = () => {
 											href={link.href}
 											className="nav-link relative text-[var(--text-color)] transition-colors duration-300"
 										>
-											{link.label}
+										{hydrated ? link.label : ''}
 										</Link>
 									</motion.div>
-								))}
+						))}
 							</div>
 
 							{/* Theme and Laguage Toggle Button */}

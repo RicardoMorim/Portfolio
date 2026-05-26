@@ -10,6 +10,7 @@ import Image from "next/image";
 import { useTranslation } from "@/context/LanguageContext";
 import { Milestone } from "@/language/config";
 import HeroLinks from "./HeroLinks";
+import useHydrated from '@/lib/useHydrated';
 
 export default function ClientPage() {
   const { getProjects, getHero, getSkills, getAbout, getContact, getZoom } =
@@ -30,6 +31,7 @@ export default function ClientPage() {
   const about = getAbout();
   const contact = getContact();
   const zoomText = getZoom();
+  const hydrated = useHydrated();
 
   const handleImageClick = (imageSrc: string) => {
     setModalImage(imageSrc);
@@ -131,7 +133,7 @@ export default function ClientPage() {
       <div className="flex items-center justify-center min-h-screen" id="hero">
         <div className="hero-container">
           <div className="hero-name-container">
-            <h1 className="hero-name">{hero.name}</h1>
+            <h1 className="hero-name">{hydrated ? hero.name : ''}</h1>
           </div>
           <div className="hero-caption-container">
             <h1 className="hero-caption">{text}</h1>
@@ -154,7 +156,7 @@ export default function ClientPage() {
             whileInView={{ opacity: 1, y: 0 }}
             className="about-title"
           >
-            {about.title}
+            {hydrated ? about.title : ''}
           </motion.h2>
 
           <div className="about-content">
@@ -179,7 +181,7 @@ export default function ClientPage() {
                 whileInView={{ opacity: 1 }}
                 className="milestones-container"
               >
-                <h3 className="milestones-title">{about.milestones.title}</h3>
+                <h3 className="milestones-title">{hydrated ? about.milestones.title : ''}</h3>
                 <div className="timeline">
                   {about.milestones.items.map(
                     (milestone: Milestone, index: number) => (
@@ -225,7 +227,7 @@ export default function ClientPage() {
       {/* Projects Section */}
       <div className="projects-section" id="projects">
         <div className="projects-container">
-          <motion.h2 className="projects-title">{projects.title}</motion.h2>
+          <motion.h2 className="projects-title">{hydrated ? projects.title : ''}</motion.h2>
           <div className="projects-grid">
             {projects.items.map((project, index: number) => (
               <motion.div
@@ -238,7 +240,7 @@ export default function ClientPage() {
                 <div className="project-content">
                   {/* Header - Always at top */}
                   <div className="project-header">
-                    <h3>{project.description}</h3>
+                    <h3>{hydrated ? project.description : ''}</h3>
                     {project.badge && (
                       <div className="project-badge">
                         <div
@@ -278,7 +280,7 @@ export default function ClientPage() {
                     )}
 
                     <div className="project-description">
-                      {<p>{project.longDescription}</p>}
+                      {<p>{hydrated ? project.longDescription : ''}</p>}
                     </div>
                   </div>
 
@@ -286,7 +288,7 @@ export default function ClientPage() {
                   <div className="project-footer">
                     <div className="tech-stack">
                       {project.tech.map((tech: string, i: number) => (
-                        <span key={i}>{tech}</span>
+                        <span key={i}>{hydrated ? tech : ''}</span>
                       ))}
                     </div>
 
@@ -297,7 +299,7 @@ export default function ClientPage() {
                           target="_blank"
                           rel="noopener noreferrer"
                         >
-                          {project.links.demo}
+                          {hydrated ? project.links.demo : ''}
                           <div className="shine-effect" />
                         </a>
                       )}
@@ -307,7 +309,7 @@ export default function ClientPage() {
                           target="_blank"
                           rel="noopener noreferrer"
                         >
-                          {project.links.github}
+                          {hydrated ? project.links.github : ''}
                           <div className="shine-effect" />
                         </a>
                       )}
@@ -318,7 +320,7 @@ export default function ClientPage() {
                           rel="noopener noreferrer"
                           className="project-link diagram-link"
                         >
-                          {project.links.diagram}
+                          {hydrated ? project.links.diagram : ''}
                           <div className="shine-effect" />
                         </a>
                       )}

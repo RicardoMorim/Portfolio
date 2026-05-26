@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { createTransport } from "nodemailer";
+import nodemailer from "nodemailer";
 import rateLimit from "@/lib/rate-limit";
 import { headers } from "next/headers";
 
@@ -44,17 +44,35 @@ export async function POST(req: Request) {
       );
     }
 
-    const transporter = createTransport({
-      service: 'Gmail',
-      auth: {
-        user: process.env.EMAIL_USER,
-        pass: process.env.EMAIL_PASS,
-      },
-    });
+    let transporter;
+    let testAccount: { user?: string; pass?: string } | null = null;
 
+    // If EMAIL_USER/EMAIL_PASS are not set, fall back to an ethereal test account for local testing
+    if (!process.env.EMAIL_USER || !process.env.EMAIL_PASS) {
+      testAccount = await nodemailer.createTestAccount();
+      transporter = nodemailer.createTransport({
+        host: "smtp.ethereal.email",
+        port: 587,
+        secure: false,
+        auth: {
+          user: testAccount.user,
+          pass: testAccount.pass,
+        },
+      });
+    } else {
+      transporter = nodemailer.createTransport({
+        service: "Gmail",
+        auth: {
+          user: process.env.EMAIL_USER,
+          pass: process.env.EMAIL_PASS,
+        },
+      });
+    }
+
+    const sender = testAccount?.user ?? process.env.EMAIL_USER;
     const mailOptions = {
-      from: process.env.EMAIL_USER,
-      to: process.env.EMAIL_USER,
+      from: sender,
+      to: sender,
       subject: `Contact Form: ${subject}`,
       text: `
         Name: ${name}
@@ -64,7 +82,13 @@ export async function POST(req: Request) {
       `,
     };
 
-    await transporter.sendMail(mailOptions);
+    const info = await transporter.sendMail(mailOptions);
+
+    // If we used an ethereal test account, return the preview URL so the developer can inspect the message
+    if (testAccount) {
+      const previewUrl = nodemailer.getTestMessageUrl(info);
+      return NextResponse.json({ message: "Email sent (ethereal)", previewUrl });
+    }
 
     return NextResponse.json({ message: "Email sent successfully" });
   } catch (err: unknown) {

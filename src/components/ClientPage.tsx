@@ -372,18 +372,20 @@ export default function ClientPage() {
               </button>
 
               <div className="modal-image-wrapper">
-                <Image
+                {/* Use a native img element here so we can attach ref and transform styles directly */}
+                <img
                   ref={imageRef}
-                  src={modalImage}
+                  src={modalImage || ''}
                   alt="Project preview"
                   className="modal-image"
                   width={1200}
                   height={800}
-                  quality={100}
                   style={{
                     transform: `scale(${scale}) translate(${position.x}px, ${position.y}px)`,
                     transition: scale === 1 ? "transform 0.3s ease" : "none",
                     cursor: scale === 1 ? "zoom-in" : "grab",
+                    maxWidth: '100%',
+                    height: 'auto',
                   }}
                   onClick={handleZoom}
                   onMouseMove={handleDrag}

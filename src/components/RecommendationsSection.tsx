@@ -45,13 +45,14 @@ export default function RecommendationsSection() {
               </blockquote>
 
               <div className="mt-6 flex items-center gap-3 text-[var(--text-color)]/90">
-                <div className="h-12 w-120 rounded-full overflow-hidden border-2 border-indigo-500/30">
+                <div className="h-12 w-30 rounded-full overflow-hidden border-2 border-indigo-500/30">
                   <Image
-                    src="http://artefacto.artech-international.org/wp-content/uploads/2018/06/inesc.png"
+                    src="https://artefacto.artech-international.org/wp-content/uploads/2018/06/inesc.png"
                     alt="INESC TEC Logo"
                     width={120}
-                    height={12}
+                    height={48}
                     className="object-contain w-full h-full"
+                    unoptimized={false}
                   />
                 </div>
                 <div>

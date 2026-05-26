@@ -85,6 +85,18 @@ const milestones: Milestone[] = [
     description: "Focused on backend systems, cloud architecture, and building scalable applications.",
   },
   {
+    date: "2026",
+    title: "Software Engineering Internship at Celfocus",
+    description:
+      "Internship focusing on backend services, cloud migrations, and scalable API design. Contributed to service improvements and automation.",
+  },
+  {
+    date: "2026",
+    title: "AWS Solutions Architect – Associate (SAA)",
+    description:
+      "AWS SAA certification covering cloud architecture, core AWS services, and best practices for scalable backend systems.",
+  },
+  {
     date: "2025",
     title: "Software Engineering Internship at INESC TEC",
     description: "Developed AR indoor navigation Android prototype with extensible Python backend architecture. Delivered working MVP in 4 weeks with voice guidance and multi-floor navigation capabilities.",

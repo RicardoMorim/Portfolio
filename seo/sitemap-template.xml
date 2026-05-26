@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <!-- Root page -->
+  <url>
+    <loc>https://ricardoportfolio.vercel.app/</loc>
+    <lastmod>2026-05-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>1.0</priority>
+  </url>
+
+  <!-- Resume (PDF) -->
+  <url>
+    <loc>https://ricardoportfolio.vercel.app/resume.pdf</loc>
+    <changefreq>yearly</changefreq>
+    <priority>0.5</priority>
+  </url>
+
+  <!-- Example project pages (replace with real permalinks if you create them) -->
+  <url>
+    <loc>https://ricardoportfolio.vercel.app/projects/auth-provider</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://ricardoportfolio.vercel.app/projects/chess-ai</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <!-- Contact / About anchors are optional; anchors are not separate indexable pages -->
+  <!-- If your site is intentionally single-page, keep only root and external canonical pages. -->
+</urlset>

@@ -85,6 +85,18 @@ const milestones: Milestone[] = [
     description: "Focado em sistemas backend, arquitetura cloud e desenvolvimento de aplicações escaláveis.",
   },
   {
+    date: "2026",
+    title: "Estágio de Engenharia de Software na Celfocus",
+    description:
+      "Estágio focado em serviços backend, migrações para cloud e desenho de APIs escaláveis. Contribuí para melhorias de serviço e automação.",
+  },
+  {
+    date: "2026",
+    title: "AWS Solutions Architect – Associate (SAA)",
+    description:
+      "Certificação AWS SAA cobrindo arquitetura cloud, serviços AWS fundamentais e boas práticas para sistemas backend escaláveis.",
+  },
+  {
     date: "2025",
     title: "Estágio de Engenharia Informática na INESC TEC",
     description: "Desenvolvi um protótipo Android de navegação interior em realidade aumentada com arquitetura backend Python extensível. Entreguei um MVP funcional em 4 semanas com orientação por voz e navegação multi-piso.",

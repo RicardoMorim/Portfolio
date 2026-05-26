@@ -1,0 +1,138 @@
+[
+  {
+    "name": "minScore",
+    "expected": 0.9,
+    "actual": 0,
+    "values": [
+      0,
+      0,
+      0
+    ],
+    "operator": ">=",
+    "passed": false,
+    "auditId": "document-title",
+    "level": "error",
+    "url": "http://localhost:60787/google89773cc6d767dafb.html",
+    "auditTitle": "Document doesn't have a `<title>` element",
+    "auditDocumentationLink": "https://dequeuniversity.com/rules/axe/4.10/document-title"
+  },
+  {
+    "name": "minScore",
+    "expected": 0.9,
+    "actual": 0,
+    "values": [
+      0,
+      0,
+      0
+    ],
+    "operator": ">=",
+    "passed": false,
+    "auditId": "errors-in-console",
+    "level": "error",
+    "url": "http://localhost:60787/google89773cc6d767dafb.html",
+    "auditTitle": "Browser errors were logged to the console",
+    "auditDocumentationLink": "https://developer.chrome.com/docs/lighthouse/best-practices/errors-in-console/"
+  },
+  {
+    "name": "minScore",
+    "expected": 0.9,
+    "actual": 0,
+    "values": [
+      0,
+      0,
+      0
+    ],
+    "operator": ">=",
+    "passed": false,
+    "auditId": "font-size",
+    "level": "error",
+    "url": "http://localhost:60787/google89773cc6d767dafb.html",
+    "auditTitle": "Document doesn't use legible font sizes",
+    "auditDocumentationLink": "https://developer.chrome.com/docs/lighthouse/seo/font-size/"
+  },
+  {
+    "name": "minScore",
+    "expected": 0.9,
+    "actual": 0,
+    "values": [
+      0,
+      0,
+      0
+    ],
+    "operator": ">=",
+    "passed": false,
+    "auditId": "html-has-lang",
+    "level": "error",
+    "url": "http://localhost:60787/google89773cc6d767dafb.html",
+    "auditTitle": "`<html>` element does not have a `[lang]` attribute",
+    "auditDocumentationLink": "https://dequeuniversity.com/rules/axe/4.10/html-has-lang"
+  },
+  {
+    "name": "minScore",
+    "expected": 0.9,
+    "actual": 0,
+    "values": [
+      0,
+      0,
+      0
+    ],
+    "operator": ">=",
+    "passed": false,
+    "auditId": "meta-description",
+    "level": "error",
+    "url": "http://localhost:60787/google89773cc6d767dafb.html",
+    "auditTitle": "Document does not have a meta description",
+    "auditDocumentationLink": "https://developer.chrome.com/docs/lighthouse/seo/meta-description/"
+  },
+  {
+    "name": "minScore",
+    "expected": 0.9,
+    "actual": 0,
+    "values": [
+      0,
+      0,
+      0
+    ],
+    "operator": ">=",
+    "passed": false,
+    "auditId": "viewport-insight",
+    "level": "error",
+    "url": "http://localhost:60787/google89773cc6d767dafb.html",
+    "auditTitle": "Optimize viewport for mobile",
+    "auditDocumentationLink": "https://developer.chrome.com/blog/300ms-tap-delay-gone-away/"
+  },
+  {
+    "name": "minScore",
+    "expected": 0.9,
+    "actual": 0,
+    "values": [
+      0,
+      0,
+      0
+    ],
+    "operator": ">=",
+    "passed": false,
+    "auditId": "doctype",
+    "level": "error",
+    "url": "http://localhost:60787/google89773cc6d767dafb.html",
+    "auditTitle": "Page lacks the HTML doctype, thus triggering quirks-mode",
+    "auditDocumentationLink": "https://developer.chrome.com/docs/lighthouse/best-practices/doctype/"
+  },
+  {
+    "name": "minScore",
+    "expected": 0.9,
+    "actual": 0,
+    "values": [
+      0,
+      0,
+      0
+    ],
+    "operator": ">=",
+    "passed": false,
+    "auditId": "viewport",
+    "level": "error",
+    "url": "http://localhost:60787/google89773cc6d767dafb.html",
+    "auditTitle": "Does not have a `<meta name=\"viewport\">` tag with `width` or `initial-scale`",
+    "auditDocumentationLink": "https://developer.chrome.com/docs/lighthouse/pwa/viewport/"
+  }
+]

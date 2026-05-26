@@ -65,6 +65,26 @@ export async function GET() {
         technologies_used: ["React", "Firebase", "WebP Compression", "PWA", "SEO Optimization"],
         impact: "Measurable performance improvements and improved search visibility for client"
       }
+      ,
+      {
+        id: "celfocus-2026",
+        position: "Software Engineering Intern",
+        organization: "Celfocus",
+        location: "Porto, Portugal",
+        duration: "2026 (Internship)",
+        type: "Professional Internship",
+        description: "Worked on backend services, cloud migrations, and implementation of scalable APIs, collaborating with cross-functional teams.",
+        key_achievements: [
+          "Contributed to backend feature development and automation",
+          "Supported cloud migration and reliability improvements"
+        ],
+        technical_contributions: {
+          backend_development: "API design and implementation",
+          cloud_migration: "Assisted in migration tasks and automation",
+        },
+        technologies_used: ["Java", "Spring Boot", "AWS", "Docker"],
+        impact: "Improved service reliability and deployment automation"
+      }
     ],
     
     // Technical projects and achievements

@@ -1,236 +1,116 @@
 'use client'
 import Link from 'next/link';
-import { useContext, useState, useEffect, useRef, memo } from 'react';
+import { useContext, useState, useEffect, memo } from 'react';
 import { ThemeContext } from '@/context/ThemeContext';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion, AnimatePresence, useScroll } from 'framer-motion';
 import { IoMenu, IoClose } from "react-icons/io5";
 import { useTranslation } from '@/context/LanguageContext';
-import { Locale } from '@/language/config';
-import Image from 'next/image';
-import useHydrated from '@/lib/useHydrated';
 
-interface NavbarProps {
-	title?: string;
-}
-
-interface LanguageSwitchProps {
-	locale: Locale;
-	setLocale: (locale: Locale) => void;
-}
-
-const ThemeSwitch = memo(({ theme, toggleTheme }: { theme: string; toggleTheme: () => void }) => (
-	<div className="theme-switch-wrapper">
-		<button
-			onClick={toggleTheme}
-			className="theme-switch"
-			aria-label="Toggle theme"
-		>
-			<div className={`switch-track ${theme === 'dark' ? 'dark' : ''}`}>
-				<div className="switch-thumb">
-					<span className="switch-icon">
-						{theme === 'light' ? '☀️' : '🌙'}
-					</span>
-				</div>
-			</div>
-		</button>
-	</div>
-));
-
-ThemeSwitch.displayName = 'ThemeSwitch';
-
-const LanguageSwitch = memo(({ locale, setLocale }: LanguageSwitchProps) => (
-	<div className="language-switch-wrapper">
-	  <button
-		onClick={() => setLocale(locale === 'en' ? 'pt' : 'en')}
-		className="language-switch"
-		aria-label={locale === 'en' ? 'Switch to Portuguese' : 'Switch to English'}
-	  >
-		<Image
-		  src={locale === 'en' ? '/flags/pt-flag.svg' : '/flags/gb-flag.svg'}
-		  alt={locale === 'en' ? 'PT' : 'EN'}
-		  width={24}
-		  height={24}
-		  className="language-flag"
-		/>
-	  </button>
-	</div>
-  ));
-
-LanguageSwitch.displayName = 'LanguageSwitch';
-
-const Navbar: React.FC<NavbarProps> = () => {
+const Navbar = () => {
 	const { theme, toggleTheme } = useContext(ThemeContext);
-	const { locale, setLocale, getNavigation, getTitle } = useTranslation();
-	const hydrated = useHydrated();
+	const { locale, setLocale, getNavigation, getTheme, getStory } = useTranslation();
+	const { scrollYProgress } = useScroll();
 	const [scrolled, setScrolled] = useState(false);
 	const [isOpen, setIsOpen] = useState(false);
-	const drawerRef = useRef<HTMLDivElement>(null);
 
 	const nav = getNavigation();
+	const themeLabels = getTheme();
 	const navLinks = [
-		{ href: '#hero', label: nav.home },
-		{ href: '#about', label: nav.about },
-		{ href: "#skills", label: nav.skills },
+		{ href: '#career', label: getStory().navStory },
 		{ href: '#projects', label: nav.projects },
+		{ href: '#skills', label: nav.skills },
 		{ href: '#recommendations', label: nav.recommendations },
+		{ href: '#about', label: nav.about },
 		{ href: '#contact', label: nav.contact },
 	];
 
-
-
-
 	useEffect(() => {
-		const handleScroll = () => {
-			setScrolled(window.scrollY > 20);
-		};
-
-		const handleClickOutside = (event: MouseEvent) => {
-			if (drawerRef.current && !drawerRef.current.contains(event.target as Node)) {
-				setIsOpen(false);
-			}
-		};
-
-		window.addEventListener('scroll', handleScroll);
-		document.addEventListener('mousedown', handleClickOutside);
-
-		// Lock body scroll when drawer is open
-		if (isOpen) {
-			document.body.style.overflow = 'hidden';
-		} else {
-			document.body.style.overflow = 'unset';
-		}
-
+		const handleScroll = () => setScrolled(window.scrollY > 20);
+		const handleKey = (event: KeyboardEvent) => event.key === 'Escape' && setIsOpen(false);
+		handleScroll();
+		window.addEventListener('scroll', handleScroll, { passive: true });
+		window.addEventListener('keydown', handleKey);
+		document.body.style.overflow = isOpen ? 'hidden' : '';
 		return () => {
 			window.removeEventListener('scroll', handleScroll);
-			document.removeEventListener('mousedown', handleClickOutside);
-			document.body.style.overflow = 'unset';
+			window.removeEventListener('keydown', handleKey);
+			document.body.style.overflow = '';
 		};
 	}, [isOpen]);
 
+	const controls = (
+		<div className="nav-controls">
+			<button
+				type="button"
+				className="nav-toggle"
+				onClick={() => setLocale(locale === 'en' ? 'pt' : 'en')}
+				aria-label={locale === 'en' ? 'Mudar para português' : 'Switch to English'}
+			>
+				<span className={locale === 'en' ? 'is-on' : ''}>EN</span>
+				<span className={locale === 'pt' ? 'is-on' : ''}>PT</span>
+			</button>
+			<button type="button" className="nav-toggle" onClick={toggleTheme}>
+				<span className="theme-dot" aria-hidden="true" />
+				{theme === 'light' ? themeLabels.dark : themeLabels.light}
+			</button>
+		</div>
+	);
+
 	return (
-		<nav
-			className="fixed w-full top-0 z-50 transition-all duration-300"
-		>
-			<div className={`w-full border-b ${scrolled
-				? 'backdrop-blur-lg border-[var(--border-color)] bg-[var(--nav-bg)]'
-				: 'border-transparent bg-transparent'
-				}`}>
-				<div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-					<div className="flex justify-between items-center h-16">
-						{/* Logo/Title */}
-					    <motion.h1
-							initial={{ opacity: 0, x: -20 }}
-							animate={{ opacity: 1, x: 0 }}
-							className="text-2xl font-bold text-[var(--text-color)]"
-						>
-									{hydrated ? getTitle() : ''}
-						</motion.h1>
+		<header className={`site-nav ${scrolled ? 'is-scrolled' : ''}`}>
+			<div className="shell nav-inner">
+				<Link href="#hero" className="nav-mark" aria-label="Ricardo Morim">
+					RM<span className="nav-mark-dot" />
+				</Link>
 
-						{/* Mobile Menu Button */}
-						<div className="md:hidden">
-							<button
-								onClick={() => setIsOpen(!isOpen)}
-								className="text-[var(--text-color)] p-2"
-								aria-label="Toggle menu"
-							>
-								{isOpen ? <IoClose size={24} /> : <IoMenu size={24} />}
-							</button>
-						</div>
+				<nav className="nav-links" aria-label="Primary">
+					{navLinks.map((link, i) => (
+						<Link key={link.href} href={link.href} className="nav-link">
+							<span className="nav-index">{String(i + 1).padStart(2, '0')}</span>
+							{link.label}
+						</Link>
+					))}
+				</nav>
 
-						{/* Desktop Menu */}
-						<div className="hidden md:flex items-center space-x-8">
-							{/* Navigation Links */}
-							<div className="flex space-x-8">
-                                {navLinks.map((link, index) => (
-									<motion.div
-										key={link.href}
-										initial={{ opacity: 0, y: -20 }}
-										animate={{ opacity: 1, y: 0 }}
-										transition={{ delay: index * 0.1 }}
-									>
-										<Link
-											href={link.href}
-											className="nav-link relative text-[var(--text-color)] transition-colors duration-300"
-										>
-										{hydrated ? link.label : ''}
-										</Link>
-									</motion.div>
-						))}
-							</div>
+				<div className="nav-desktop-controls">{controls}</div>
 
-							{/* Theme and Laguage Toggle Button */}
-							<div className="flex items-center space-x-4">
-								<LanguageSwitch locale={locale} setLocale={setLocale} />
-								<ThemeSwitch theme={theme} toggleTheme={toggleTheme} />
-							</div>
-						</div>
-					</div>
-				</div>
+				<button
+					type="button"
+					className="nav-burger"
+					onClick={() => setIsOpen(!isOpen)}
+					aria-label="Menu"
+					aria-expanded={isOpen}
+					aria-controls="mobile-menu"
+				>
+					{isOpen ? <IoClose size={22} /> : <IoMenu size={22} />}
+				</button>
 			</div>
+			<motion.span className="nav-progress" style={{ scaleX: scrollYProgress }} aria-hidden="true" />
 
-			{/* Mobile Menu Drawer */}
 			<AnimatePresence>
 				{isOpen && (
-					<>
-						{/* Backdrop */}
-						<motion.div
-							initial={{ opacity: 0 }}
-							animate={{ opacity: 1 }}
-							exit={{ opacity: 0 }}
-							className="fixed inset-0 bg-black bg-opacity-50 z-40"
-							onClick={() => setIsOpen(false)}
-						/>
-
-						{/* Drawer */}
-						<motion.div
-							ref={drawerRef}
-							initial={{ opacity: 0, x: '100%' }}
-							animate={{ opacity: 1, x: 0 }}
-							exit={{ opacity: 0, x: '100%' }}
-							transition={{ type: 'tween' }}
-							className="fixed inset-y-0 right-0 w-64 bg-[var(--bg-color)] shadow-lg z-50 md:hidden"
-						>
-							{/* Close button */}
-							<button
-								onClick={() => setIsOpen(false)}
-								className="absolute top-4 right-4 text-[var(--text-color)]"
-								aria-label="Close menu"
-							>
-								<IoClose size={24} />
-							</button>
-
-							<div className="flex flex-col h-full py-16 px-4">
-								{navLinks.map((link, index) => (
-									<motion.div
-										key={link.href}
-										initial={{ opacity: 0, x: 20 }}
-										animate={{ opacity: 1, x: 0 }}
-										transition={{ delay: index * 0.1 }}
-									>
-										<Link
-											href={link.href}
-											className="block py-4 text-[var(--text-color)] hover:opacity-70 transition-opacity"
-											onClick={() => setIsOpen(false)}
-										>
-											{link.label}
-										</Link>
-									</motion.div>
-								))}
-
-								{/* Mobile Theme Toggle */}
-
-								<div className="flex items-center space-x-4">
-									<LanguageSwitch locale={locale} setLocale={setLocale} />
-									<ThemeSwitch theme={theme} toggleTheme={toggleTheme} />
-								</div>
-							</div>
-						</motion.div>
-					</>
+					<motion.div
+						id="mobile-menu"
+						className="mobile-menu"
+						initial={{ opacity: 0, y: -12 }}
+						animate={{ opacity: 1, y: 0 }}
+						exit={{ opacity: 0, y: -12 }}
+						transition={{ duration: 0.25 }}
+					>
+						<nav aria-label="Mobile">
+							{navLinks.map((link, i) => (
+								<Link key={link.href} href={link.href} className="mobile-link" onClick={() => setIsOpen(false)}>
+									<span className="nav-index">{String(i + 1).padStart(2, '0')}</span>
+									{link.label}
+								</Link>
+							))}
+						</nav>
+						{controls}
+					</motion.div>
 				)}
 			</AnimatePresence>
-		</nav>
+		</header>
 	);
 };
-
 
 export default memo(Navbar);

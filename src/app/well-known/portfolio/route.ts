@@ -13,7 +13,7 @@ export async function GET() {
         name: "Ricardo Morim",
         email: "ricardomorim05@gmail.com",
         location: "Porto, Portugal",
-        role: "Backend Engineer",
+        role: "AI Software Engineer · AI Security",
       },
       links: {
         github: "https://github.com/RicardoMorim",

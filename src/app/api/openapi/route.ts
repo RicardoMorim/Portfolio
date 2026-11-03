@@ -5,7 +5,7 @@ export async function GET() {
     openapi: "3.0.3",
     info: {
       title: "Ricardo Morim Portfolio API",
-      description: "Machine-readable API for AI agents and recruiting tools to extract structured information about Ricardo Morim's backend engineering capabilities",
+      description: "Machine-readable API for AI agents and recruiting tools to extract structured information about Ricardo Morim's AI engineering and AI security experience",
       version: "1.0.0",
       contact: {
         name: "Ricardo Morim",
@@ -19,7 +19,7 @@ export async function GET() {
     },
     servers: [
       {
-        url: "https://ricardoportfolio.vercel.app//api",
+        url: "https://ricardoportfolio.vercel.app/api",
         description: "Production API Server"
       },
       {
@@ -30,8 +30,8 @@ export async function GET() {
     paths: {
       "/profile": {
         get: {
-          summary: "Get backend engineer profile",
-          description: "Core profile information highlighting backend engineering expertise, achievements, and contact details",
+          summary: "Get AI software engineer profile",
+          description: "Core profile information highlighting AI engineering and AI security expertise, achievements, and contact details",
           operationId: "getProfile",
           tags: ["Profile"],
           responses: {
@@ -51,7 +51,7 @@ export async function GET() {
       "/projects": {
         get: {
           summary: "Get projects portfolio",
-          description: "Detailed project portfolio with technical achievements, performance metrics, and backend focus",
+          description: "Detailed project portfolio with selected projects in AI, security and software engineering",
           operationId: "getProjects", 
           tags: ["Projects"],
           responses: {
@@ -71,7 +71,7 @@ export async function GET() {
       "/skills": {
         get: {
           summary: "Get technical skills assessment",
-          description: "Comprehensive skill assessment with proficiency levels, experience timeline, and backend specializations",
+          description: "Skills grouped by AI engineering, AI security and software engineering",
           operationId: "getSkills",
           tags: ["Skills"],
           responses: {
@@ -122,13 +122,13 @@ export async function GET() {
               required: true,
               schema: {
                 type: "string",
-                example: "Spring Boot authentication"
+                example: "AI Security"
               }
             },
             {
               name: "limit",
               in: "query",
-              description: "Maximum number of results to return",
+              description: "Maximum number of results per category",
               required: false,
               schema: {
                 type: "integer",
@@ -136,7 +136,9 @@ export async function GET() {
                 maximum: 50,
                 default: 10
               }
-            }
+            },
+            { name: "category", in: "query", schema: { type: "string", enum: ["all", "skills", "projects", "experience", "focus"], default: "all" } },
+            { name: "min_score", in: "query", schema: { type: "number", minimum: 0, maximum: 100, default: 0 } }
           ],
           responses: {
             "200": {
@@ -175,19 +177,19 @@ export async function GET() {
           type: "object",
           properties: {
             name: { type: "string", example: "Ricardo Morim" },
-            title: { type: "string", example: "Backend Engineer" },
-            subtitle: { type: "string", example: "Systems Architect" },
+            title: { type: "string", example: "AI Software Engineer" },
+            subtitle: { type: "string", example: "AI Security" },
             location: { type: "string", example: "Porto, Portugal" },
             summary: { type: "string" },
             expertise: {
               type: "array",
               items: { type: "string" },
-              example: ["Backend System Architecture", "Spring Boot Development", "Database Optimization"]
+              example: ["AI Engineering", "AI Security", "Agentic Workflows"]
             },
             achievements: {
               type: "array", 
               items: { type: "string" },
-              example: ["Published production Spring Boot library on Maven Central with 12ms overhead"]
+              example: ["Built a vulnerability management platform in React and FastAPI"]
             },
             languages: {
               type: "object",
@@ -234,9 +236,9 @@ export async function GET() {
             id: { type: "string" },
             name: { type: "string" },
             type: { type: "string" },
-            status: { type: "string", enum: ["Production", "MVP Completed", "In Development"] },
             description: { type: "string" },
             technical_highlights: { type: "array", items: { type: "string" } },
+            technologies: { type: "array", items: { type: "string" } },
             backend_technologies: { type: "array", items: { type: "string" } },
             repository: { type: "string", format: "uri" },
             demo_url: { type: "string", format: "uri" },
@@ -249,9 +251,10 @@ export async function GET() {
             summary: { type: "string" },
             core_backend_skills: { type: "object" },
             programming_languages: { type: "object" },
-            backend_technologies: { type: "object" },
-            database_technologies: { type: "object" },
-            cloud_devops: { type: "object" }
+            categories: { type: "array", items: { type: "object" } },
+            backend_technologies: { type: "array", items: { type: "string" } },
+            database_technologies: { type: "array", items: { type: "string" } },
+            cloud_devops: { type: "array", items: { type: "string" } }
           }
         },
         ExperienceResponse: {
@@ -267,22 +270,18 @@ export async function GET() {
           type: "object",
           properties: {
             query: { type: "string" },
+            category: { type: "string" },
             total_results: { type: "integer" },
+            execution_time_ms: { type: "number" },
+            suggestions: { type: "array", items: { type: "string" } },
             results: {
-              type: "array",
-              items: {
-                type: "object",
-                properties: {
-                  type: { type: "string", enum: ["project", "skill", "experience"] },
-                  title: { type: "string" },
-                  description: { type: "string" },
-                  relevance_score: { type: "number", minimum: 0, maximum: 1 },
-                  highlights: { type: "array", items: { type: "string" } },
-                  url: { type: "string" }
-                }
-              }
-            }
-          }
+              type: "object",
+              properties: Object.fromEntries(["skills", "projects", "experience", "focus_areas"].map((category) => [category, {
+                type: "array",
+                items: { type: "object", properties: { relevance_score: { type: "number", minimum: 0, maximum: 100 } } },
+              }])),
+            },
+          },
         }
       }
     },

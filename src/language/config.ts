@@ -13,6 +13,7 @@ export interface Milestone {
 export interface Project {
   title: string;
   items: {
+    id: string;
     description: string;
     longDescription: string;
     badge?: string;
@@ -32,27 +33,7 @@ export interface Project {
 
 export interface Skills {
   title: string;
-  categories: {
-    cloud_DevOps: string;
-    backend: string;
-    database: string;
-  };
-  cloud_DevOps: {
-    docker: string;
-    aws: string;
-    ci_cd: string;
-  };
-  backend: {
-    nodeJs: string;
-    springBoot: string;
-    java: string;
-    dotNet: string;
-  };
-  database: {
-    mongoDB: string;
-    redis: string;
-    postgreSQL: string;
-  };
+  categories: { title: string; items: string[] }[];
 }
 
 export interface Footer {
@@ -96,7 +77,59 @@ export interface Contact {
     sending: string;
     send: string;
     success: string;
+    error: string;
   };
+}
+
+export interface StageCopy {
+  lab: string;
+  lift: string;
+  exit: string;
+  arrived: string;
+  turnLeft: string;
+  turnRight: string;
+  straight: string;
+  deployed: string;
+  blocked: string;
+  stageNotes: string[];
+  youBlocked: string;
+  agentsBlocked: string;
+  prReview: string;
+  reviewing: string;
+  finding: string;
+  fixed: string;
+  agentTasks: string[];
+  agentLog: string[];
+  agentRoles: string[];
+  merged: string;
+  tasksMerged: string;
+  throwCap: string;
+  capsThrown: string;
+  educationJokes: string[];
+}
+
+export interface Story {
+  navStory: string;
+  heroKicker: string;
+  tagline: string;
+  taglineAccent: string;
+  readStory: string;
+  scrollCue: string;
+  storyKicker: string;
+  storyTitle: string;
+  chapterLabel: string;
+  verbs: Record<string, string>;
+  figures: string[];
+  projectsKicker: string;
+  projectsHint: string;
+  skillsKicker: string;
+  voicesKicker: string;
+  educationKicker: string;
+  contactKicker: string;
+  openImage: string;
+  closeImage: string;
+  backToTop: string;
+  stage: StageCopy;
 }
 
 export interface Navigation {
@@ -130,6 +163,7 @@ export interface Theme {
 }
 
 export interface Hero {
+  summary: string;
   name: string;
   skills: string[];
   resumeButton: string;
@@ -149,6 +183,7 @@ export interface About {
 }
 
 export interface CareerHighlight {
+  organization: string;
   id?: string;
   date?: string;
   title: string;
@@ -173,4 +208,5 @@ export interface Translations {
   footer: Footer;
   skills: Skills;
   zoom: string;
+  story: Story;
 }

@@ -1,53 +1,37 @@
+import { profile, featuredProjects } from "@/content/portfolio";
 import { ThemeProvider } from "@/context/ThemeContext";
 import "@/styles/globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import { Inter, Londrina_Shadow, Saira_Stencil_One } from "next/font/google";
+import { Geist, Geist_Mono, Instrument_Serif } from "next/font/google";
 import { LanguageProvider } from "@/context/LanguageContext";
 import { Metadata, Viewport } from "next";
 
-const londrinaShadow = Londrina_Shadow({
-  weight: "400",
+const geist = Geist({
   subsets: ["latin"],
+  variable: "--font-sans",
+  display: "swap",
 });
 
-const sairaStencil = Saira_Stencil_One({
-  weight: "400",
+const geistMono = Geist_Mono({
   subsets: ["latin"],
+  variable: "--font-mono",
+  display: "swap",
 });
 
-const inter = Inter({
+const instrumentSerif = Instrument_Serif({
   weight: "400",
+  style: ["normal", "italic"],
   subsets: ["latin"],
+  variable: "--font-serif",
+  display: "swap",
 });
 
 export const metadata: Metadata = {
-  title: "Ricardo Morim | Backend Engineer",
+  title: "Ricardo Morim | AI Software Engineer · AI Security",
   description:
-    "Backend Engineer specialized in Spring Boot, system architecture, and high-performance applications. Published authentication library on Maven Central with production experience in Java, Node.js, and database optimization.",
-  keywords: [
-    "Ricardo Morim",
-    "Backend Engineer",
-    "Systems Architect",
-    "Spring Boot Developer",
-    "Java Developer",
-    "Database Optimization",
-    "API Development",
-    "Performance Optimization",
-    "Authentication Systems",
-    "System Architecture",
-    "PostgreSQL",
-    "Redis",
-    "Node.js",
-    "Maven Central",
-    "Production Systems",
-    "Software Engineering",
-    "OWASP Security",
-    "CI/CD",
-    "Docker",
-    "AWS",
-    "Portfolio",
-  ],
+    "AI Software Engineer at Critical Manufacturing, focused on AI engineering, AI security, agentic workflows and secure software development.",
+  keywords: ["Ricardo Morim", "AI Software Engineer", "AI Engineering", "AI Security", "AppSec", "Agentic Workflows", "Python", "FastAPI", "PyTorch", "Vulnerability Management", "CI/CD", "AWS", "Portfolio"],
   metadataBase: new URL("https://ricardoportfolio.vercel.app"),
   icons: {
     icon: [
@@ -68,9 +52,9 @@ export const metadata: Metadata = {
     type: "website",
     locale: "en_US",
     url: "https://ricardoportfolio.vercel.app/",
-    title: "Ricardo Morim | Backend Engineer",
+    title: "Ricardo Morim | AI Software Engineer · AI Security",
     description:
-      "Backend Engineer specialized in Spring Boot, system architecture, and high-performance applications with production experience.",
+      "AI Software Engineer at Critical Manufacturing, with experience in AI security, agents and SDLC automation.",
     siteName: "Ricardo Morim Portfolio",
     images: [
       {
@@ -83,9 +67,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Ricardo Morim | Backend Engineer",
+    title: "Ricardo Morim | AI Software Engineer · AI Security",
     description:
-      "Backend Engineer specialized in Spring Boot, system architecture, and high-performance applications",
+      "AI Software Engineer focused on AI engineering, AI security and software development automation",
     images: ["/icons/android-chrome-512x512.png"],
   },
   robots: {
@@ -101,8 +85,8 @@ export const viewport: Viewport = {
   userScalable: true,
   viewportFit: "cover",
   themeColor: [
-    { media: "(prefers-color-scheme: light)", color: "#ffffff" },
-    { media: "(prefers-color-scheme: dark)", color: "#000000" },
+    { media: "(prefers-color-scheme: light)", color: "#efebe3" },
+    { media: "(prefers-color-scheme: dark)", color: "#0a0b0d" },
   ],
 };
 export default function RootLayout({
@@ -113,190 +97,46 @@ export default function RootLayout({
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "Person",
-    name: "Ricardo Morim",
-    url: "https://ricardoportfolio.vercel.app",
-    jobTitle: "Backend Engineer",
-    description: "Backend Engineer specialized in Spring Boot, system architecture, and high-performance applications",
-    knowsAbout: [
-      "Backend Development",
-      "System Architecture", 
-      "Spring Boot",
-      "Java Programming",
-      "Database Optimization",
-      "API Development",
-      "Performance Optimization",
-      "Authentication Systems",
-      "PostgreSQL",
-      "Redis",
-      "Node.js",
-      "CI/CD",
-      "Docker",
-      "AWS"
-    ],
+    name: profile.name,
+    url: profile.contact.portfolio,
+    jobTitle: profile.title,
+    description: profile.summary,
+    knowsAbout: profile.expertise,
+    worksFor: { "@type": "Organization", name: profile.current_role.organization },
+    alumniOf: { "@type": "CollegeOrUniversity", name: "Instituto Superior de Engenharia do Porto" },
     hasCredential: [
-      {
-        "@type": "EducationalOccupationalCredential",
-        name: "CS50AI - Introduction to Artificial Intelligence",
-        credentialCategory: "certificate",
-        recognizedBy: {
-          "@type": "Organization", 
-          name: "Harvard University"
-        },
-        url: "https://certificates.cs50.io/3ea075ca-3cac-49e2-be29-281d46d5ba94.pdf"
-      },
-      {
-        "@type": "EducationalOccupationalCredential",
-        name: "CS50X - Introduction to Computer Science", 
-        credentialCategory: "certificate",
-        recognizedBy: {
-          "@type": "Organization",
-          name: "Harvard University"
-        },
-        url: "https://certificates.cs50.io/9a13ae2c-7f89-4ffe-a5c4-9e7e6bcadab2.pdf"
-      }
+      { "@type": "EducationalOccupationalCredential", name: "Licenciatura em Engenharia Informática", credentialCategory: "degree" },
+      { "@type": "EducationalOccupationalCredential", name: "AWS Certified Solutions Architect – Associate", credentialCategory: "certification" },
+      ...profile.education.filter((item) => "credential_url" in item).map((item) => ({
+        "@type": "EducationalOccupationalCredential", name: item.certification, credentialCategory: "course certificate", url: item.credential_url,
+      })),
     ],
-    alumniOf: {
-      "@type": "Organization",
-      name: "Harvard University",
-      description: "CS50 Computer Science and AI Certifications"
-    },
-    workLocation: {
-      "@type": "Place",
-      name: "Porto, Portugal"
-    },
-    sameAs: [
-      "https://github.com/RicardoMorim",
-      "https://www.linkedin.com/in/ricardo-morim-208368251/",
-    ],
-    mainEntityOfPage: {
-      "@type": "WebPage",
-      "@id": "https://ricardoportfolio.vercel.app"
-    },
-    additionalType: "https://schema.org/SoftwareApplication",
-    applicationCategory: "Portfolio Website",
-    operatingSystem: "Web Browser",
-    offers: {
-      "@type": "Offer",
-      description: "Backend Engineering Services",
-      availability: "https://schema.org/InStock"
-    }
+    sameAs: [profile.contact.github, profile.contact.linkedin],
   };
 
-  // Schema.org CreativeWork objects for projects
   const projectsJsonLd = {
     "@context": "https://schema.org",
     "@type": "ItemList",
-    name: "Backend Engineering Projects by Ricardo Morim",
-    description: "Production-ready backend projects demonstrating system architecture, performance optimization, and enterprise solutions",
-    itemListElement: [
-      {
+    name: "Selected projects by Ricardo Morim",
+    itemListElement: featuredProjects.map((project, index) => ({
+      "@type": "ListItem",
+      position: index + 1,
+      item: {
         "@type": "CreativeWork",
-        "@id": "https://ricardoportfolio.vercel.app/#auth-library",
-        name: "Production Authentication Library",
-        description: "Enterprise-grade Spring Boot authentication library published to Maven Central with zero-code integration, CSRF protection, and 12ms overhead",
-        creator: {
-          "@type": "Person",
-          name: "Ricardo Morim"
-        },
-        programmingLanguage: ["Java", "Spring Boot"],
-        about: ["Authentication", "Security", "Performance Optimization", "Open Source"],
-        url: "https://github.com/RicardoMorim/auth-Provider",
-        additionalType: "SoftwareSourceCode",
-        codeRepository: "https://github.com/RicardoMorim/auth-Provider",
-        keywords: "Spring Boot, Authentication, Security, Maven Central, OWASP, JWT, Redis",
-        applicationCategory: "Library",
-        operatingSystem: "Java Virtual Machine"
+        name: project.name,
+        description: project.description,
+        creator: { "@type": "Person", name: profile.name },
+        keywords: project.technologies.join(", "),
+        ...(project.repository ? { url: project.repository } : project.demo_url ? { url: project.demo_url } : {}),
       },
-      {
-        "@type": "CreativeWork", 
-        "@id": "https://ricardoportfolio.vercel.app/#resume-optimizer",
-        name: "AI Resume Optimizer",
-        description: "AI-powered resume optimization using NVIDIA's Llama-3.1 Nemotron Ultra with advanced prompt engineering and token optimization",
-        creator: {
-          "@type": "Person",
-          name: "Ricardo Morim"
-        },
-        programmingLanguage: ["TypeScript", "Node.js"],
-        about: ["Artificial Intelligence", "LLM Integration", "Prompt Engineering", "Resume Optimization"],
-        url: "https://jobresumebuilder.vercel.app",
-        additionalType: "WebApplication",
-        keywords: "AI, LLM, NVIDIA, Prompt Engineering, Resume, Optimization",
-        applicationCategory: "Productivity"
-      },
-      {
-        "@type": "CreativeWork",
-        "@id": "https://ricardoportfolio.vercel.app/#stock-platform", 
-        name: "Real-time Stock Platform",
-        description: "High-performance stock portfolio tracker with Redis caching reducing load times from 20+ seconds to sub-second responses",
-        creator: {
-          "@type": "Person", 
-          name: "Ricardo Morim"
-        },
-        programmingLanguage: ["Node.js", "JavaScript"],
-        about: ["Performance Optimization", "Real-time Data", "Financial APIs", "Caching"],
-        url: "https://stockinformation.vercel.app",
-        codeRepository: "https://github.com/RicardoMorim/Stock_Information",
-        additionalType: "WebApplication",
-        keywords: "Redis, Performance, Financial Data, Real-time, API Integration",
-        applicationCategory: "Finance"
-      },
-      {
-        "@type": "CreativeWork",
-        "@id": "https://ricardoportfolio.vercel.app/#match-dinner",
-        name: "Match Dinner Mondays",
-        description: "Performance-optimized dating platform with 95% image compression and first-page Google SEO rankings",
-        creator: {
-          "@type": "Person",
-          name: "Ricardo Morim"
-        },
-        programmingLanguage: ["React", "JavaScript"],
-        about: ["Performance Optimization", "SEO", "Image Compression", "PWA"],
-        url: "https://matchdinnermondays.pt",
-        additionalType: "WebApplication", 
-        keywords: "Performance, SEO, Image Optimization, PWA, Client Project",
-        applicationCategory: "Social"
-      },
-      {
-        "@type": "CreativeWork",
-        "@id": "https://ricardoportfolio.vercel.app/#blog-platform",
-        name: "Real-time Blog Platform", 
-        description: "Full-stack blog platform with real-time updates, authentication, and complete CRUD operations",
-        creator: {
-          "@type": "Person",
-          name: "Ricardo Morim"
-        },
-        programmingLanguage: ["React", "JavaScript"],
-        about: ["Real-time Systems", "Authentication", "CRUD Operations", "Full-stack Development"],
-        url: "https://blogricardo.vercel.app",
-        codeRepository: "https://github.com/RicardoMorim/Blog",
-        additionalType: "WebApplication",
-        keywords: "Real-time, Firebase, Authentication, Blog, CRUD",
-        applicationCategory: "Publishing"
-      },
-      {
-        "@type": "Person",
-        "name": "Ricardo Morim",
-        "url": "https://ricardoportfolio.vercel.app",
-        "hasPart": {
-          "@type": "WebAPI",
-          "name": "Ricardo Morim Portfolio API",
-          "url": "https://ricardoportfolio.vercel.app/well-known/portfolio"
-        }
-      }
-    ]
+    })),
   };
 
   return (
-    <html lang="en">
+    <html lang="en" data-theme="dark" suppressHydrationWarning className={`${geist.variable} ${geistMono.variable} ${instrumentSerif.variable}`}>
       <head>
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-        />
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(projectsJsonLd) }}
-        />
+        <script type="application/ld+json">{JSON.stringify(jsonLd).replace(/</g, "\\u003c")}</script>
+        <script type="application/ld+json">{JSON.stringify(projectsJsonLd).replace(/</g, "\\u003c")}</script>
         <link
           rel="apple-touch-icon"
           sizes="180x180"
@@ -329,15 +169,14 @@ export default function RootLayout({
         <link rel="manifest" href="/icons/site.webmanifest" />
         <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5" />
         <meta name="msapplication-TileColor" content="#da532c" />
-        <meta name="theme-color" content="#ffffff" />
+        
         <link rel="canonical" href="https://ricardoportfolio.vercel.app" />
       </head>
       <body>
         <ThemeProvider>
           <LanguageProvider>
-            <div
-              className={`app-container  ${sairaStencil.className} ${londrinaShadow.className}, ${inter.className} `}
-            >
+            <a href="#hero" className="skip-link">Skip to content</a>
+            <div className="app-container">
               <Navbar />
               {children}
               <Footer />

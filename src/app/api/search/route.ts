@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
+import { featuredProjects, workExperience, skills, focusAreas } from '@/content/portfolio';
 
 // Define proper types for the searchable data
 interface ProjectItem {
@@ -65,70 +66,25 @@ function isExperienceItem(item: SearchableItem): item is ExperienceItem {
 
 // Searchable content aggregated from all API endpoints
 const searchableData = {
-  skills: [
-    'Java', 'Spring Boot', 'Node.js', 'JavaScript', 'TypeScript', 'Python',
-    'PostgreSQL', 'MongoDB', 'Redis', 'Docker', 'Kubernetes', 'AWS', 'Azure',
-    'Git', 'GitHub Actions', 'Jenkins', 'Linux', 'REST API', 'GraphQL',
-    'Authentication', 'Security', 'Performance Optimization', 'System Architecture',
-    'Microservices', 'Database Design', 'CI/CD', 'Test-Driven Development',
-    'Agile Development', 'SOLID Principles', 'Design Patterns'
-  ],
-  projects: [
-    {
-      name: 'Production Authentication Library',
-      keywords: ['Spring Boot', 'Authentication', 'Security', 'Maven Central', 'OWASP', 'JWT', 'Redis', 'Performance', 'Library', 'Open Source'],
-      description: 'Enterprise-grade Spring Boot authentication library with zero-code integration and only 12ms overhead for the auth process.\n \n• CSRF protection and Redis-backed rate limiting\n• JWT security with OWASP compliance\n• Benchmarked with 100k users: 22% query improvement, 73x faster pagination\n• Full CI/CD with automated testing and security scanning',
-      category: 'Backend Library'
-    },
-    {
-      name: 'AI Resume Optimizer',
-      keywords: ['AI', 'LLM', 'Prompt Engineering', 'TypeScript', 'Node.js', 'Optimization'],
-      description: 'AI-powered resume optimization using NVIDIA Llama-3.1 Nemotron Ultra with advanced prompt engineering and error handling for reliable feedback.\n\n• Consistent JSON responses with structured scoring\n• Token consumption optimization\n• 4 comprehensive evaluation criteria\n• MongoDB backend for user data persistence',
-      category: 'AI Application'
-    },
-    {
-      name: 'Real-time Stock Platform', 
-      keywords: ['Performance', 'Redis', 'Financial Data', 'Real-time', 'API Integration', 'Caching', 'Node.js'],
-      description: 'High-performance stock portfolio tracker with Redis caching reducing load times to sub-second responses and parallel API processing across multiple financial data providers.\n\n• Intelligent fallback strategies for data consistency\n• Real-time portfolio tracking and analytics\n• Optimized for high-frequency data updates',
-      category: 'Financial Platform'
-    },
-    {
-      name: 'Real-time Blog Platform',
-      keywords: ['Real-time', 'Firebase', 'Authentication', 'Blog', 'CRUD', 'React'],
-      description: 'Full-stack blog platform with real-time updates, authentication, and complete CRUD operations for content management.',
-      category: 'Full-stack Platform'
-    },
-    {
-      name: 'Ristorante Ordering System',
-      keywords: ['Node.js', 'Express', 'MongoDB', 'Real-time', 'WebSockets', 'Restaurant', 'Ordering'],
-      description: 'Real-time restaurant ordering system with live updates and comprehensive comment system. ',
-      category: 'Restaurant System'
-    }
-  ] as ProjectItem[],
-  professional_experience: [
-    {
-      role: 'Research Intern',
-      company: 'INESC TEC',
-      keywords: ["Unity", "AR", "Augmented Reality", "Python", "Backend", "Research"],
-      achievements: ["Full AR system created in Unity in less than 4 weeks", "TTS integration"]
-    },
-    {
-      role: 'Freelance Full Stack Developer',
-      company: 'Match Dinner Mondays',
-      keywords: ['Performance', 'SEO', 'Image Optimization', 'PWA', 'Client Project', 'React'],
-      achievements: ['95% image compression with WebP', 'First-page Google SEO rankings', 'PWA implementation for mobile users']
-    }
-  ] as ExperienceItem[],
-  focus_areas: [
-    'Backend Engineering', 'System Architecture', 'Performance Optimization',
-    'Authentication Systems', 'Database Design', 'API Development',
-    'Spring Boot Development', 'High-Performance Applications'
-  ]
+  skills: skills.categories.flatMap((category) => category.items),
+  projects: featuredProjects.map((project) => ({
+    name: project.name,
+    keywords: project.technologies,
+    description: [project.description, ...project.technical_highlights].join(" "),
+    category: project.type ?? "Software project",
+  })) satisfies ProjectItem[],
+  professional_experience: workExperience.map((item) => ({
+    role: item.position,
+    company: item.organization,
+    keywords: [item.position, item.organization, item.description, ...item.key_achievements],
+    achievements: [item.description, ...item.key_achievements],
+  })) satisfies ExperienceItem[],
+  focus_areas: focusAreas,
 };
 
 // Function to calculate relevance score based on keyword matches
 function calculateRelevanceScore(query: string, item: SearchableItem): number {
-  const queryTerms = query.toLowerCase().split(/\s+/).filter(term => term.length > 2);
+  const queryTerms = query.toLowerCase().split(/\s+/).filter(Boolean);
   let score = 0;
   const maxScore = queryTerms.length * 10; // Base scoring system
 
@@ -178,10 +134,10 @@ function fuzzyMatch(query: string, target: string): boolean {
 
 export async function GET(request: NextRequest) {
   const { searchParams } = new URL(request.url);
-  const query = searchParams.get('q') || searchParams.get('query') || '';
+  const query = (searchParams.get('q') || searchParams.get('query') || '').trim();
   const category = searchParams.get('category') || 'all';
-  const limit = parseInt(searchParams.get('limit') || '10');
-  const minScore = parseFloat(searchParams.get('min_score') || '0');
+  const limit = Number(searchParams.get('limit') ?? '10');
+  const minScore = Number(searchParams.get('min_score') ?? '0');
 
   // CORS headers
   const headers = {
@@ -196,11 +152,11 @@ export async function GET(request: NextRequest) {
     return new NextResponse(null, { status: 200, headers });
   }
 
-  if (!query) {
+  if (!query || !Number.isInteger(limit) || limit < 1 || limit > 50 || !Number.isFinite(minScore) || minScore < 0 || minScore > 100 || !['all', 'skills', 'projects', 'experience', 'focus'].includes(category)) {
     return NextResponse.json(
       { 
-        error: 'Query parameter required',
-        usage: 'GET /api/search?q=spring%20boot&category=projects&limit=5',
+        error: 'Provide a non-empty query, a valid category, limit (1–50) and min_score (0–100)',
+        usage: 'GET /api/search?q=AI%20Security&category=projects&limit=5',
         categories: ['all', 'skills', 'projects', 'experience', 'focus']
       },
       { status: 400, headers }
@@ -308,9 +264,9 @@ export async function GET(request: NextRequest) {
     // Suggest popular terms
     if (suggestions.length === 0) {
       suggestions.push(
-        'Try "Spring Boot" for backend projects',
-        'Try "Performance" for optimization work',
-        'Try "Authentication" for security projects'
+        'Try "AI Security" for security work',
+        'Try "Agentic" for AI workflows',
+        'Try "CI/CD" for development automation'
       );
     }
     

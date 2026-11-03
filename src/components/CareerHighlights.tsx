@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 import { useTranslation } from "@/context/LanguageContext";
 
 export default function CareerHighlights() {
-  const { getCareerHighlights } = useTranslation();
+  const { getCareerHighlights, getHero } = useTranslation();
   const data = getCareerHighlights();
 
   return (
@@ -18,6 +18,7 @@ export default function CareerHighlights() {
           {data.title}
         </motion.h2>
 
+        <p className="mb-8 leading-relaxed">{getHero().summary}</p>
         <div className="career-grid">
           {data.items.map((item, idx) => (
             <motion.div

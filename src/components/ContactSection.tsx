@@ -2,125 +2,98 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Contact } from "@/language/config"
+import { useTranslation } from '@/context/LanguageContext';
+import { burst } from './story/stage/store';
+
+type Status = 'idle' | 'sending' | 'sent' | 'failed';
+type Field = 'name' | 'email' | 'subject' | 'message';
+
+const EMPTY_FORM: Record<Field, string> = { name: '', email: '', subject: '', message: '' };
+const EMAIL = 'ricardomorim05@gmail.com';
 
 export default function ContactSection(contact: Contact) {
-	const [formData, setFormData] = useState({
-		name: '',
-		email: '',
-		subject: '',
-		message: ''
-	});
+	const { getStory } = useTranslation();
+	const [formData, setFormData] = useState(EMPTY_FORM);
+	const [status, setStatus] = useState<Status>('idle');
 
-	const [loading, setLoading] = useState(false);
-	const [submitted, setSubmitted] = useState(false);
+	const update = (field: Field) => (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) =>
+		setFormData((prev) => ({ ...prev, [field]: e.target.value }));
 
 	const handleSubmit = async (e: React.FormEvent) => {
 		e.preventDefault();
-		setLoading(true);
-
+		setStatus('sending');
 		try {
 			const res = await fetch('/api/contact', {
 				method: 'POST',
-				headers: {
-					'Content-Type': 'application/json',
-				},
+				headers: { 'Content-Type': 'application/json' },
 				body: JSON.stringify(formData),
 			});
-
-			if (res.ok) {
-				setSubmitted(true);
-				setFormData({ name: '', email: '', subject: '', message: '' });
-			}
+			if (!res.ok) throw new Error(`Contact request failed with ${res.status}`);
+			setStatus('sent');
+			burst();
+			setFormData(EMPTY_FORM);
 		} catch (err) {
-			console.error('Error:', err);
+			console.error('Contact form error:', err);
+			setStatus('failed');
 		}
-
-		setLoading(false);
 	};
 
+	const fields: { id: Field; label: string; type: string }[] = [
+		{ id: 'name', label: contact.form.name, type: 'text' },
+		{ id: 'email', label: contact.form.email, type: 'email' },
+		{ id: 'subject', label: contact.form.subject, type: 'text' },
+	];
+
 	return (
-		<section className="contact-section" id="contact">
-			<div className="contact-container">
-				<motion.h2
-					initial={{ opacity: 0, y: 20 }}
+		<section className="section contact" id="contact" data-scene="9" aria-labelledby="contact-title">
+			<div className="shell contact-grid">
+				<motion.div
+					initial={{ opacity: 0, y: 30 }}
 					whileInView={{ opacity: 1, y: 0 }}
-					className="contact-title"
+					viewport={{ once: true }}
+					transition={{ duration: 0.8 }}
 				>
-					{contact.subtitle}
-				</motion.h2>
+					<p className="kicker"><span className="kicker-dot" /> {getStory().contactKicker}</p>
+					<h2 id="contact-title" className="contact-title">{contact.subtitle}</h2>
+					<p className="section-lead">{contact.description}</p>
+					<dl className="contact-details">
+						<div>
+							<dt>{contact.email}</dt>
+							<dd><a href={`mailto:${EMAIL}`} className="contact-email">{EMAIL}</a></dd>
+						</div>
+						<div>
+							<dt>{contact.location}</dt>
+							<dd>Porto, Portugal</dd>
+						</div>
+					</dl>
+				</motion.div>
 
-				<div className="contact-content">
-					<motion.div
-						className="contact-info"
-						initial={{ opacity: 0, x: -50 }}
-						whileInView={{ opacity: 1, x: 0 }}
-					>
-						<p>{contact.description}</p>
-						<div className="contact-details">
-							<div className="contact-item">
-								<span>{contact.email}:</span>
-								<a href="mailto:ricardomorim05@gmail.com">ricardomorim05@gmail.com</a>
-							</div>
-							<div className="contact-item">
-								<span>{contact.location}:</span>
-								<p>Porto, Portugal</p>
-							</div>
-						</div>
-					</motion.div>
-
-					<motion.form
-						className="contact-form"
-						onSubmit={handleSubmit}
-						initial={{ opacity: 0, x: 50 }}
-						whileInView={{ opacity: 1, x: 0 }}
-					>
-						<div className="form-group">
+				<form className="contact-form" onSubmit={handleSubmit}>
+					{fields.map((field) => (
+						<label key={field.id} className="field">
+							<span>{field.label}</span>
 							<input
-								type="text"
-								placeholder={contact.form.name}
+								type={field.type}
+								name={field.id}
+								autoComplete={field.id === 'subject' ? 'off' : field.id}
 								required
-								value={formData.name}
-								onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+								value={formData[field.id]}
+								onChange={update(field.id)}
 							/>
-						</div>
-						<div className="form-group">
-							<input
-								type="email"
-								placeholder={contact.form.email}
-								required
-								value={formData.email}
-								onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-							/>
-						</div>
-						<div className="form-group">
-							<input
-								type="text"
-								placeholder={contact.form.subject}
-								required
-								value={formData.subject}
-								onChange={(e) => setFormData({ ...formData, subject: e.target.value })}
-							/>
-						</div>
-						<div className="form-group">
-							<textarea
-								placeholder={contact.form.message}
-								required
-								value={formData.message}
-								onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-							/>
-						</div>
-						<button
-							type="submit"
-							className="submit-btn"
-							disabled={loading}
-						>
-							{loading ? contact.form.sending : contact.form.send}
-						</button>
-						{submitted && (
-							<p className="success-message">{contact.form.success}</p>
-						)}
-					</motion.form>
-				</div>
+						</label>
+					))}
+					<label className="field">
+						<span>{contact.form.message}</span>
+						<textarea name="message" rows={5} required value={formData.message} onChange={update('message')} />
+					</label>
+					<button type="submit" className="btn btn-primary" disabled={status === 'sending'}>
+						{status === 'sending' ? contact.form.sending : contact.form.send} <span aria-hidden="true">→</span>
+					</button>
+					<p className="form-status" role="status" aria-live="polite">
+						{status === 'sent' && <span className="is-ok">{contact.form.success}</span>}
+						{status === 'failed' && <span className="is-error">{contact.form.error}</span>}
+					</p>
+				</form>
 			</div>
 		</section>
 	);

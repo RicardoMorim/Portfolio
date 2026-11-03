@@ -1,174 +1,183 @@
 import { Translations, Project, Milestone, Skills } from "@/language/config";
 
 const projects: Project = {
-  title: "Projects",
-  items: [
+  "title": "Selected projects",
+  "items": [
     {
-      description: "Production Auth Library",
-      image: "/core_class_diagram_Auth.png",
-      longDescription: "Published Spring Boot authentication library on Maven Central with zero-code integration.\n\n• CSRF protection and Redis-backed rate limiting\n• JWT security with OWASP compliance\n• Only 12ms request overhead\n• Benchmarked with 100k users:\n  - 22% query improvement\n  - 73x faster pagination\n• Full CI/CD with automated testing",
-      tech: ["Java", "Spring Boot", "PostgreSQL", "Redis", "JWT", "GitHub Actions", "Maven"],
-      badge: "Open Source Library",
-      links: {
-        github: "GitHub →",
-        githubUrl: "https://github.com/RicardoMorim/auth-Provider/",
-        diagram: "Architecture →",
-        diagramUrl: "https://github.com/RicardoMorim/Auth-Provider/blob/main/docs/class-diagram/class%20diagram.svg"
+      "id": "agentic-assurance",
+      "description": "Agentic Assurance",
+      "badge": "Personal project · AI Security",
+      "longDescription": "Harness for agentic software engineering with executable security contracts.\n\n• Protected policies and integrity verification\n• Static analysis, test evidence and HTTP runtime checks\n• Model review as a complementary signal alongside gates\n• Profiles for Next.js, React/Vite, Spring Boot and HTTP APIs",
+      "tech": [
+        "Python",
+        "AppSec",
+        "CI/CD",
+        "LLM Review"
+      ],
+      "links": {
+        "closed": "Personal project"
       }
     },
     {
-      description: "Chess AI Engine",
-      image: "/ChessAI.jpg",
-      longDescription: "Reinforcement Learning pipeline built from scratch using Monte Carlo Tree Search (MCTS) and dual-head ResNets.\n\n• Architected a custom RL pipeline using MCTS and PyTorch\n• Bootstrapped policy networks using Knowledge Distillation from Stockfish\n• Implemented dynamic batch sizing and mixed-precision (AMP) for GPU efficiency\n• Visualized real-time search tree expansion and node evaluation\n• Achieved competitive play vs standard engines",
-      tech: ["Python", "PyTorch", "Reinforcement Learning", "MCTS", "Cython"],
-      badge: "Deep Learning",
-      links: {
-        github: "GitHub →",
-        githubUrl: "https://github.com/RicardoMorim/Chess",
+      "id": "shared-ci",
+      "description": "Shared CI/CD — InnovatWeb SDLC",
+      "badge": "Professional work · Private repository",
+      "longDescription": "Shared pipeline platform used across all organisation repositories, developed and maintained by me as the main developer.\n\n• Automated tests and builds\n• Security analysis and DAST\n• Release management and automated deployment\n• A common SDLC maintained across applications",
+      "tech": [
+        "CI/CD",
+        "AppSec",
+        "DAST",
+        "Release Automation"
+      ],
+      "links": {
+        "closed": "Private repository"
       }
     },
     {
-      description: "AI Resume Optimizer",
-      image: "/resume_builder.png",
-      longDescription: "AI-powered resume optimization using NVIDIA's Llama-3.1 Nemotron Ultra (253B parameters).\n\n• Engineered prompt optimization for consistent JSON responses\n• Reduced token consumption with structured scoring\n• 4 comprehensive evaluation criteria\n• Advanced error handling for reliable AI feedback\n• Optimized for professional resume enhancement",
-      tech: ["Next.js", "TypeScript", "Node.js", "MongoDB", "LLM APIs", "Prompt Engineering"],
-      badge: "AI Integration",
-      links: {
-        demo: "Live Demo →",
-        demoUrl: "https://jobresumebuilder.vercel.app",
-        closed: "Backend Architecture Private",
-      },
+      "id": "chess-ai",
+      "description": "Chess AI Engine",
+      "image": "/ChessAI.jpg",
+      "badge": "Deep Learning",
+      "longDescription": "Chess reinforcement learning project using Monte Carlo Tree Search and dual-head residual networks.\n\n• PyTorch training pipeline\n• Knowledge distillation from Stockfish\n• Batch processing and mixed precision\n• Search tree visualisation and position evaluation",
+      "tech": [
+        "Python",
+        "PyTorch",
+        "Reinforcement Learning",
+        "MCTS",
+        "Cython"
+      ],
+      "links": {
+        "github": "GitHub →",
+        "githubUrl": "https://github.com/RicardoMorim/Chess"
+      }
     },
     {
-      image: "/stockinformation.jpeg",
-      description: "Real-time Stock Platform",
-      longDescription: "High-performance stock portfolio tracker with advanced caching and API optimization.\n\n• Redis caching: 20+ seconds → sub-second load times\n• Parallel API processing across 4 financial data providers\n• Intelligent fallback strategies for data consistency\n• Real-time portfolio tracking and analytics\n• Optimized for high-frequency data updates",
-      tech: ["Next.js", "Node.js", "MongoDB", "Redis", "Financial APIs", "Caching"],
-      links: {
-        demo: "Live Demo →",
-        github: "GitHub →",
-        demoUrl: "https://stockinformation.vercel.app/",
-        githubUrl: "https://github.com/RicardoMorim/Stock_Information",
-      },
+      "id": "auth-library",
+      "description": "Authentication Library",
+      "image": "/core_class_diagram_Auth.png",
+      "badge": "Open Source Library",
+      "longDescription": "Spring Boot authentication library published on Maven Central.\n\n• JWT authentication and CSRF protection\n• Redis-backed rate limiting\n• PostgreSQL integration\n• CI/CD with automated tests and security analysis",
+      "tech": [
+        "Java",
+        "Spring Boot",
+        "PostgreSQL",
+        "Redis",
+        "JWT",
+        "GitHub Actions",
+        "Maven"
+      ],
+      "links": {
+        "github": "GitHub →",
+        "githubUrl": "https://github.com/RicardoMorim/auth-Provider/",
+        "diagram": "Architecture →",
+        "diagramUrl": "https://github.com/RicardoMorim/Auth-Provider/blob/main/docs/class-diagram/class%20diagram.svg"
+      }
     },
     {
-      image: "/matchdinner.jpeg",
-      description: "Match Dinner Mondays",
-      badge: "Professional Work",
-      longDescription: "Performance-optimized dating platform with advanced optimization techniques.\n\n• WebP compression: 3-5MB → ~200KB images\n• Lazy loading for improved mobile experience\n• SEO strategy achieving first-page Google rankings\n• PWA functionality for enhanced user engagement\n• Direct client collaboration with iterative development",
-      tech: ["React", "Firebase", "Performance Optimization", "SEO", "PWA"],
-      links: {
-        demo: "Live Demo →",
-        closed: "Professional Project",
-        demoUrl: "https://matchdinnermondays.pt",
-      },
-    },
-    {
-      image: "/blog.jpeg",
-      description: "Real-time Blog Platform",
-      longDescription: "Full-stack blog platform with comprehensive real-time features.\n\n• Real-time updates and live content synchronization\n• User authentication and authorization system\n• Complete CRUD operations for content management\n• Firebase backend services integration\n• Responsive design for all devices",
-      tech: ["React", "Firebase", "Real-time DB", "Authentication"],
-      links: {
-        demo: "Live Demo →",
-        github: "GitHub →",
-        demoUrl: "https://blogricardo.vercel.app",
-        githubUrl: "https://github.com/RicardoMorim/Blog",
-      },
+      "id": "resume-ai-optimizer",
+      "description": "AI Resume Optimizer",
+      "image": "/resume_builder.png",
+      "badge": "LLM Integration",
+      "longDescription": "Resume optimisation application integrating a language model.\n\n• Prompt engineering for structured JSON responses\n• Evaluation across four criteria\n• Token usage management\n• Error handling for model integration",
+      "tech": [
+        "Next.js",
+        "TypeScript",
+        "Node.js",
+        "MongoDB",
+        "LLM APIs",
+        "Prompt Engineering"
+      ],
+      "links": {
+        "demo": "View application →",
+        "demoUrl": "https://jobresumebuilder.vercel.app",
+        "closed": "Private backend"
+      }
     }
-  ],
+  ]
 };
 
 const milestones: Milestone[] = [
   {
-    date: "Present",
-    title: "Software Engineering Student",
-    description: "Focused on backend systems, cloud architecture, and building scalable applications.",
+    "date": "2026–present",
+    "title": "Master’s in Artificial Intelligence Engineering",
+    "description": "Instituto Superior de Engenharia do Porto (ISEP)."
   },
   {
-    date: "2026",
-    title: "Software Engineering Internship at Celfocus",
-    description:
-      "Internship focusing on backend services, cloud migrations, and scalable API design. Contributed to service improvements and automation.",
+    "date": "2023–2026",
+    "title": "BSc in Informatics Engineering",
+    "description": "Instituto Superior de Engenharia do Porto (ISEP)."
   },
   {
-    date: "2026",
-    title: "AWS Solutions Architect – Associate (SAA)",
-    description:
-      "AWS SAA certification covering cloud architecture, core AWS services, and best practices for scalable backend systems.",
+    "date": "Completed",
+    "title": "AWS Certified Solutions Architect – Associate",
+    "description": "Certification in designing solutions on AWS."
   },
   {
-    date: "2025",
-    title: "Software Engineering Internship at INESC TEC",
-    description: "Developed AR indoor navigation Android prototype with extensible Python backend architecture. Delivered working MVP in 4 weeks with voice guidance and multi-floor navigation capabilities.",
-    link: "INESC TEC →",
-    url: "https://www.inesctec.pt/pt",
+    "date": "2023/2024",
+    "title": "CS50AI — Introduction to Artificial Intelligence",
+    "description": "Additional training in AI, search, machine learning and neural networks.",
+    "link": "View certificate →",
+    "url": "https://certificates.cs50.io/3ea075ca-3cac-49e2-be29-281d46d5ba94.pdf?size=letter"
   },
   {
-    date: "2025",
-    title: "Production Library Published",
-    description: "Published Spring Boot authentication library to Maven Central with comprehensive CI/CD pipeline, automated testing, and security scanning.",
-  },
-  {
-    date: "2024",
-    title: "Freelancing Project with Performance Optimization",
-    description: "Created and Optimized Match Dinner Mondays platform, reducing image sizes by 95% and achieving sub-second load times through advanced compression techniques.",
-  },
-  {
-    date: "2023/2024",
-    title: "CS50AI Certificate",
-    description: "Completed Harvard's AI course, focusing on machine learning algorithms and AI system architecture.",
-    link: "View Certificate →",
-    url: "https://certificates.cs50.io/3ea075ca-3cac-49e2-be29-281d46d5ba94.pdf?size=letter",
-  },
-  {
-    date: "2023",
-    title: "Backend Architecture Focus",
-    description: "Transitioned focus to backend systems, API design, and database optimization through hands-on projects.",
-  },
-  {
-    date: "2021",
-    title: "CS50X Certificate",
-    description: "Completed Harvard's Introduction to Computer Science, establishing strong foundation in algorithms and data structures.",
-    link: "View Certificate →",
-    url: "https://certificates.cs50.io/9a13ae2c-7f89-4ffe-a5c4-9e7e6bcadab2.pdf?size=letter",
-  },
-  {
-    date: "2018",
-    title: "Programming Journey Begins",
-    description: "Started with system-level programming, inspired by performance-critical applications.",
-  },
+    "date": "2021",
+    "title": "CS50x — Introduction to Computer Science",
+    "description": "Additional training in algorithms, data structures and programming fundamentals.",
+    "link": "View certificate →",
+    "url": "https://certificates.cs50.io/9a13ae2c-7f89-4ffe-a5c4-9e7e6bcadab2.pdf?size=letter"
+  }
 ];
 
 const skills: Skills = {
-  title: "Technical Skills",
-  categories: {
-    backend: "Backend & APIs",
-    cloud_DevOps: "Cloud & DevOps",
-    database: "Database & Caching",
-  },
-  backend: {
-    springBoot: "Spring Boot",
-    nodeJs: "Node.js",
-    java: "Java",
-    dotNet: "ASP.NET",
-  },
-  cloud_DevOps: {
-    docker: "Docker",
-    aws: "AWS",
-    ci_cd: "GitHub Actions",
-  },
-  database: {
-    postgreSQL: "PostgreSQL",
-    mongoDB: "MongoDB",
-    redis: "Redis",
-  },
+  "title": "Skills",
+  "categories": [
+    {
+      "title": "AI Engineering",
+      "items": [
+        "Python",
+        "PyTorch",
+        "FastAPI",
+        "LLM Integration",
+        "Local Models",
+        "Agentic Workflows"
+      ]
+    },
+    {
+      "title": "AI Security & AppSec",
+      "items": [
+        "AI Security",
+        "Secure Development Skills",
+        "AI PR Review",
+        "Vulnerability Management",
+        "DAST",
+        "Security Pipelines",
+        "LiteLLM"
+      ]
+    },
+    {
+      "title": "Software, Cloud & Automation",
+      "items": [
+        "React",
+        "TypeScript",
+        "Java",
+        "Spring Boot",
+        "AWS",
+        "Terraform",
+        "Docker",
+        "CI/CD",
+        "PostgreSQL",
+        "Redis"
+      ]
+    }
+  ]
 };
 
 export const en: Translations = {
   title: "My Portfolio",
   hero: {
     name: "RICARDO",
-    skills: ["Backend Engineer", "Systems Architect"],
+    skills: ["AI Software Engineer", "AI Security"],
+    summary: "I build AI systems, agents and automations, integrating security throughout the software development lifecycle. Currently at Critical Manufacturing, in the R&D Platform Engineering team.",
     resumeButton: "Resume",
     resume_url: "resume.pdf",
     socials: [
@@ -180,15 +189,15 @@ export const en: Translations = {
     ],
   },
   about: {
-    title: "My Programming Journey",
+    title: "Education & certifications",
     milestones: {
-      title: "Key Milestones",
+      title: "Academic background & further learning",
       items: milestones,
     },
   },
   recommendations: {
     title: "Recommendations",
-    subtitle: "Mentor testimonial from my latest internship",
+    subtitle: "Testimonial from my INESC TEC internship mentor",
     quote:
       "My overall assessment is very positive: he is a young engineer with excellent potential, autonomy, and technical maturity above the average for his level, ready to join international teams and demanding environments.",
     author: {
@@ -204,28 +213,48 @@ export const en: Translations = {
     },
   },
   careerHighlights: {
-    title: "Career Highlights",
-    items: [
-      {
-        id: "celfocus-2026",
-        date: "2026",
-        title: "Software Engineering Internship at Celfocus",
-        description:
-          "Internship focusing on backend services, cloud migrations, and scalable API design. Contributed to service improvements and automation.",
-        bullets: [
-          "Contributed to backend feature development and automation",
-          "Supported cloud migration and reliability improvements",
-        ],
-      },
-      {
-        id: "aws-saa-2026",
-        date: "2026",
-        title: "AWS Solutions Architect – Associate (SAA)",
-        description:
-          "AWS SAA certification covering cloud architecture, core AWS services, and best practices for scalable backend systems.",
-      },
-    ],
-  },
+  "title": "Professional experience",
+  "items": [
+    {
+      "id": "critical-manufacturing-2026",
+      "organization": "Critical Manufacturing",
+      "date": "November 2026 — present",
+      "title": "Critical Manufacturing · AI Software Engineer",
+      "description": "Member of the Platform Engineering team within Research & Development."
+    },
+    {
+      "id": "celfocus-2026",
+      "organization": "Celfocus",
+      "date": "February — October 2026",
+      "title": "Celfocus · Application Security Analyst",
+      "description": "Primary for AI Security and Vulnerability Management: main point of contact with AppSec leadership, coordinating members and tasks across both areas.",
+      "bullets": [
+        "Evaluated and adopted local models on an internal server; built an automated pull request reviewer and the runners to execute it.",
+        "Created secure development skills and an agent for DAST and CTFs; configured fallback rules and automated skill deployment in a LiteLLM integration.",
+        "Adapted an agentic development loop to integrate security from planning through QA, including the creation of security pipelines.",
+        "Built a vulnerability management platform from scratch in React and Python/FastAPI: SLA tracking, observability, emails, tickets and monthly reports. Report generation went from several hours to under one hour.",
+        "Automated repetitive tasks and implemented versioning and automated deployment for the team’s AWS Lambda functions."
+      ]
+    },
+    {
+      "id": "innovatweb",
+      "organization": "InnovatWeb",
+      "title": "InnovatWeb · Main developer",
+      "description": "Main developer of the organisation’s applications and shared CI/CD platform.",
+      "bullets": [
+        "Developed and maintain the shared SDLC: tests, builds, security analysis, DAST, releases and automated deployment across all organisation repositories.",
+        "Developing applications for business management and engineering preparation in construction and precast manufacturing, alongside AWS infrastructure work in Terraform."
+      ]
+    },
+    {
+      "id": "inesc-tec-2025",
+      "organization": "INESC TEC",
+      "date": "2025",
+      "title": "INESC TEC · Software Engineering Internship",
+      "description": "Developed an Android prototype for augmented reality indoor navigation, with a Python backend, voice guidance and navigation between floors."
+    }
+  ]
+},
   projects: projects,
   skills,
   contact: {
@@ -243,20 +272,21 @@ export const en: Translations = {
       sending: "Sending...",
       send: "Send Message",
       success: "Message sent successfully!",
+      error: "Something went wrong. Please try again or email me directly.",
     },
   },
   footer: {
     brand: {
       name: "Ricardo Morim",
-      role: "Backend Engineer",
+      role: "AI Software Engineer · AI Security",
       description:
-        "Backend Engineer specialized in Spring Boot, system architecture, and backend applications.",
+        "AI systems, agents, application security and software development automation.",
       location: "Porto, Portugal",
     },
     links: {
       title: "Quick Links",
       home: "Home",
-      about: "About",
+      about: "Education",
       projects: "Projects",
       contact: "Contact",
     },
@@ -274,7 +304,7 @@ export const en: Translations = {
   },
   nav: {
     home: "Home",
-    about: "About",
+    about: "Education",
     projects: "Projects",
     contact: "Contact",
     skills: "Skills",
@@ -285,4 +315,68 @@ export const en: Translations = {
     dark: "Dark Mode",
   },
   zoom: "Click to Zoom",
+  story: {
+    navStory: "Story",
+    heroKicker: "Now — AI Software Engineer at Critical Manufacturing",
+    tagline: "builds intelligent systems",
+    taglineAccent: "and keeps them secure.",
+    readStory: "Follow the story",
+    scrollCue: "Scroll",
+    storyKicker: "The path so far",
+    storyTitle: "From prototypes to protected platforms.",
+    chapterLabel: "Chapter",
+    verbs: {
+      "inesc-tec-2025": "Explore",
+      innovatweb: "Build & ship",
+      "celfocus-2026": "Secure",
+      "critical-manufacturing-2026": "Engineer AI",
+    },
+    figures: [
+      "Fig. 0 — the code around AI becomes its shield",
+      "Fig. 1 — pick a pin to reroute the phone",
+      "Fig. 2 — every clean commit builds. Click to push one",
+      "Fig. 3 — click the attacks before they land",
+      "Fig. 4 — click the terminal for a new task, or poke a bot",
+      "Fig. 5 — things built along the way",
+      "Fig. 6 — hover a skill",
+      "Fig. 7 — in someone else's words",
+      "Fig. 8 — hover a line, then throw the cap",
+      "Fig. 9 — an open channel",
+    ],
+    projectsKicker: "Case files",
+    projectsHint: "Keep scrolling to browse",
+    skillsKicker: "Toolkit",
+    voicesKicker: "In someone else's words",
+    educationKicker: "Foundations",
+    contactKicker: "Next chapter",
+    openImage: "Open image preview",
+    closeImage: "Close image preview",
+    backToTop: "Back to top",
+    stage: {
+      lab: "Lab",
+      lift: "Lift",
+      exit: "Exit",
+      arrived: "You have arrived",
+      turnLeft: "Turn left",
+      turnRight: "Turn right",
+      straight: "Straight on",
+      deployed: "deployed",
+      blocked: "stopped at a gate",
+      stageNotes: ["Builds for every repository", "Automated tests on every commit", "Static security analysis", "Dynamic testing against a running app", "Automated release management", "Automated deployment"],
+      youBlocked: "You",
+      agentsBlocked: "Agents",
+      prReview: "PR review",
+      reviewing: "reviewing...",
+      finding: "1 security finding",
+      fixed: "fixed",
+      agentTasks: ["fix the flaky login test", "add an audit log endpoint", "review the release pipeline"],
+      agentLog: ["split it into three steps", "patch ready", "found a security issue", "fixed, pushing again", "approved", "all checks green"],
+      agentRoles: ["breaks the task down", "writes the change", "reviews code and security", "proves that it works"],
+      merged: "merged",
+      tasksMerged: "Tasks merged",
+      throwCap: "Throw the cap",
+      capsThrown: "Caps thrown",
+      educationJokes: ["In progress. No spoilers.", "Three years of “it works on my machine”.", "Every answer now starts with “it depends”.", "This was CS50 — and then the rabbit hole."],
+    },
+  },
 };

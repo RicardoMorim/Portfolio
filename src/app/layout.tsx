@@ -32,7 +32,7 @@ export const metadata: Metadata = {
   description:
     "AI Software Engineer at Critical Manufacturing, focused on AI engineering, AI security, agentic workflows and secure software development.",
   keywords: ["Ricardo Morim", "AI Software Engineer", "AI Engineering", "AI Security", "AppSec", "Agentic Workflows", "Python", "FastAPI", "PyTorch", "Vulnerability Management", "CI/CD", "AWS", "Portfolio"],
-  metadataBase: new URL("https://ricardoportfolio.vercel.app"),
+  metadataBase: new URL("https://www.ricardomorim.com"),
   icons: {
     icon: [
       { url: "/icons/favicon.ico" },
@@ -51,7 +51,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: "https://ricardoportfolio.vercel.app/",
+    url: "https://www.ricardomorim.com/",
     title: "Ricardo Morim | AI Software Engineer · AI Security",
     description:
       "AI Software Engineer at Critical Manufacturing, with experience in AI security, agents and SDLC automation.",
@@ -164,13 +164,13 @@ export default function RootLayout({
           href="/well-known/portfolio" 
         />
 
-        <meta name="api-base-url" content="https://ricardoportfolio.vercel.app/api" />
+        <meta name="api-base-url" content="https://www.ricardomorim.com/api" />
 
         <link rel="manifest" href="/icons/site.webmanifest" />
         <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5" />
         <meta name="msapplication-TileColor" content="#da532c" />
         
-        <link rel="canonical" href="https://ricardoportfolio.vercel.app" />
+        <link rel="canonical" href="https://www.ricardomorim.com" />
       </head>
       <body>
         <ThemeProvider>

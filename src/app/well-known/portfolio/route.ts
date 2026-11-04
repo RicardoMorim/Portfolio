@@ -7,8 +7,8 @@ export async function GET() {
       shortName: "Ricardo Portfolio",
       description:
         "Portfolio metadata and API-style profile for Ricardo Morim.",
-      url: "https://ricardoportfolio.vercel.app/",
-      apiBaseUrl: "https://ricardoportfolio.vercel.app/api",
+      url: "https://www.ricardomorim.com/",
+      apiBaseUrl: "https://www.ricardomorim.com/api",
       owner: {
         name: "Ricardo Morim",
         email: "ricardomorim05@gmail.com",

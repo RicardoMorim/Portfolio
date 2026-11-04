@@ -12,11 +12,11 @@ export async function GET() {
       contact: {
         github: "https://github.com/RicardoMorim",
         linkedin: "https://www.linkedin.com/in/ricardo-morim-208368251/",
-        portfolio: "https://ricardoportfolio.vercel.app/"
+        portfolio: "https://www.ricardomorim.com/"
       }
     },
     api: {
-      base_url: "https://ricardoportfolio.vercel.app/api",
+      base_url: "https://www.ricardomorim.com/api",
       documentation: "/api/docs",
       openapi_spec: "/api/openapi",
       endpoints: {

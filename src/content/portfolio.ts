@@ -56,8 +56,8 @@ export const profile = {
   contact: {
     github: "https://github.com/RicardoMorim",
     linkedin: "https://www.linkedin.com/in/ricardo-morim-208368251/",
-    portfolio: "https://ricardoportfolio.vercel.app/",
-    resume: "https://ricardoportfolio.vercel.app/resume.pdf",
+    portfolio: "https://www.ricardomorim.com/",
+    resume: "https://www.ricardomorim.com/resume.pdf",
   },
   api_info: { version: "1.0", last_updated: contentUpdated, endpoints: { projects: "/api/projects", skills: "/api/skills", experience: "/api/experience", documentation: "/api/docs" } },
 };

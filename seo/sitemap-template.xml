@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <!-- Root page -->
   <url>
-    <loc>https://ricardoportfolio.vercel.app/</loc>
+    <loc>https://www.ricardomorim.com/</loc>
     <lastmod>2026-05-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
@@ -10,19 +10,19 @@
 
   <!-- Resume (PDF) -->
   <url>
-    <loc>https://ricardoportfolio.vercel.app/resume.pdf</loc>
+    <loc>https://www.ricardomorim.com/resume.pdf</loc>
     <changefreq>yearly</changefreq>
     <priority>0.5</priority>
   </url>
 
   <!-- Example project pages (replace with real permalinks if you create them) -->
   <url>
-    <loc>https://ricardoportfolio.vercel.app/projects/auth-provider</loc>
+    <loc>https://www.ricardomorim.com/projects/auth-provider</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://ricardoportfolio.vercel.app/projects/chess-ai</loc>
+    <loc>https://www.ricardomorim.com/projects/chess-ai</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>

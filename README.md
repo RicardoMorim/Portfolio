@@ -89,4 +89,4 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 ## 🤝 Contact
 Ricardo Morim - [LinkedIn](https://www.linkedin.com/in/ricardo-morim-208368251/)
 
-Project Link: https://ricardoportfolio.vercel.app
+Project Link: https://www.ricardomorim.com

@@ -9,7 +9,7 @@ export async function GET() {
       version: "1.0.0",
       contact: {
         name: "Ricardo Morim",
-        url: "https://ricardoportfolio.vercel.app/",
+        url: "https://www.ricardomorim.com/",
         email: "contact@ricardomorim.dev"
       },
       license: {
@@ -19,7 +19,7 @@ export async function GET() {
     },
     servers: [
       {
-        url: "https://ricardoportfolio.vercel.app/api",
+        url: "https://www.ricardomorim.com/api",
         description: "Production API Server"
       },
       {

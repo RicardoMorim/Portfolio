@@ -1,4 +1,4 @@
-# JSON-LD examples for https://ricardoportfolio.vercel.app/
+# JSON-LD examples for https://www.ricardomorim.com/
 
 Include these snippets in the HTML <head> (for Next.js: add in `app/layout.tsx` or a Head component, or use a small `JsonLd` component that injects a <script type="application/ld+json">).
 
@@ -9,7 +9,7 @@ Include these snippets in the HTML <head> (for Next.js: add in `app/layout.tsx` 
   "@context": "https://schema.org",
   "@type": "Person",
   "name": "Ricardo Morim",
-  "url": "https://ricardoportfolio.vercel.app/",
+  "url": "https://www.ricardomorim.com/",
   "sameAs": [
     "https://github.com/RicardoMorim",
     "https://www.linkedin.com/in/ricardo-morim-208368251/"

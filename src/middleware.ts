@@ -11,6 +11,10 @@ const LOG_PREFIXES = {
   INFO: '[ANALYTICS_INFO]'
 } as const;
 
+// The old address keeps working: every path lands on the same page of the new domain.
+const LEGACY_HOST = 'ricardoportfolio.vercel.app';
+const CANONICAL_ORIGIN = 'https://www.ricardomorim.com';
+
 // Helper function to get client IP
 function getClientIP(request: NextRequest): string {
   const forwarded = request.headers.get('x-forwarded-for');
@@ -43,6 +47,11 @@ function categorizeUserAgent(userAgent: string): string {
 }
 
 export function middleware(request: NextRequest) {
+  if (request.headers.get('host') === LEGACY_HOST) {
+    const { pathname, search } = request.nextUrl;
+    return NextResponse.redirect(`${CANONICAL_ORIGIN}${pathname}${search}`, 308);
+  }
+
   const startTime = performance.now();
   const { pathname, search } = request.nextUrl;
   

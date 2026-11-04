@@ -40,9 +40,9 @@ export const profile = {
   expertise: focusAreas,
   achievements: [
     "Primary for AI Security and Vulnerability Management at Celfocus, coordinating members and tasks across both areas",
-    "Built a React/FastAPI vulnerability management platform from scratch; monthly report generation went from several hours to under one hour",
+    "Built a React/FastAPI vulnerability management platform from scratch; the monthly report went from a full day of work to one click plus a review",
     "Built an automated PR reviewer, secure development skills and security-focused agentic workflows",
-    "Main developer of InnovatWeb applications and the shared CI/CD platform used across all organisation repositories",
+    "Main developer of InnovatWeb applications and the shared CI/CD platform used across 5 repositories",
   ],
   languages: { primary: ["Python", "TypeScript", "Java"], secondary: ["JavaScript", "C#", "SQL"] },
   technologies: {

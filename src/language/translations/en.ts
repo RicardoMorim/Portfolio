@@ -7,7 +7,7 @@ const projects: Project = {
       "id": "agentic-assurance",
       "description": "Agentic Assurance",
       "badge": "Personal project · AI Security",
-      "longDescription": "Harness for agentic software engineering with executable security contracts.\n\n• Protected policies and integrity verification\n• Static analysis, test evidence and HTTP runtime checks\n• Model review as a complementary signal alongside gates\n• Profiles for Next.js, React/Vite, Spring Boot and HTTP APIs",
+      "longDescription": "Harness for agentic software engineering with executable security contracts, used on all my projects.\n\n• Customisable protections for the OWASP Top 10\n• Protected policies and integrity verification\n• Opengrep, Trivy, test execution and HTTP runtime checks\n• Model review as a complementary signal alongside gates\n• Profiles for Next.js, React/Vite, Spring Boot and HTTP APIs",
       "tech": [
         "Python",
         "AppSec",
@@ -22,7 +22,7 @@ const projects: Project = {
       "id": "shared-ci",
       "description": "Shared CI/CD — InnovatWeb SDLC",
       "badge": "Professional work · Private repository",
-      "longDescription": "Shared pipeline platform used across all organisation repositories, developed and maintained by me as the main developer.\n\n• Automated tests and builds\n• Security analysis and DAST\n• Release management and automated deployment\n• A common SDLC maintained across applications",
+      "longDescription": "Shared pipeline platform used across 5 repositories, developed and maintained by me as the main developer.\n\n• Automated tests and builds\n• Security analysis and DAST that caught dozens of vulnerabilities and hundreds of code issues\n• Release management and automated deployment\n• A common SDLC maintained across applications",
       "tech": [
         "CI/CD",
         "AppSec",
@@ -38,7 +38,7 @@ const projects: Project = {
       "description": "Chess AI Engine",
       "image": "/ChessAI.jpg",
       "badge": "Deep Learning",
-      "longDescription": "Chess reinforcement learning project using Monte Carlo Tree Search and dual-head residual networks.\n\n• PyTorch training pipeline\n• Knowledge distillation from Stockfish\n• Batch processing and mixed precision\n• Search tree visualisation and position evaluation",
+      "longDescription": "Chess reinforcement learning project using Monte Carlo Tree Search and dual-head residual networks.\n\n• PyTorch training pipeline\n• Knowledge distillation from Stockfish\n• Batch processing and mixed precision\n• Search tree visualisation and position evaluation\n• Current state: plays the opening well, but needs more training to finish games",
       "tech": [
         "Python",
         "PyTorch",
@@ -227,12 +227,12 @@ export const en: Translations = {
       "organization": "Celfocus",
       "date": "February — October 2026",
       "title": "Celfocus · Application Security Analyst",
-      "description": "Primary for AI Security and Vulnerability Management: main point of contact with AppSec leadership, coordinating members and tasks across both areas.",
+      "description": "Primary for AI Security and Vulnerability Management: main point of contact with AppSec leadership, coordinating 5 people across both teams.",
       "bullets": [
-        "Evaluated and adopted local models on an internal server; built an automated pull request reviewer and the runners to execute it.",
+        "Evaluated and adopted local models on an internal server; built an automated pull request reviewer, in beta when I left, and the runners to execute it.",
         "Created secure development skills and an agent for DAST and CTFs; configured fallback rules and automated skill deployment in a LiteLLM integration.",
         "Adapted an agentic development loop to integrate security from planning through QA, including the creation of security pipelines.",
-        "Built a vulnerability management platform from scratch in React and Python/FastAPI: SLA tracking, observability, emails, tickets and monthly reports. Report generation went from several hours to under one hour.",
+        "Built a vulnerability management platform from scratch in React and Python/FastAPI, handling hundreds of vulnerabilities: SLA tracking, observability, emails, tickets and monthly reports. The monthly report went from a full day of work to one click plus a review.",
         "Automated repetitive tasks and implemented versioning and automated deployment for the team’s AWS Lambda functions."
       ]
     },
@@ -242,7 +242,7 @@ export const en: Translations = {
       "title": "InnovatWeb · Main developer",
       "description": "Main developer of the organisation’s applications and shared CI/CD platform.",
       "bullets": [
-        "Developed and maintain the shared SDLC: tests, builds, security analysis, DAST, releases and automated deployment across all organisation repositories.",
+        "Developed and maintain the shared SDLC: tests, builds, security analysis, DAST, releases and automated deployment across 5 repositories. The scans caught dozens of vulnerabilities and hundreds of code issues.",
         "Developing applications for business management and engineering preparation in construction and precast manufacturing, alongside AWS infrastructure work in Terraform."
       ]
     },
@@ -368,7 +368,7 @@ export const en: Translations = {
       straight: "Straight on",
       deployed: "deployed",
       blocked: "stopped at a gate",
-      stageNotes: ["Builds for every repository", "Automated tests on every commit", "Static security analysis", "Dynamic testing against a running app", "Automated release management", "Automated deployment"],
+      stageNotes: ["Builds for the 5 repositories", "Automated tests on every commit", "Static security analysis", "Dynamic testing against a running app", "Automated release management", "Automated deployment"],
       youBlocked: "You",
       agentsBlocked: "Agents",
       prReview: "PR review",

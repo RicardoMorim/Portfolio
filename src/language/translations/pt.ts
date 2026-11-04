@@ -7,7 +7,7 @@ const projects: Project = {
       "id": "agentic-assurance",
       "description": "Agentic Assurance",
       "badge": "Projeto pessoal · AI Security",
-      "longDescription": "Harness para desenvolvimento de software com agentes, com contratos executáveis de segurança.\n\n• Políticas protegidas e verificação de integridade\n• Análise estática, evidência de testes e verificações HTTP em runtime\n• Revisão por modelos como sinal complementar aos gates\n• Perfis para Next.js, React/Vite, Spring Boot e APIs HTTP",
+      "longDescription": "Harness para desenvolvimento de software com agentes, com contratos executáveis de segurança, usado em todos os meus projetos.\n\n• Proteções personalizáveis para o OWASP Top 10\n• Políticas protegidas e verificação de integridade\n• Opengrep, Trivy, execução dos testes e verificações HTTP em runtime\n• Revisão por modelos como sinal complementar aos gates\n• Perfis para Next.js, React/Vite, Spring Boot e APIs HTTP",
       "tech": [
         "Python",
         "AppSec",
@@ -22,7 +22,7 @@ const projects: Project = {
       "id": "shared-ci",
       "description": "Shared CI/CD — SDLC da InnovatWeb",
       "badge": "Trabalho profissional · Repositório privado",
-      "longDescription": "Plataforma partilhada de pipelines utilizada em todos os repositórios da organização, da qual sou o principal developer.\n\n• Testes e builds automatizados\n• Análises de segurança e DAST\n• Gestão de releases e deployment automático\n• Desenvolvimento e manutenção do SDLC comum às aplicações",
+      "longDescription": "Plataforma partilhada de pipelines utilizada em 5 repositórios, da qual sou o principal developer.\n\n• Testes e builds automatizados\n• Análises de segurança e DAST que apanharam dezenas de vulnerabilidades e centenas de problemas de código\n• Gestão de releases e deployment automático\n• Desenvolvimento e manutenção do SDLC comum às aplicações",
       "tech": [
         "CI/CD",
         "AppSec",
@@ -38,7 +38,7 @@ const projects: Project = {
       "description": "Motor de IA para Xadrez",
       "image": "/ChessAI.jpg",
       "badge": "Deep Learning",
-      "longDescription": "Projeto de reinforcement learning para xadrez, com Monte Carlo Tree Search e redes residuais de duas saídas.\n\n• Pipeline de treino em PyTorch\n• Knowledge distillation a partir do Stockfish\n• Processamento em batch e precisão mista\n• Visualização da árvore de pesquisa e avaliação de posições",
+      "longDescription": "Projeto de reinforcement learning para xadrez, com Monte Carlo Tree Search e redes residuais de duas saídas.\n\n• Pipeline de treino em PyTorch\n• Knowledge distillation a partir do Stockfish\n• Processamento em batch e precisão mista\n• Visualização da árvore de pesquisa e avaliação de posições\n• Estado atual: joga bem a abertura, mas ainda precisa de mais treino para finalizar partidas",
       "tech": [
         "Python",
         "PyTorch",
@@ -226,12 +226,12 @@ export const pt: Translations = {
       "organization": "Celfocus",
       "date": "Fevereiro — outubro de 2026",
       "title": "Celfocus · Application Security Analyst",
-      "description": "Primary de AI Security e Vulnerability Management: principal ponto de contacto destas áreas com a liderança de AppSec, com coordenação dos membros e das tarefas.",
+      "description": "Primary de AI Security e Vulnerability Management: principal ponto de contacto destas áreas com a liderança de AppSec, com coordenação de 5 pessoas nas duas equipas.",
       "bullets": [
-        "Avaliação e adoção de modelos locais num servidor interno; criação de um revisor automático de pull requests e dos runners para o executar.",
+        "Avaliação e adoção de modelos locais num servidor interno; criação de um revisor automático de pull requests, em beta quando saí, e dos runners para o executar.",
         "Criação de skills para desenvolvimento seguro e de um agente para DAST e CTFs; configuração de fallback e deployment automático de skills numa integração com LiteLLM.",
         "Adaptação de um ciclo de desenvolvimento com agentes para integrar segurança desde o planeamento até ao QA, incluindo a criação de pipelines de segurança.",
-        "Desenvolvimento individual, de raiz, de uma plataforma de gestão de vulnerabilidades em React e Python/FastAPI: SLAs, observabilidade, emails, tickets e relatórios mensais. A geração de relatórios passou de várias horas para menos de uma hora.",
+        "Desenvolvimento individual, de raiz, de uma plataforma de gestão de vulnerabilidades em React e Python/FastAPI, para centenas de vulnerabilidades: SLAs, observabilidade, emails, tickets e relatórios mensais. O relatório mensal, que demorava um dia, passou a ser gerado num clique e só precisa de revisão.",
         "Automação de tarefas repetitivas e implementação de versionamento e deployment automático das funções AWS Lambda da equipa."
       ]
     },
@@ -241,7 +241,7 @@ export const pt: Translations = {
       "title": "InnovatWeb · Principal developer",
       "description": "Principal developer das aplicações e da plataforma partilhada de CI/CD da organização.",
       "bullets": [
-        "Desenvolvimento e manutenção do SDLC partilhado: testes, builds, análises de segurança, DAST, releases e deployment automático em todos os repositórios da organização.",
+        "Desenvolvimento e manutenção do SDLC partilhado: testes, builds, análises de segurança, DAST, releases e deployment automático em 5 repositórios. As análises apanharam dezenas de vulnerabilidades e centenas de problemas de código.",
         "Desenvolvimento de aplicações para gestão empresarial e preparação de engenharia na construção e em pré-fabricados, com trabalho de infraestrutura AWS em Terraform."
       ]
     },
@@ -367,7 +367,7 @@ export const pt: Translations = {
       straight: "Segue em frente",
       deployed: "em produção",
       blocked: "travados num gate",
-      stageNotes: ["Builds para todos os repositórios", "Testes automáticos em cada commit", "Análise estática de segurança", "Testes dinâmicos contra a aplicação a correr", "Gestão automática de releases", "Deployment automático"],
+      stageNotes: ["Builds para os 5 repositórios", "Testes automáticos em cada commit", "Análise estática de segurança", "Testes dinâmicos contra a aplicação a correr", "Gestão automática de releases", "Deployment automático"],
       youBlocked: "Tu",
       agentsBlocked: "Agentes",
       prReview: "Revisão de PR",

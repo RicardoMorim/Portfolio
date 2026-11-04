@@ -1,11 +1,12 @@
 'use client';
-import { createContext, useContext, useState, useEffect } from 'react';
+import { createContext, useContext } from 'react';
+import { useRouter } from 'next/navigation';
+import { localePath } from '@/content/site';
 import { en } from '@/language/translations/en';
 import { pt } from '@/language/translations/pt';
 import {
 	Translations,
 	Locale,
-	locales,
 	Project,
 	Milestone,
 	Skills,
@@ -64,15 +65,8 @@ export const LanguageContext = createContext<LanguageContextType>({
 	getStory: () => en.story
 });
 
-export function LanguageProvider({ children }: { children: React.ReactNode }) {
-	const [locale, setLocale] = useState<Locale>('en');
-
-	useEffect(() => {
-		const savedLocale = localStorage.getItem('locale') as Locale;
-		if (locales.includes(savedLocale)) {
-			setLocale(savedLocale);
-		}
-	}, []);
+export function LanguageProvider({ children, locale }: { children: React.ReactNode; locale: Locale }) {
+	const router = useRouter();
 
 	// Typed section getters
 	const getProjects = () => ({
@@ -99,8 +93,8 @@ export function LanguageProvider({ children }: { children: React.ReactNode }) {
 		const getCareerHighlights = () => translations[locale].careerHighlights;
 
 	const handleSetLocale = (newLocale: Locale) => {
-		setLocale(newLocale);
-		localStorage.setItem('locale', newLocale);
+		const path = window.location.pathname.replace(/^\/pt(?=\/|$)/, '') || '/';
+		router.push(localePath(newLocale, path));
 	};
 
 	const getTheme = () => translations[locale].theme;

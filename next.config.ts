@@ -1,6 +1,14 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
+  async headers() {
+    const noindex = [{ key: 'X-Robots-Tag', value: 'noindex' }];
+    return [
+      { source: '/api/:path*', headers: noindex },
+      { source: '/well-known/:path*', headers: noindex },
+      { source: '/.well-known/:path*', headers: noindex },
+    ];
+  },
   images: {
     domains: ['www.inesctec.pt', 'artefacto.artech-international.org'],
     // Allow loading images over http/https from external hosts used in recommendations

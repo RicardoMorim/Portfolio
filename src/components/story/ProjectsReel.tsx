@@ -1,16 +1,18 @@
 "use client";
 import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
+import Link from "next/link";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useTranslation } from "@/context/LanguageContext";
 import useMediaQuery from "@/lib/useMediaQuery";
+import { PROJECT_PAGES, localePath } from "@/content/site";
 import ImageLightbox from "./ImageLightbox";
 
 const pad = (n: number) => String(n).padStart(2, "0");
 
 /** Case files. On wide screens the section pins and vertical scroll drives a horizontal track. */
 export default function ProjectsReel() {
-  const { getProjects, getStory, getZoom } = useTranslation();
+  const { getProjects, getStory, getZoom, locale } = useTranslation();
   const { projects } = getProjects();
   const story = getStory();
   const pinned = useMediaQuery("(min-width: 900px) and (prefers-reduced-motion: no-preference)");
@@ -81,7 +83,13 @@ export default function ProjectsReel() {
                   <span className="case-index">P/{pad(i + 1)}</span>
                   {project.badge && <span className="case-badge">{project.badge}</span>}
                 </header>
-                <h3 className="case-title">{project.description}</h3>
+                <h3 className="case-title">
+                  {PROJECT_PAGES.includes(project.id) ? (
+                    <Link href={localePath(locale, `/projects/${project.id}`)}>{project.description}</Link>
+                  ) : (
+                    project.description
+                  )}
+                </h3>
                 <p className="case-intro">{intro}</p>
 
                 {project.image ? (
@@ -109,6 +117,9 @@ export default function ProjectsReel() {
                     ))}
                   </ul>
                   <div className="case-links">
+                    {PROJECT_PAGES.includes(project.id) && (
+                      <Link href={localePath(locale, `/projects/${project.id}`)}>{story.caseDetails}</Link>
+                    )}
                     {project.links.demoUrl && (
                       <a href={project.links.demoUrl} target="_blank" rel="noopener noreferrer">{project.links.demo}</a>
                     )}

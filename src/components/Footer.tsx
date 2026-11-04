@@ -2,9 +2,10 @@
 import Link from 'next/link';
 import { FaGithub, FaLinkedin } from 'react-icons/fa';
 import { useTranslation } from '@/context/LanguageContext';
+import { localePath } from '@/content/site';
 
 const Footer = () => {
-  const { getFooter, getStory } = useTranslation();
+  const { getFooter, getStory, locale } = useTranslation();
   const footer = getFooter();
 
   return (
@@ -22,7 +23,7 @@ const Footer = () => {
           <a href="https://www.linkedin.com/in/ricardo-morim-208368251/" target="_blank" rel="noopener noreferrer" className="icon-link" aria-label={footer.social.linkedin}>
             <FaLinkedin />
           </a>
-          <Link href="#hero" className="text-link">{getStory().backToTop} ↑</Link>
+          <Link href={localePath(locale)} className="text-link">{getStory().backToTop} ↑</Link>
         </div>
       </div>
       <div className="shell footer-bottom">

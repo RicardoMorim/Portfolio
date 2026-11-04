@@ -1420,8 +1420,8 @@ a {
 
 /* Hero intro runs in CSS so the copy paints from the server HTML even before hydration. */
 [data-rise] {
-  animation: rise 0.9s var(--ease-out) both;
-  animation-delay: calc(var(--i, 0) * 0.1s);
+  animation: rise 0.6s var(--ease-out) both;
+  animation-delay: calc(var(--i, 0) * 0.05s);
 }
 
 @keyframes rise {
@@ -1458,4 +1458,60 @@ a {
   .hero {
     padding-top: calc(var(--nav-h) + 36svh);
   }
+}
+
+/* ───────────────────────── Project pages ───────────────────────── */
+
+.project-page {
+  position: relative;
+  z-index: 1;
+  min-height: 70vh;
+  padding-block: calc(var(--nav-h) + 4rem) 5rem;
+}
+
+.project-article {
+  display: grid;
+  gap: 1.5rem;
+  max-width: 860px;
+}
+
+.project-back {
+  justify-self: start;
+  font-size: 0.9rem;
+}
+
+.project-article .kicker {
+  margin: 0;
+}
+
+.project-image {
+  width: 100%;
+  height: auto;
+  border: 1px solid var(--line);
+}
+
+.project-bullets {
+  font-size: 1.05rem;
+}
+
+.case-title a:hover {
+  color: var(--signal);
+}
+
+.contact-photo {
+  width: 112px;
+  height: 112px;
+  margin-top: 2rem;
+  border: 1px solid var(--line-strong);
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+/* The name is the page's largest paint: it slides in, but is visible from the first frame. */
+.hero-name [data-rise] {
+  animation-name: slide-in;
+}
+
+@keyframes slide-in {
+  from { transform: translateY(16px); }
 }

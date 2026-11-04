@@ -1,14 +1,59 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://www.ricardomorim.com</loc>
-    <lastmod>2025-01-13</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>1.0</priority>
+    <loc>https://www.ricardomorim.com/</loc>
+    <lastmod>2026-11-04</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.ricardomorim.com/"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://www.ricardomorim.com/pt"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.ricardomorim.com/"/>
   </url>
-
   <url>
-    <loc>https://www.ricardomorim.com/well-known/portfolio</loc>
-    <priority>0.5</priority>
+    <loc>https://www.ricardomorim.com/pt</loc>
+    <lastmod>2026-11-04</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.ricardomorim.com/"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://www.ricardomorim.com/pt"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.ricardomorim.com/"/>
+  </url>
+  <url>
+    <loc>https://www.ricardomorim.com/projects/agentic-assurance</loc>
+    <lastmod>2026-11-04</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.ricardomorim.com/projects/agentic-assurance"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://www.ricardomorim.com/pt/projects/agentic-assurance"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.ricardomorim.com/projects/agentic-assurance"/>
+  </url>
+  <url>
+    <loc>https://www.ricardomorim.com/pt/projects/agentic-assurance</loc>
+    <lastmod>2026-11-04</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.ricardomorim.com/projects/agentic-assurance"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://www.ricardomorim.com/pt/projects/agentic-assurance"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.ricardomorim.com/projects/agentic-assurance"/>
+  </url>
+  <url>
+    <loc>https://www.ricardomorim.com/projects/chess-ai</loc>
+    <lastmod>2026-11-04</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.ricardomorim.com/projects/chess-ai"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://www.ricardomorim.com/pt/projects/chess-ai"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.ricardomorim.com/projects/chess-ai"/>
+  </url>
+  <url>
+    <loc>https://www.ricardomorim.com/pt/projects/chess-ai</loc>
+    <lastmod>2026-11-04</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.ricardomorim.com/projects/chess-ai"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://www.ricardomorim.com/pt/projects/chess-ai"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.ricardomorim.com/projects/chess-ai"/>
+  </url>
+  <url>
+    <loc>https://www.ricardomorim.com/projects/auth-library</loc>
+    <lastmod>2026-11-04</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.ricardomorim.com/projects/auth-library"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://www.ricardomorim.com/pt/projects/auth-library"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.ricardomorim.com/projects/auth-library"/>
+  </url>
+  <url>
+    <loc>https://www.ricardomorim.com/pt/projects/auth-library</loc>
+    <lastmod>2026-11-04</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.ricardomorim.com/projects/auth-library"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://www.ricardomorim.com/pt/projects/auth-library"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.ricardomorim.com/projects/auth-library"/>
   </url>
 </urlset>

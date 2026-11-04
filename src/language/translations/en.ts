@@ -315,6 +315,9 @@ export const en: Translations = {
     dark: "Dark Mode",
   },
   zoom: "Click to Zoom",
+  seo: {
+    description: "AI Software Engineer at Critical Manufacturing, focused on AI engineering, AI security, agentic workflows and secure software development.",
+  },
   story: {
     navStory: "Story",
     heroKicker: "Now — AI Software Engineer at Critical Manufacturing",
@@ -352,6 +355,9 @@ export const en: Translations = {
     openImage: "Open image preview",
     closeImage: "Close image preview",
     backToTop: "Back to top",
+    backToProjects: "All projects",
+    caseDetails: "Details →",
+    technologies: "Technologies",
     stage: {
       lab: "Lab",
       lift: "Lift",

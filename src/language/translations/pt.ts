@@ -314,6 +314,9 @@ export const pt: Translations = {
     dark: "Modo Escuro",
   },
   zoom: "Clique para Aumentar",
+  seo: {
+    description: "AI Software Engineer na Critical Manufacturing, com foco em engenharia de IA, segurança de IA, workflows com agentes e desenvolvimento seguro de software.",
+  },
   story: {
     navStory: "Percurso",
     heroKicker: "Agora — AI Software Engineer na Critical Manufacturing",
@@ -351,6 +354,9 @@ export const pt: Translations = {
     openImage: "Abrir pré-visualização da imagem",
     closeImage: "Fechar pré-visualização da imagem",
     backToTop: "Voltar ao topo",
+    backToProjects: "Todos os projetos",
+    caseDetails: "Detalhes →",
+    technologies: "Tecnologias",
     stage: {
       lab: "Lab",
       lift: "Elevador",

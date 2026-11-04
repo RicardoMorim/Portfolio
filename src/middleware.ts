@@ -91,8 +91,25 @@ export function middleware(request: NextRequest) {
     return response;
   }
   
-  // For non-API routes, just continue without logging
-  return NextResponse.next();
+  // Documents and assets are served as they are.
+  if (pathname.includes('.') || pathname.startsWith('/well-known')) {
+    return NextResponse.next();
+  }
+
+  // English owns the root: /en would only duplicate it.
+  if (pathname === '/en' || pathname.startsWith('/en/')) {
+    const url = request.nextUrl.clone();
+    url.pathname = pathname.slice(3) || '/';
+    return NextResponse.redirect(url, 308);
+  }
+
+  if (pathname === '/pt' || pathname.startsWith('/pt/')) {
+    return NextResponse.next();
+  }
+
+  const url = request.nextUrl.clone();
+  url.pathname = `/en${pathname === '/' ? '' : pathname}`;
+  return NextResponse.rewrite(url);
 }
 
 export const config = {

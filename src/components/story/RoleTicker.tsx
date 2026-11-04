@@ -13,7 +13,8 @@ const HOLD_MS = 3000;
 /** Typewriter for the hero roles; isolated so its ticks never re-render the rest of the page. */
 export default function RoleTicker({ roles, onRole }: RoleTickerProps) {
   const [index, setIndex] = useState(0);
-  const [length, setLength] = useState(0);
+  // The first role is complete in the server HTML, so nothing grows while the page loads.
+  const [length, setLength] = useState(roles[0]?.length ?? 0);
   const [deleting, setDeleting] = useState(false);
   const role = roles[index % roles.length] ?? "";
 

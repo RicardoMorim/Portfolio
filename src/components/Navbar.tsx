@@ -5,6 +5,7 @@ import { ThemeContext } from '@/context/ThemeContext';
 import { motion, AnimatePresence, useScroll } from 'framer-motion';
 import { IoMenu, IoClose } from "react-icons/io5";
 import { useTranslation } from '@/context/LanguageContext';
+import { localePath } from '@/content/site';
 
 const Navbar = () => {
 	const { theme, toggleTheme } = useContext(ThemeContext);
@@ -15,13 +16,14 @@ const Navbar = () => {
 
 	const nav = getNavigation();
 	const themeLabels = getTheme();
+	const home = localePath(locale);
 	const navLinks = [
-		{ href: '#career', label: getStory().navStory },
-		{ href: '#projects', label: nav.projects },
-		{ href: '#skills', label: nav.skills },
-		{ href: '#recommendations', label: nav.recommendations },
-		{ href: '#about', label: nav.about },
-		{ href: '#contact', label: nav.contact },
+		{ href: `${home}#career`, label: getStory().navStory },
+		{ href: `${home}#projects`, label: nav.projects },
+		{ href: `${home}#skills`, label: nav.skills },
+		{ href: `${home}#recommendations`, label: nav.recommendations },
+		{ href: `${home}#about`, label: nav.about },
+		{ href: `${home}#contact`, label: nav.contact },
 	];
 
 	useEffect(() => {
@@ -59,7 +61,7 @@ const Navbar = () => {
 	return (
 		<header className={`site-nav ${scrolled ? 'is-scrolled' : ''}`}>
 			<div className="shell nav-inner">
-				<Link href="#hero" className="nav-mark" aria-label="Ricardo Morim">
+				<Link href={home} className="nav-mark" aria-label="Ricardo Morim">
 					RM<span className="nav-mark-dot" />
 				</Link>
 

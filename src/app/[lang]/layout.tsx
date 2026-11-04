@@ -6,6 +6,15 @@ import Footer from "@/components/Footer";
 import { Geist, Geist_Mono, Instrument_Serif } from "next/font/google";
 import { LanguageProvider } from "@/context/LanguageContext";
 import { Metadata, Viewport } from "next";
+import { notFound } from "next/navigation";
+import { locales } from "@/language/config";
+import { OG_IMAGE, SITE_URL, alternatesFor, isLocale, localePath, translationsFor } from "@/content/site";
+
+const TITLE = "Ricardo Morim | AI Software Engineer · AI Security";
+
+interface LayoutProps {
+  params: Promise<{ lang: string }>;
+}
 
 const geist = Geist({
   subsets: ["latin"],
@@ -27,56 +36,51 @@ const instrumentSerif = Instrument_Serif({
   display: "swap",
 });
 
-export const metadata: Metadata = {
-  title: "Ricardo Morim | AI Software Engineer · AI Security",
-  description:
-    "AI Software Engineer at Critical Manufacturing, focused on AI engineering, AI security, agentic workflows and secure software development.",
-  keywords: ["Ricardo Morim", "AI Software Engineer", "AI Engineering", "AI Security", "AppSec", "Agentic Workflows", "Python", "FastAPI", "PyTorch", "Vulnerability Management", "CI/CD", "AWS", "Portfolio"],
-  metadataBase: new URL("https://www.ricardomorim.com"),
-  icons: {
-    icon: [
-      { url: "/icons/favicon.ico" },
-      { url: "/icons/favicon-16x16.png", sizes: "16x16", type: "image/png" },
-      { url: "/icons/favicon-32x32.png", sizes: "32x32", type: "image/png" },
-    ],
-    apple: [{ url: "/icons/apple-touch-icon.png" }],
-    other: [
-      {
-        rel: "mask-icon",
-        url: "/icons/android-chrome-192x192.png",
-        color: "#5bbad5",
-      },
-    ],
-  },
-  openGraph: {
-    type: "website",
-    locale: "en_US",
-    url: "https://www.ricardomorim.com/",
-    title: "Ricardo Morim | AI Software Engineer · AI Security",
-    description:
-      "AI Software Engineer at Critical Manufacturing, with experience in AI security, agents and SDLC automation.",
-    siteName: "Ricardo Morim Portfolio",
-    images: [
-      {
-        url: "/icons/android-chrome-512x512.png",
-        width: 512,
-        height: 512,
-        alt: "Ricardo Morim Portfolio",
-      },
-    ],
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "Ricardo Morim | AI Software Engineer · AI Security",
-    description:
-      "AI Software Engineer focused on AI engineering, AI security and software development automation",
-    images: ["/icons/android-chrome-512x512.png"],
-  },
-  robots: {
-    index: true,
-    follow: true,
-  },
-};
+export function generateStaticParams() {
+  return locales.map((lang) => ({ lang }));
+}
+
+export async function generateMetadata({ params }: LayoutProps): Promise<Metadata> {
+  const { lang } = await params;
+  if (!isLocale(lang)) return {};
+  const { seo } = translationsFor(lang);
+  return {
+    title: TITLE,
+    description: seo.description,
+    keywords: ["Ricardo Morim", "AI Software Engineer", "AI Engineering", "AI Security", "AppSec", "Agentic Workflows", "Python", "FastAPI", "PyTorch", "Vulnerability Management", "CI/CD", "AWS", "Portfolio"],
+    metadataBase: new URL(SITE_URL),
+    alternates: alternatesFor(lang),
+    icons: {
+      icon: [
+        { url: "/icons/favicon.ico" },
+        { url: "/icons/favicon-16x16.png", sizes: "16x16", type: "image/png" },
+        { url: "/icons/favicon-32x32.png", sizes: "32x32", type: "image/png" },
+      ],
+      apple: [{ url: "/icons/apple-touch-icon.png" }],
+    },
+    manifest: "/icons/site.webmanifest",
+    openGraph: {
+      type: "website",
+      locale: lang === "pt" ? "pt_PT" : "en_US",
+      alternateLocale: lang === "pt" ? "en_US" : "pt_PT",
+      url: localePath(lang),
+      title: TITLE,
+      description: seo.description,
+      siteName: "Ricardo Morim",
+      images: [OG_IMAGE],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: TITLE,
+      description: seo.description,
+      images: [OG_IMAGE.url],
+    },
+    robots: {
+      index: true,
+      follow: true,
+    },
+  };
+}
 
 export const viewport: Viewport = {
   width: "device-width",
@@ -89,16 +93,19 @@ export const viewport: Viewport = {
     { media: "(prefers-color-scheme: dark)", color: "#0a0b0d" },
   ],
 };
-export default function RootLayout({
+export default async function RootLayout({
   children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+  params,
+}: Readonly<{ children: React.ReactNode }> & LayoutProps) {
+  const { lang } = await params;
+  if (!isLocale(lang)) notFound();
+
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "Person",
     name: profile.name,
     url: profile.contact.portfolio,
+    image: `${SITE_URL}/me.jpg`,
     jobTitle: profile.title,
     description: profile.summary,
     knowsAbout: profile.expertise,
@@ -133,48 +140,16 @@ export default function RootLayout({
   };
 
   return (
-    <html lang="en" data-theme="dark" suppressHydrationWarning className={`${geist.variable} ${geistMono.variable} ${instrumentSerif.variable}`}>
+    <html lang={lang} data-theme="dark" suppressHydrationWarning className={`${geist.variable} ${geistMono.variable} ${instrumentSerif.variable}`}>
       <head>
         <script type="application/ld+json">{JSON.stringify(jsonLd).replace(/</g, "\\u003c")}</script>
         <script type="application/ld+json">{JSON.stringify(projectsJsonLd).replace(/</g, "\\u003c")}</script>
-        <link
-          rel="apple-touch-icon"
-          sizes="180x180"
-          href="/apple-touch-icon.png"
-        />
-        <link
-          rel="icon"
-          type="image/png"
-          sizes="32x32"
-          href="/icons/favicon-32x32.png"
-        />
-        <link
-          rel="icon"
-          type="image/png"
-          sizes="16x16"
-          href="/icons/favicon-16x16.png"
-        />
-        <link 
-          rel="manifest" 
-          href="/well-known/portfolio" 
-          type="application/json" 
-        />
-        <link 
-          rel="api-docs" 
-          href="/well-known/portfolio" 
-        />
-
+        <link rel="api-docs" href="/well-known/portfolio" />
         <meta name="api-base-url" content="https://www.ricardomorim.com/api" />
-
-        <link rel="manifest" href="/icons/site.webmanifest" />
-        <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5" />
-        <meta name="msapplication-TileColor" content="#da532c" />
-        
-        <link rel="canonical" href="https://www.ricardomorim.com" />
       </head>
       <body>
         <ThemeProvider>
-          <LanguageProvider>
+          <LanguageProvider locale={lang}>
             <a href="#hero" className="skip-link">Skip to content</a>
             <div className="app-container">
               <Navbar />

@@ -1,5 +1,6 @@
 'use client'
 import { useState } from 'react';
+import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { Contact } from "@/language/config"
 import { useTranslation } from '@/context/LanguageContext';
@@ -56,6 +57,7 @@ export default function ContactSection(contact: Contact) {
 					<p className="kicker"><span className="kicker-dot" /> {getStory().contactKicker}</p>
 					<h2 id="contact-title" className="contact-title">{contact.subtitle}</h2>
 					<p className="section-lead">{contact.description}</p>
+					<Image src="/me.jpg" alt="Ricardo Morim" width={112} height={112} className="contact-photo" />
 					<dl className="contact-details">
 						<div>
 							<dt>{contact.email}</dt>

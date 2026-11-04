@@ -29,7 +29,7 @@ export default function Hero() {
         </p>
 
         <h1 className="hero-name">
-          <span data-rise style={{ "--i": 1 } as CSSProperties}>{first}</span>
+          <span data-rise style={{ "--i": 1 } as CSSProperties}>{first}</span>{" "}
           <span data-rise style={{ "--i": 2 } as CSSProperties}>{rest.join(" ")}</span>
         </h1>
 

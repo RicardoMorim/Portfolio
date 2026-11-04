@@ -7,6 +7,10 @@ import useMediaQuery from "@/lib/useMediaQuery";
 import useActiveScene from "./useActiveScene";
 import { getNote, getServerNote, requestShape, setNote, subscribeNote } from "./stage/store";
 
+/** WebGL waits for the page to be readable, then for an idle moment. */
+const STAGE_DELAY_MS = 1200;
+const STAGE_IDLE_TIMEOUT_MS = 2500;
+
 const CoreScene = dynamic(() => import("./CoreScene"), { ssr: false });
 
 function supportsWebGL(): boolean {
@@ -29,7 +33,18 @@ export default function SceneLayer() {
   const note = useSyncExternalStore(subscribeNote, getNote, getServerNote);
   const [webgl, setWebgl] = useState<boolean | null>(null);
 
-  useEffect(() => setWebgl(supportsWebGL()), []);
+  useEffect(() => {
+    const start = () => setWebgl(supportsWebGL());
+    let idle = 0;
+    const timer = window.setTimeout(() => {
+      if ("requestIdleCallback" in window) idle = window.requestIdleCallback(start, { timeout: STAGE_IDLE_TIMEOUT_MS });
+      else start();
+    }, STAGE_DELAY_MS);
+    return () => {
+      window.clearTimeout(timer);
+      if (idle && "cancelIdleCallback" in window) window.cancelIdleCallback(idle);
+    };
+  }, []);
 
   useLayoutEffect(() => {
     setNote("");

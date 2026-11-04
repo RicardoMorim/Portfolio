@@ -129,6 +129,9 @@ export interface Story {
   openImage: string;
   closeImage: string;
   backToTop: string;
+  backToProjects: string;
+  caseDetails: string;
+  technologies: string;
   stage: StageCopy;
 }
 
@@ -209,4 +212,5 @@ export interface Translations {
   skills: Skills;
   zoom: string;
   story: Story;
+  seo: { description: string };
 }

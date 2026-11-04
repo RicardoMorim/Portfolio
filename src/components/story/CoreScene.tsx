@@ -28,6 +28,7 @@ export interface CoreSceneProps {
   compact: boolean;
   scene: number;
   copy: StageCopy;
+  onReady: () => void;
 }
 
 interface PointFrame {
@@ -314,7 +315,7 @@ function Lights({ theme }: { theme: string }) {
 }
 
 export default function CoreScene(props: CoreSceneProps) {
-  const { theme, scene, reducedMotion, compact, copy } = props;
+  const { theme, scene, reducedMotion, compact, copy, onReady } = props;
   const palette = useMemo(() => paletteFor(theme), [theme]);
 
   useEffect(() => {
@@ -334,6 +335,7 @@ export default function CoreScene(props: CoreSceneProps) {
       eventSource={document.body}
       eventPrefix="client"
       aria-hidden="true"
+      onCreated={onReady}
     >
       <Lights theme={theme} />
       <CorePoints {...props} />

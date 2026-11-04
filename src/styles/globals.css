@@ -1453,10 +1453,61 @@ a {
   }
 }
 
+/* Holds the WebGL spot from the first paint, then dissolves as the particles arrive. */
+.hero-poster {
+  position: absolute;
+  top: 50%;
+  left: 75%;
+  width: 34vw;
+  overflow: visible;
+  transform: translate(-50%, -50%);
+  transition: opacity 1.4s var(--ease-out);
+}
+
+.hero-poster.is-hidden {
+  opacity: 0;
+}
+
+.hero-poster text {
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-size: 150px;
+  font-weight: 700;
+  letter-spacing: -0.04em;
+}
+
+.hero-poster-ink {
+  fill: var(--ink);
+}
+
+.hero-poster-signal {
+  fill: var(--signal);
+}
+
 /* On phones the hero opens a window at the top for `<AI/>`, above the name. */
 @media (max-width: 1099px) {
   .hero {
     padding-top: calc(var(--nav-h) + 36svh);
+  }
+
+  .hero-poster {
+    top: 29.5%;
+    left: 50%;
+    width: min(78vw, 420px);
+  }
+
+  /* The way forward stays on the first screen; the summary can follow it. */
+  .hero-inner {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .hero-actions {
+    order: 1;
+    margin-top: 1.5rem;
+  }
+
+  .hero-meta {
+    order: 2;
   }
 }
 

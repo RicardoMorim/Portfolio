@@ -14,7 +14,7 @@ Include these snippets in the HTML <head> (for Next.js: add in `app/layout.tsx` 
     "https://github.com/RicardoMorim",
     "https://www.linkedin.com/in/ricardo-morim-208368251/"
   ],
-  "email": "mailto:ricardomorim05@gmail.com",
+  "email": "mailto:ricardo@ricardomorim.com",
   "jobTitle": "Backend Engineer",
   "address": {
     "@type": "PostalAddress",

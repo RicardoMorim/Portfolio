@@ -8,6 +8,24 @@ const limiter = rateLimit({
   uniqueTokenPerInterval: 500,
 });
 
+const MAX_LENGTHS = { name: 120, email: 254, subject: 200, message: 5000 };
+type ContactFields = Record<keyof typeof MAX_LENGTHS, string>;
+
+function isValidLength(value: unknown, max: number): value is string {
+  return typeof value === "string" && value.trim().length > 0 && value.length <= max;
+}
+
+function parseFields(body: unknown): ContactFields | null {
+  if (typeof body !== "object" || body === null) return null;
+  const { name, email, subject, message } = body as Record<string, unknown>;
+  const isComplete =
+    isValidLength(name, MAX_LENGTHS.name) &&
+    isValidLength(email, MAX_LENGTHS.email) &&
+    isValidLength(subject, MAX_LENGTHS.subject) &&
+    isValidLength(message, MAX_LENGTHS.message);
+  return isComplete ? { name, email, subject, message } : null;
+}
+
 export async function POST(req: Request) {
   try {
     // Get IP address
@@ -25,15 +43,14 @@ export async function POST(req: Request) {
       );
     }
 
-    const { name, email, subject, message } = await req.json();
-
-    // Basic input validation
-    if (!name || !email || !subject || !message) {
+    const fields = parseFields(await req.json().catch(() => null));
+    if (!fields) {
       return NextResponse.json(
-        { error: "Missing required fields" },
+        { error: "Missing or invalid fields" },
         { status: 400 }
       );
     }
+    const { name, email, subject, message } = fields;
 
     // Email validation
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -47,8 +64,17 @@ export async function POST(req: Request) {
     let transporter;
     let testAccount: { user?: string; pass?: string } | null = null;
 
-    // If EMAIL_USER/EMAIL_PASS are not set, fall back to an ethereal test account for local testing
     if (!process.env.EMAIL_USER || !process.env.EMAIL_PASS) {
+      // A visitor must never see "sent" for a message nobody will receive.
+      if (process.env.NODE_ENV === "production") {
+        console.error("Contact form: EMAIL_USER or EMAIL_PASS is not configured");
+        return NextResponse.json(
+          { error: "Contact form is unavailable" },
+          { status: 503 }
+        );
+      }
+
+      // Local development only: an ethereal inbox lets the form be tested end to end.
       testAccount = await nodemailer.createTestAccount();
       transporter = nodemailer.createTransport({
         host: "smtp.ethereal.email",
@@ -73,13 +99,9 @@ export async function POST(req: Request) {
     const mailOptions = {
       from: sender,
       to: sender,
+      replyTo: email,
       subject: `Contact Form: ${subject}`,
-      text: `
-        Name: ${name}
-        Email: ${email}
-        Subject: ${subject}
-        Message: ${message}
-      `,
+      text: [`Name: ${name}`, `Email: ${email}`, `Subject: ${subject}`, "", message].join("\n"),
     };
 
     const info = await transporter.sendMail(mailOptions);
@@ -92,11 +114,9 @@ export async function POST(req: Request) {
 
     return NextResponse.json({ message: "Email sent successfully" });
   } catch (err: unknown) {
+    console.error("Contact form: failed to send email", err);
     return NextResponse.json(
-      {
-        error: "Failed to send email",
-        details: err instanceof Error ? err.message : "Unknown error",
-      },
+      { error: "Failed to send email" },
       { status: 500 }
     );
   }

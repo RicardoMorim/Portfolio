@@ -1,15 +1,18 @@
 "use client";
-import { useContext, useEffect, useLayoutEffect, useState, useSyncExternalStore } from "react";
+import { useCallback, useContext, useEffect, useLayoutEffect, useState, useSyncExternalStore } from "react";
 import dynamic from "next/dynamic";
 import { ThemeContext } from "@/context/ThemeContext";
 import { useTranslation } from "@/context/LanguageContext";
 import useMediaQuery from "@/lib/useMediaQuery";
+import HeroPoster from "./HeroPoster";
 import useActiveScene from "./useActiveScene";
 import { getNote, getServerNote, requestShape, setNote, subscribeNote } from "./stage/store";
 
 /** WebGL waits for the page to be readable, then for an idle moment. */
 const STAGE_DELAY_MS = 1200;
 const STAGE_IDLE_TIMEOUT_MS = 2500;
+/** From this scene on the copy reaches the top of phone screens, where the caption sits. */
+const FIRST_CONTENT_SCENE = 5;
 
 const CoreScene = dynamic(() => import("./CoreScene"), { ssr: false });
 
@@ -32,6 +35,8 @@ export default function SceneLayer() {
   const scene = useActiveScene();
   const note = useSyncExternalStore(subscribeNote, getNote, getServerNote);
   const [webgl, setWebgl] = useState<boolean | null>(null);
+  const [isStageReady, setIsStageReady] = useState(false);
+  const handleStageReady = useCallback(() => setIsStageReady(true), []);
 
   useEffect(() => {
     const start = () => setWebgl(supportsWebGL());
@@ -52,16 +57,25 @@ export default function SceneLayer() {
   }, [scene]);
 
   const caption = story.figures[scene] ?? "";
+  const coversCopy = compact && scene >= FIRST_CONTENT_SCENE && !note;
 
   return (
     <>
       <div className="scene-layer" aria-hidden="true">
         <div className="scene-glow" />
+        <HeroPoster isHidden={isStageReady || scene !== 0} />
         {webgl && (
-          <CoreScene theme={theme} reducedMotion={reducedMotion} compact={compact} scene={scene} copy={story.stage} />
+          <CoreScene
+            theme={theme}
+            reducedMotion={reducedMotion}
+            compact={compact}
+            scene={scene}
+            copy={story.stage}
+            onReady={handleStageReady}
+          />
         )}
       </div>
-      {webgl && !reducedMotion && (
+      {webgl && !reducedMotion && !coversCopy && (
         <p className="scene-caption" aria-hidden="true">
           {note && <span className="scene-note">{note}</span>}
           <span className="scene-caption-dot" />

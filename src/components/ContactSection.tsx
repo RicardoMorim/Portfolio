@@ -4,13 +4,13 @@ import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { Contact } from "@/language/config"
 import { useTranslation } from '@/context/LanguageContext';
+import { CONTACT_EMAIL } from '@/content/site';
 import { burst } from './story/stage/store';
 
 type Status = 'idle' | 'sending' | 'sent' | 'failed';
 type Field = 'name' | 'email' | 'subject' | 'message';
 
 const EMPTY_FORM: Record<Field, string> = { name: '', email: '', subject: '', message: '' };
-const EMAIL = 'ricardomorim05@gmail.com';
 
 export default function ContactSection(contact: Contact) {
 	const { getStory } = useTranslation();
@@ -61,7 +61,7 @@ export default function ContactSection(contact: Contact) {
 					<dl className="contact-details">
 						<div>
 							<dt>{contact.email}</dt>
-							<dd><a href={`mailto:${EMAIL}`} className="contact-email">{EMAIL}</a></dd>
+							<dd><a href={`mailto:${CONTACT_EMAIL}`} className="contact-email">{CONTACT_EMAIL}</a></dd>
 						</div>
 						<div>
 							<dt>{contact.location}</dt>

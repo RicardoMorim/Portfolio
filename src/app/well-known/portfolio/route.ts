@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server";
+import { CONTACT_EMAIL } from "@/content/site";
 
 export async function GET() {
   return NextResponse.json(
@@ -11,7 +12,7 @@ export async function GET() {
       apiBaseUrl: "https://www.ricardomorim.com/api",
       owner: {
         name: "Ricardo Morim",
-        email: "ricardomorim05@gmail.com",
+        email: CONTACT_EMAIL,
         location: "Porto, Portugal",
         role: "AI Software Engineer · AI Security",
       },

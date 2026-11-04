@@ -2,7 +2,7 @@
 import Link from 'next/link';
 import { FaGithub, FaLinkedin } from 'react-icons/fa';
 import { useTranslation } from '@/context/LanguageContext';
-import { localePath } from '@/content/site';
+import { CONTACT_EMAIL, localePath } from '@/content/site';
 
 const Footer = () => {
   const { getFooter, getStory, locale } = useTranslation();
@@ -16,7 +16,7 @@ const Footer = () => {
           <p className="footer-role">{footer.brand.role} · {footer.brand.location}</p>
         </div>
         <div className="footer-links">
-          <a href="mailto:ricardomorim05@gmail.com" className="text-link">ricardomorim05@gmail.com</a>
+          <a href={`mailto:${CONTACT_EMAIL}`} className="text-link">{CONTACT_EMAIL}</a>
           <a href="https://github.com/RicardoMorim" target="_blank" rel="noopener noreferrer" className="icon-link" aria-label={footer.social.github}>
             <FaGithub />
           </a>

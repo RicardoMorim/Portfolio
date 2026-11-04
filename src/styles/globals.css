@@ -463,11 +463,13 @@ a {
 /* ───────────────────────── Hero ───────────────────────── */
 
 .hero {
+  /* A known top edge lets the CSS alone work out the centred opening position. */
+  --hero-top: max(calc(var(--nav-h) + 3rem), calc(100svh - min(22.7vw, 21rem) - 34rem));
   position: relative;
   display: flex;
-  align-items: flex-end;
+  align-items: flex-start;
   min-height: 100svh;
-  padding: calc(var(--nav-h) + 3rem) 0 clamp(5rem, 14vh, 9rem);
+  padding: var(--hero-top) 0 clamp(5rem, 14vh, 9rem);
 }
 
 .hero-name {
@@ -1453,50 +1455,64 @@ a {
   }
 }
 
-/* Holds the WebGL spot from the first paint, then dissolves as the particles arrive. */
-.hero-poster {
-  position: absolute;
-  top: 50%;
-  left: 75%;
-  width: 34vw;
-  overflow: visible;
-  transform: translate(-50%, -50%);
-  transition: opacity 1.4s var(--ease-out);
+/* The name opens centred in the viewport and moves aside as the stage arrives. Only `transform`
+   and `opacity` change, so nothing reflows. If JavaScript never runs, the delayed animations
+   finish the move on their own. */
+.hero-inner {
+  container-type: inline-size;
 }
 
-.hero-poster.is-hidden {
+.hero-lead {
+  width: fit-content;
+  max-width: 100%;
+  transition: transform 0.9s var(--ease-out);
+}
+
+.hero-rest {
+  transition: opacity 0.6s var(--ease-out) 0.35s;
+}
+
+.hero[data-intro="center"] .hero-lead {
+  transform: translate(calc(50cqw - 50%), calc(50svh - var(--hero-top) - 50%));
+  animation: hero-lead-settle 0.9s var(--ease-out) 4s forwards;
+}
+
+.hero[data-intro="center"] .hero-rest {
   opacity: 0;
+  animation: hero-rest-settle 0.6s var(--ease-out) 4s forwards;
 }
 
-.hero-poster text {
-  font-family: var(--font-mono), ui-monospace, monospace;
-  font-size: 150px;
-  font-weight: 700;
-  letter-spacing: -0.04em;
+.hero[data-intro="instant"] .hero-lead,
+.hero[data-intro="instant"] .hero-rest {
+  transition: none;
 }
 
-.hero-poster-ink {
-  fill: var(--ink);
+@keyframes hero-lead-settle {
+  to { transform: none; }
 }
 
-.hero-poster-signal {
-  fill: var(--signal);
+@keyframes hero-rest-settle {
+  to { opacity: 1; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero[data-intro="center"] .hero-lead {
+    transform: none;
+  }
+
+  .hero[data-intro="center"] .hero-rest {
+    opacity: 1;
+  }
 }
 
 /* On phones the hero opens a window at the top for `<AI/>`, above the name. */
 @media (max-width: 1099px) {
   .hero {
-    padding-top: calc(var(--nav-h) + 36svh);
-  }
-
-  .hero-poster {
-    top: 29.5%;
-    left: 50%;
-    width: min(78vw, 420px);
+    --hero-top: calc(var(--nav-h) + 36svh);
   }
 
   /* The way forward stays on the first screen; the summary can follow it. */
-  .hero-inner {
+  .hero-rest {
     display: flex;
     flex-direction: column;
   }

@@ -1,16 +1,15 @@
 "use client";
-import { useCallback, useContext, useEffect, useLayoutEffect, useState, useSyncExternalStore } from "react";
+import { useContext, useEffect, useLayoutEffect, useState, useSyncExternalStore } from "react";
 import dynamic from "next/dynamic";
 import { ThemeContext } from "@/context/ThemeContext";
 import { useTranslation } from "@/context/LanguageContext";
 import useMediaQuery from "@/lib/useMediaQuery";
-import HeroPoster from "./HeroPoster";
 import useActiveScene from "./useActiveScene";
-import { getNote, getServerNote, requestShape, setNote, subscribeNote } from "./stage/store";
+import { getNote, getServerNote, markStageReady, requestShape, setNote, subscribeNote } from "./stage/store";
 
 /** WebGL waits for the page to be readable, then for an idle moment. */
 const STAGE_DELAY_MS = 1200;
-const STAGE_IDLE_TIMEOUT_MS = 2500;
+const STAGE_IDLE_TIMEOUT_MS = 1500;
 /** From this scene on the copy reaches the top of phone screens, where the caption sits. */
 const FIRST_CONTENT_SCENE = 5;
 
@@ -35,11 +34,13 @@ export default function SceneLayer() {
   const scene = useActiveScene();
   const note = useSyncExternalStore(subscribeNote, getNote, getServerNote);
   const [webgl, setWebgl] = useState<boolean | null>(null);
-  const [isStageReady, setIsStageReady] = useState(false);
-  const handleStageReady = useCallback(() => setIsStageReady(true), []);
 
   useEffect(() => {
-    const start = () => setWebgl(supportsWebGL());
+    const start = () => {
+      const isSupported = supportsWebGL();
+      setWebgl(isSupported);
+      if (!isSupported) markStageReady();
+    };
     let idle = 0;
     const timer = window.setTimeout(() => {
       if ("requestIdleCallback" in window) idle = window.requestIdleCallback(start, { timeout: STAGE_IDLE_TIMEOUT_MS });
@@ -63,7 +64,6 @@ export default function SceneLayer() {
     <>
       <div className="scene-layer" aria-hidden="true">
         <div className="scene-glow" />
-        <HeroPoster isHidden={isStageReady || scene !== 0} />
         {webgl && (
           <CoreScene
             theme={theme}
@@ -71,7 +71,7 @@ export default function SceneLayer() {
             compact={compact}
             scene={scene}
             copy={story.stage}
-            onReady={handleStageReady}
+            onReady={markStageReady}
           />
         )}
       </div>

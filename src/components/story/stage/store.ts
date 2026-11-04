@@ -11,7 +11,9 @@ export interface ShapeRequest {
 type Listener = () => void;
 
 const listeners = new Set<Listener>();
+const readyListeners = new Set<Listener>();
 let note = "";
+let isStageReady = false;
 
 export const stage = {
   /** Shape a DOM interaction asked for; wins over the scene's own shape while set. */
@@ -41,6 +43,19 @@ export function burst(): void {
 export function tossCap(): void {
   stage.tosses += 1;
   stage.bursts += 1;
+}
+
+/** The stage is drawing, or WebGL is unavailable and nothing will arrive. */
+export function markStageReady(): void {
+  if (isStageReady) return;
+  isStageReady = true;
+  readyListeners.forEach((listener) => listener());
+}
+
+export function onStageReady(listener: Listener): () => void {
+  if (isStageReady) listener();
+  else readyListeners.add(listener);
+  return () => readyListeners.delete(listener);
 }
 
 /** Live text shown next to the scene caption (scores, status, jokes). */

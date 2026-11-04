@@ -1,0 +1,40 @@
+# Ricardo Morim
+
+> AI Software Engineer at Critical Manufacturing, in the R&D Platform Engineering team, based in Porto, Portugal. Works on AI engineering, AI security, agentic workflows and secure software development.
+
+Ricardo builds AI systems, agents and automations, integrating security throughout the software development lifecycle.
+
+Experience: AI Software Engineer at Critical Manufacturing (current); Application Security Analyst at Celfocus, primary for AI Security and Vulnerability Management; main developer of the InnovatWeb applications and shared CI/CD platform; software engineering internship at INESC TEC on augmented reality indoor navigation.
+
+Education: BSc in Informatics Engineering and Master's in Artificial Intelligence Engineering (in progress) at Instituto Superior de Engenharia do Porto (ISEP). AWS Certified Solutions Architect – Associate.
+
+## Pages
+
+- [Portfolio (English)](https://www.ricardomorim.com/): experience, projects, skills, education and contact
+- [Portfolio (Portuguese)](https://www.ricardomorim.com/pt): the same content in Portuguese
+
+## Projects
+
+- [Agentic Assurance](https://www.ricardomorim.com/projects/agentic-assurance): harness for agentic software engineering with executable security contracts
+- [Chess AI Engine](https://www.ricardomorim.com/projects/chess-ai): chess reinforcement learning with Monte Carlo Tree Search and dual-head residual networks
+- [Authentication Library](https://www.ricardomorim.com/projects/auth-library): Spring Boot authentication library published on Maven Central
+
+## For agents
+
+- [Full site as Markdown](https://www.ricardomorim.com/llms-full.txt): everything on the site in one document
+- [MCP server](https://www.ricardomorim.com/api/mcp): read-only Streamable HTTP endpoint with tools for the profile, experience, projects, skills and search
+- [OpenAPI specification](https://www.ricardomorim.com/api/openapi)
+- [API catalog](https://www.ricardomorim.com/.well-known/api-catalog)
+
+## Structured data
+
+- [Profile JSON](https://www.ricardomorim.com/api/profile)
+- [Projects JSON](https://www.ricardomorim.com/api/projects)
+- [Experience JSON](https://www.ricardomorim.com/api/experience)
+- [Skills JSON](https://www.ricardomorim.com/api/skills)
+- [API documentation](https://www.ricardomorim.com/api/docs)
+
+## Profiles
+
+- [GitHub](https://github.com/RicardoMorim)
+- [LinkedIn](https://www.linkedin.com/in/ricardo-morim-208368251/)

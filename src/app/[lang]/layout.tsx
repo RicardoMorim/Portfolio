@@ -1,4 +1,4 @@
-import { profile, featuredProjects } from "@/content/portfolio";
+import { contentUpdated, profile, featuredProjects } from "@/content/portfolio";
 import { ThemeProvider } from "@/context/ThemeContext";
 import "@/styles/globals.css";
 import Navbar from "@/components/Navbar";
@@ -47,7 +47,6 @@ export async function generateMetadata({ params }: LayoutProps): Promise<Metadat
   return {
     title: TITLE,
     description: seo.description,
-    keywords: ["Ricardo Morim", "AI Software Engineer", "AI Engineering", "AI Security", "AppSec", "Agentic Workflows", "Python", "FastAPI", "PyTorch", "Vulnerability Management", "CI/CD", "AWS", "Portfolio"],
     metadataBase: new URL(SITE_URL),
     alternates: alternatesFor(lang),
     icons: {
@@ -100,8 +99,7 @@ export default async function RootLayout({
   const { lang } = await params;
   if (!isLocale(lang)) notFound();
 
-  const jsonLd = {
-    "@context": "https://schema.org",
+  const person = {
     "@type": "Person",
     name: profile.name,
     url: profile.contact.portfolio,
@@ -119,6 +117,25 @@ export default async function RootLayout({
       })),
     ],
     sameAs: [profile.contact.github, profile.contact.linkedin],
+  };
+
+  const pageUrl = `${SITE_URL}${lang === "pt" ? "/pt" : ""}`;
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "ProfilePage",
+    url: pageUrl,
+    inLanguage: lang,
+    dateModified: contentUpdated,
+    mainEntity: person,
+  };
+
+  const websiteJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    name: "Ricardo Morim",
+    url: SITE_URL,
+    inLanguage: ["en", "pt"],
+    author: { "@type": "Person", name: profile.name },
   };
 
   const projectsJsonLd = {
@@ -143,7 +160,10 @@ export default async function RootLayout({
     <html lang={lang} data-theme="dark" suppressHydrationWarning className={`${geist.variable} ${geistMono.variable} ${instrumentSerif.variable}`}>
       <head>
         <script type="application/ld+json">{JSON.stringify(jsonLd).replace(/</g, "\\u003c")}</script>
+        <script type="application/ld+json">{JSON.stringify(websiteJsonLd).replace(/</g, "\\u003c")}</script>
         <script type="application/ld+json">{JSON.stringify(projectsJsonLd).replace(/</g, "\\u003c")}</script>
+        <link rel="alternate" type="text/markdown" href="/llms-full.txt" title="Full site as Markdown" />
+        <link rel="service-desc" type="application/json" href="/api/openapi" />
         <link rel="api-docs" href="/well-known/portfolio" />
         <meta name="api-base-url" content="https://www.ricardomorim.com/api" />
       </head>

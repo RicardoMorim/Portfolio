@@ -100,7 +100,7 @@ export default function ProjectsReel() {
                     aria-label={`${story.openImage}: ${project.description}`}
                     data-hint={getZoom()}
                   >
-                    <Image src={project.image} alt="" width={640} height={360} sizes="(min-width: 900px) 520px, 90vw" />
+                    <Image src={project.image} alt={project.description} width={640} height={360} sizes="(min-width: 900px) 520px, 90vw" />
                   </button>
                 ) : (
                   <ul className="case-bullets">

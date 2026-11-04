@@ -91,6 +91,13 @@ export function middleware(request: NextRequest) {
     return response;
   }
   
+  // Agents that ask for Markdown get the whole site as one document.
+  if (!pathname.includes('.') && !pathname.startsWith('/api/') && request.headers.get('accept')?.includes('text/markdown')) {
+    const url = request.nextUrl.clone();
+    url.pathname = '/llms-full.txt';
+    return NextResponse.rewrite(url);
+  }
+
   // Documents and assets are served as they are.
   if (pathname.includes('.') || pathname.startsWith('/well-known')) {
     return NextResponse.next();

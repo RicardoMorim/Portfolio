@@ -1,100 +1,33 @@
-import { NextResponse } from 'next/server';
+import { NextResponse } from "next/server";
+import { contentUpdated, focusAreas, profile } from "@/content/portfolio";
+import { SITE_URL } from "@/content/site";
 
-export async function GET() {
-  const portfolioInfo = {
-    name: "Ricardo Morim Portfolio API",
-    description: "Machine-readable portfolio data for AI agents and recruiting tools",
-    version: "1.0.0",
-    owner: {
-      name: "Ricardo Morim",
-      title: "Backend Engineer",
-      location: "Porto, Portugal",
-      contact: {
-        github: "https://github.com/RicardoMorim",
-        linkedin: "https://www.linkedin.com/in/ricardo-morim-208368251/",
-        portfolio: "https://www.ricardomorim.com/"
-      }
-    },
-    api: {
-      base_url: "https://www.ricardomorim.com/api",
-      documentation: "/api/docs",
-      openapi_spec: "/api/openapi",
-      endpoints: {
-        profile: {
-          url: "/api/profile",
-          description: "Core profile with backend engineering expertise and contact information",
-          method: "GET"
-        },
-        projects: {
-          url: "/api/projects", 
-          description: "Technical projects portfolio with performance metrics",
-          method: "GET"
-        },
-        skills: {
-          url: "/api/skills",
-          description: "Technical skills assessment with proficiency levels",
-          method: "GET"
-        },
-        experience: {
-          url: "/api/experience",
-          description: "Professional work experience and education timeline",
-          method: "GET"
-        },
-        search: {
-          url: "/api/search",
-          description: "Keyword search across projects, skills, and experience",
-          method: "GET",
-          parameters: ["q (required)", "limit (optional)"]
-        }
-      }
-    },
-    discovery: {
-      robots_txt: "/robots.txt",
-      sitemap: "/sitemap.xml",
-      schema_org: "Embedded in HTML pages via JSON-LD",
-      openapi_spec: "/api/openapi"
-    },
-    data_quality: {
-      last_updated: new Date().toISOString().split('T')[0],
-      update_frequency: "As needed based on new projects and achievements",
-      data_verification: "Links to repositories, demos, and credential certificates provided",
-      accuracy: "All data manually curated and regularly updated"
-    },
-    usage_guidelines: {
-      rate_limiting: "None currently implemented - please be respectful",
-      cors: "Open access for AI agent consumption",
-      caching: "Responses cached for 1-2 hours for optimal performance",
-      best_practices: [
-        "Start with /api/docs for complete usage guidelines",
-        "Use /api/profile for initial candidate assessment",
-        "Query specific endpoints based on evaluation needs",
-        "Respect caching headers for optimal performance"
-      ]
-    },
-    technical_focus: {
-      backend_engineering: "Spring Boot, system architecture, database optimization",
-      quantifiable_achievements: "Performance metrics and production evidence",
-      production_experience: "Published libraries, internships, client projects",
-      skill_confidence_mapping: "Honest assessment of proficiency and preferences"
-    }
-  };
+export const dynamic = "force-static";
 
-  return NextResponse.json(portfolioInfo, {
-    headers: {
-      'Access-Control-Allow-Origin': '*',
-      'Access-Control-Allow-Methods': 'GET',
-      'Cache-Control': 'public, max-age=3600',
+export function GET() {
+  return NextResponse.json(
+    {
+      name: `${profile.name} Portfolio`,
+      description: "Machine-readable portfolio data for AI agents and recruiting tools",
+      updated: contentUpdated,
+      owner: {
+        name: profile.name,
+        title: profile.title,
+        subtitle: profile.subtitle,
+        organization: profile.current_role.organization,
+        location: profile.location,
+        focus: focusAreas,
+        links: { github: profile.contact.github, linkedin: profile.contact.linkedin, website: SITE_URL },
+      },
+      access: {
+        summary: `${SITE_URL}/llms.txt`,
+        full_text: `${SITE_URL}/llms-full.txt`,
+        mcp: `${SITE_URL}/api/mcp`,
+        openapi: `${SITE_URL}/api/openapi`,
+        docs: `${SITE_URL}/api/docs`,
+        api_catalog: `${SITE_URL}/.well-known/api-catalog`,
+      },
     },
-  });
-}
-
-export async function OPTIONS() {
-  return new NextResponse(null, {
-    status: 200,
-    headers: {
-      'Access-Control-Allow-Origin': '*',
-      'Access-Control-Allow-Methods': 'GET',
-      'Access-Control-Allow-Headers': 'Content-Type',
-    },
-  });
+    { headers: { "Access-Control-Allow-Origin": "*" } },
+  );
 }

@@ -46,7 +46,7 @@ const Navbar = () => {
 				type="button"
 				className="nav-toggle"
 				onClick={() => setLocale(locale === 'en' ? 'pt' : 'en')}
-				aria-label={locale === 'en' ? 'Mudar para português' : 'Switch to English'}
+				aria-label={`EN PT: ${locale === 'en' ? 'mudar para português' : 'switch to English'}`}
 			>
 				<span className={locale === 'en' ? 'is-on' : ''}>EN</span>
 				<span className={locale === 'pt' ? 'is-on' : ''}>PT</span>

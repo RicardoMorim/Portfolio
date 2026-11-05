@@ -70,8 +70,8 @@ Theme switching is handled by the ThemeContext, supporting both dark and light m
 Environment variables can be configured in .env.local:
 
 ```.env
-EMAIL_USER=<Your Email>
-EMAIL_PASS=<Your App Password>
+SMTP_USER=<Brevo SMTP login>
+SMTP_PASS=<Brevo SMTP key>
 ```
 
 ## 📱 Responsive Design

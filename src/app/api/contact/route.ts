@@ -2,6 +2,10 @@ import { NextResponse } from "next/server";
 import nodemailer from "nodemailer";
 import rateLimit from "@/lib/rate-limit";
 import { headers } from "next/headers";
+import { CONTACT_EMAIL } from "@/content/site";
+
+const SMTP_HOST = "smtp-relay.brevo.com";
+const SMTP_PORT = 587;
 
 const limiter = rateLimit({
   interval: 60 * 1000, // 1 minute
@@ -64,10 +68,10 @@ export async function POST(req: Request) {
     let transporter;
     let testAccount: { user?: string; pass?: string } | null = null;
 
-    if (!process.env.EMAIL_USER || !process.env.EMAIL_PASS) {
+    if (!process.env.SMTP_USER || !process.env.SMTP_PASS) {
       // A visitor must never see "sent" for a message nobody will receive.
       if (process.env.NODE_ENV === "production") {
-        console.error("Contact form: EMAIL_USER or EMAIL_PASS is not configured");
+        console.error("Contact form: SMTP_USER or SMTP_PASS is not configured");
         return NextResponse.json(
           { error: "Contact form is unavailable" },
           { status: 503 }
@@ -87,18 +91,21 @@ export async function POST(req: Request) {
       });
     } else {
       transporter = nodemailer.createTransport({
-        service: "Gmail",
+        host: SMTP_HOST,
+        port: SMTP_PORT,
+        secure: false,
+        requireTLS: true,
         auth: {
-          user: process.env.EMAIL_USER,
-          pass: process.env.EMAIL_PASS,
+          user: process.env.SMTP_USER,
+          pass: process.env.SMTP_PASS,
         },
       });
     }
 
-    const sender = testAccount?.user ?? process.env.EMAIL_USER;
+    const mailbox = testAccount?.user ?? CONTACT_EMAIL;
     const mailOptions = {
-      from: sender,
-      to: sender,
+      from: { name: "Portfolio contact form", address: mailbox },
+      to: mailbox,
       replyTo: email,
       subject: `Contact Form: ${subject}`,
       text: [`Name: ${name}`, `Email: ${email}`, `Subject: ${subject}`, "", message].join("\n"),

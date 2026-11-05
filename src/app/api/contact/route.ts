@@ -68,10 +68,14 @@ export async function POST(req: Request) {
     let transporter;
     let testAccount: { user?: string; pass?: string } | null = null;
 
-    if (!process.env.SMTP_USER || !process.env.SMTP_PASS) {
+    const user = process.env.EMAIL_USER;
+    const pass = process.env.EMAIL_PASS;
+    const isGmail = user?.endsWith("@gmail.com") ?? false;
+
+    if (!user || !pass) {
       // A visitor must never see "sent" for a message nobody will receive.
       if (process.env.NODE_ENV === "production") {
-        console.error("Contact form: SMTP_USER or SMTP_PASS is not configured");
+        console.error("Contact form: EMAIL_USER or EMAIL_PASS is not configured");
         return NextResponse.json(
           { error: "Contact form is unavailable" },
           { status: 503 }
@@ -90,19 +94,19 @@ export async function POST(req: Request) {
         },
       });
     } else {
-      transporter = nodemailer.createTransport({
-        host: SMTP_HOST,
-        port: SMTP_PORT,
-        secure: false,
-        requireTLS: true,
-        auth: {
-          user: process.env.SMTP_USER,
-          pass: process.env.SMTP_PASS,
-        },
-      });
+      transporter = isGmail
+        ? nodemailer.createTransport({ service: "Gmail", auth: { user, pass } })
+        : nodemailer.createTransport({
+            host: SMTP_HOST,
+            port: SMTP_PORT,
+            secure: false,
+            requireTLS: true,
+            auth: { user, pass },
+          });
     }
 
-    const mailbox = testAccount?.user ?? CONTACT_EMAIL;
+    // Gmail hides mail a mailbox sends to itself through a forward, so it writes to its own inbox.
+    const mailbox = testAccount?.user ?? (isGmail && user ? user : CONTACT_EMAIL);
     const mailOptions = {
       from: { name: "Portfolio contact form", address: mailbox },
       to: mailbox,

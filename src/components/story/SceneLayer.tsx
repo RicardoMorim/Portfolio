@@ -1,5 +1,5 @@
 "use client";
-import { useContext, useEffect, useLayoutEffect, useState, useSyncExternalStore } from "react";
+import { useContext, useEffect, useLayoutEffect, useRef, useState, useSyncExternalStore } from "react";
 import dynamic from "next/dynamic";
 import { ThemeContext } from "@/context/ThemeContext";
 import { useTranslation } from "@/context/LanguageContext";
@@ -34,6 +34,36 @@ export default function SceneLayer() {
   const scene = useActiveScene();
   const note = useSyncExternalStore(subscribeNote, getNote, getServerNote);
   const [webgl, setWebgl] = useState<boolean | null>(null);
+  const presentation = useRef<HTMLDivElement>(null);
+
+  // Move the opening illustration with the document, before copy can scroll underneath it.
+  useLayoutEffect(() => {
+    const element = presentation.current;
+    if (!element || !compact || scene !== 0) return;
+    const hero = document.getElementById("hero");
+    if (!hero) return;
+    let frame = 0;
+    const update = () => {
+      frame = 0;
+      const distance = Math.max(0, -hero.getBoundingClientRect().top);
+      const fadeEnd = Math.min(140, window.innerHeight * 0.18);
+      element.style.setProperty("--hero-scene-offset", `${-distance}px`);
+      element.style.setProperty("--hero-scene-opacity", `${Math.max(0, 1 - distance / fadeEnd)}`);
+    };
+    const schedule = () => {
+      if (!frame) frame = window.requestAnimationFrame(update);
+    };
+    update();
+    window.addEventListener("scroll", schedule, { passive: true });
+    window.addEventListener("resize", schedule);
+    return () => {
+      window.cancelAnimationFrame(frame);
+      window.removeEventListener("scroll", schedule);
+      window.removeEventListener("resize", schedule);
+      element.style.removeProperty("--hero-scene-offset");
+      element.style.removeProperty("--hero-scene-opacity");
+    };
+  }, [compact, scene]);
 
   useEffect(() => {
     const start = () => {
@@ -61,7 +91,7 @@ export default function SceneLayer() {
   const coversCopy = compact && scene >= FIRST_CONTENT_SCENE && !note;
 
   return (
-    <>
+    <div ref={presentation} className="scene-presentation" data-hero={scene === 0}>
       <div className="scene-layer" aria-hidden="true">
         <div className="scene-glow" />
         {webgl && (
@@ -82,6 +112,6 @@ export default function SceneLayer() {
           <span key={caption} className="scene-caption-text">{caption}</span>
         </p>
       )}
-    </>
+    </div>
   );
 }

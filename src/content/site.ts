@@ -4,7 +4,7 @@ import { defaultLocale, Locale, locales, Translations } from "@/language/config"
 
 export const SITE_URL = "https://www.ricardomorim.com";
 export const CONTACT_EMAIL = "ricardo@ricardomorim.com";
-export const OG_IMAGE = { url: "/og-image.png", width: 1200, height: 630, alt: "Ricardo Morim — AI Software Engineer · AI Security" };
+export const OG_IMAGE = { url: "/og-image.png", width: 1200, height: 630, alt: "Ricardo Morim: AI Software Engineer · AI Security" };
 
 /** Projects with enough public detail to deserve their own page. */
 export const PROJECT_PAGES: readonly string[] = ["agentic-assurance", "chess-ai", "auth-library"];

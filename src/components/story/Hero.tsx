@@ -49,7 +49,7 @@ export default function Hero() {
               onPointerEnter={() => setPinned(true)}
               onPointerLeave={() => setPinned(null)}
             >
-              — {story.taglineAccent}
+              {story.taglineAccent}
             </em>
           </p>
         </div>

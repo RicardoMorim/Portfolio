@@ -20,7 +20,7 @@ const projects: Project = {
     },
     {
       "id": "shared-ci",
-      "description": "Shared CI/CD — InnovatWeb SDLC",
+      "description": "Shared CI/CD: InnovatWeb SDLC",
       "badge": "Professional work · Private repository",
       "longDescription": "Shared pipeline platform used across 5 repositories, developed and maintained by me as the main developer.\n\n• Automated tests and builds\n• Security analysis and DAST that caught dozens of vulnerabilities and hundreds of code issues\n• Release management and automated deployment\n• A common SDLC maintained across applications",
       "tech": [
@@ -114,14 +114,14 @@ const milestones: Milestone[] = [
   },
   {
     "date": "2023/2024",
-    "title": "CS50AI — Introduction to Artificial Intelligence",
+    "title": "CS50AI: Introduction to Artificial Intelligence",
     "description": "Additional training in AI, search, machine learning and neural networks.",
     "link": "View certificate →",
     "url": "https://certificates.cs50.io/3ea075ca-3cac-49e2-be29-281d46d5ba94.pdf?size=letter"
   },
   {
     "date": "2021",
-    "title": "CS50x — Introduction to Computer Science",
+    "title": "CS50x: Introduction to Computer Science",
     "description": "Additional training in algorithms, data structures and programming fundamentals.",
     "link": "View certificate →",
     "url": "https://certificates.cs50.io/9a13ae2c-7f89-4ffe-a5c4-9e7e6bcadab2.pdf?size=letter"
@@ -218,14 +218,14 @@ export const en: Translations = {
     {
       "id": "critical-manufacturing-2026",
       "organization": "Critical Manufacturing",
-      "date": "November 2026 — present",
+      "date": "November 2026 to present",
       "title": "Critical Manufacturing · AI Software Engineer",
       "description": "Member of the Platform Engineering team within Research & Development."
     },
     {
       "id": "celfocus-2026",
       "organization": "Celfocus",
-      "date": "February — October 2026",
+      "date": "February to October 2026",
       "title": "Celfocus · Application Security Analyst",
       "description": "Primary for AI Security and Vulnerability Management: main point of contact with AppSec leadership, coordinating 5 people across both teams.",
       "bullets": [
@@ -320,7 +320,7 @@ export const en: Translations = {
   },
   story: {
     navStory: "Story",
-    heroKicker: "Now — AI Software Engineer at Critical Manufacturing",
+    heroKicker: "Now: AI Software Engineer at Critical Manufacturing",
     tagline: "builds intelligent systems",
     taglineAccent: "and keeps them secure.",
     readStory: "Follow the story",
@@ -335,16 +335,16 @@ export const en: Translations = {
       "critical-manufacturing-2026": "Engineer AI",
     },
     figures: [
-      "Fig. 0 — the code around AI becomes its shield",
-      "Fig. 1 — pick a pin to reroute the phone",
-      "Fig. 2 — every clean commit builds. Click to push one",
-      "Fig. 3 — click the attacks before they land",
-      "Fig. 4 — click the terminal for a new task, or poke a bot",
-      "Fig. 5 — things built along the way",
-      "Fig. 6 — hover a skill",
-      "Fig. 7 — in someone else's words",
-      "Fig. 8 — hover a line, then throw the cap",
-      "Fig. 9 — an open channel",
+      "Fig. 0: the code around AI becomes its shield",
+      "Fig. 1: pick a pin to reroute the phone",
+      "Fig. 2: every clean commit builds. Click to push one",
+      "Fig. 3: click the attacks before they land",
+      "Fig. 4: click the terminal for a new task, or poke a bot",
+      "Fig. 5: things built along the way",
+      "Fig. 6: hover a skill",
+      "Fig. 7: in someone else's words",
+      "Fig. 8: hover a line, then throw the cap",
+      "Fig. 9: an open channel",
     ],
     projectsKicker: "Case files",
     projectsHint: "Keep scrolling to browse",
@@ -382,7 +382,7 @@ export const en: Translations = {
       tasksMerged: "Tasks merged",
       throwCap: "Throw the cap",
       capsThrown: "Caps thrown",
-      educationJokes: ["In progress. No spoilers.", "Three years of “it works on my machine”.", "Every answer now starts with “it depends”.", "This was CS50 — and then the rabbit hole."],
+      educationJokes: ["In progress. No spoilers.", "Three years of “it works on my machine”.", "Every answer now starts with “it depends”.", "This was CS50. Then came the rabbit hole."],
     },
   },
 };

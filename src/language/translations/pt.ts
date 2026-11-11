@@ -20,7 +20,7 @@ const projects: Project = {
     },
     {
       "id": "shared-ci",
-      "description": "Shared CI/CD — SDLC da InnovatWeb",
+      "description": "Shared CI/CD: SDLC da InnovatWeb",
       "badge": "Trabalho profissional · Repositório privado",
       "longDescription": "Plataforma partilhada de pipelines utilizada em 5 repositórios, da qual sou o principal developer.\n\n• Testes e builds automatizados\n• Análises de segurança e DAST que apanharam dezenas de vulnerabilidades e centenas de problemas de código\n• Gestão de releases e deployment automático\n• Desenvolvimento e manutenção do SDLC comum às aplicações",
       "tech": [
@@ -114,14 +114,14 @@ const milestones: Milestone[] = [
   },
   {
     "date": "2023/2024",
-    "title": "CS50AI — Introduction to Artificial Intelligence",
+    "title": "CS50AI: Introduction to Artificial Intelligence",
     "description": "Formação complementar em IA, pesquisa, aprendizagem automática e redes neuronais.",
     "link": "Ver certificado →",
     "url": "https://certificates.cs50.io/3ea075ca-3cac-49e2-be29-281d46d5ba94.pdf?size=letter"
   },
   {
     "date": "2021",
-    "title": "CS50x — Introduction to Computer Science",
+    "title": "CS50x: Introduction to Computer Science",
     "description": "Formação complementar em algoritmos, estruturas de dados e fundamentos de programação.",
     "link": "Ver certificado →",
     "url": "https://certificates.cs50.io/9a13ae2c-7f89-4ffe-a5c4-9e7e6bcadab2.pdf?size=letter"
@@ -217,14 +217,14 @@ export const pt: Translations = {
     {
       "id": "critical-manufacturing-2026",
       "organization": "Critical Manufacturing",
-      "date": "Novembro de 2026 — presente",
+      "date": "Novembro de 2026 até ao presente",
       "title": "Critical Manufacturing · AI Software Engineer",
       "description": "Integro a equipa de Platform Engineering da área de Research & Development."
     },
     {
       "id": "celfocus-2026",
       "organization": "Celfocus",
-      "date": "Fevereiro — outubro de 2026",
+      "date": "Fevereiro a outubro de 2026",
       "title": "Celfocus · Application Security Analyst",
       "description": "Primary de AI Security e Vulnerability Management: principal ponto de contacto destas áreas com a liderança de AppSec, com coordenação de 5 pessoas nas duas equipas.",
       "bullets": [
@@ -319,7 +319,7 @@ export const pt: Translations = {
   },
   story: {
     navStory: "Percurso",
-    heroKicker: "Agora — AI Software Engineer na Critical Manufacturing",
+    heroKicker: "Agora: AI Software Engineer na Critical Manufacturing",
     tagline: "constrói sistemas inteligentes",
     taglineAccent: "e mantém-nos seguros.",
     readStory: "Seguir a história",
@@ -334,16 +334,16 @@ export const pt: Translations = {
       "critical-manufacturing-2026": "Engenharia de IA",
     },
     figures: [
-      "Fig. 0 — o código à volta da IA torna-se o seu escudo",
-      "Fig. 1 — escolhe um pino para mudar a rota",
-      "Fig. 2 — cada commit limpo constrói. Clica para fazer um",
-      "Fig. 3 — clica nos ataques antes de chegarem",
-      "Fig. 4 — clica no terminal para uma nova tarefa, ou toca num robô",
-      "Fig. 5 — o que foi construído pelo caminho",
-      "Fig. 6 — passa o rato por uma competência",
-      "Fig. 7 — nas palavras de outra pessoa",
-      "Fig. 8 — passa por uma linha e atira o capelo",
-      "Fig. 9 — um canal aberto",
+      "Fig. 0: o código à volta da IA torna-se o seu escudo",
+      "Fig. 1: escolhe um pino para mudar a rota",
+      "Fig. 2: cada commit limpo constrói. Clica para fazer um",
+      "Fig. 3: clica nos ataques antes de chegarem",
+      "Fig. 4: clica no terminal para uma nova tarefa, ou toca num robô",
+      "Fig. 5: o que foi construído pelo caminho",
+      "Fig. 6: passa o rato por uma competência",
+      "Fig. 7: nas palavras de outra pessoa",
+      "Fig. 8: passa por uma linha e atira o capelo",
+      "Fig. 9: um canal aberto",
     ],
     projectsKicker: "Casos",
     projectsHint: "Continue a fazer scroll para ver",
@@ -381,7 +381,7 @@ export const pt: Translations = {
       tasksMerged: "Tarefas concluídas",
       throwCap: "Atirar o capelo",
       capsThrown: "Capelos atirados",
-      educationJokes: ["Em curso. Sem spoilers.", "Três anos de “na minha máquina funciona”.", "Agora todas as respostas começam com “depende”.", "This was CS50 — e depois foi o buraco sem fundo."],
+      educationJokes: ["Em curso. Sem spoilers.", "Três anos de “na minha máquina funciona”.", "Agora todas as respostas começam com “depende”.", "This was CS50. E depois foi o buraco sem fundo."],
     },
   },
 };

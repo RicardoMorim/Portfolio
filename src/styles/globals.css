@@ -412,6 +412,10 @@ a {
 
 /* ───────────────────────── 3D scene layer ───────────────────────── */
 
+.scene-presentation {
+  display: contents;
+}
+
 .scene-layer {
   position: fixed;
   inset: 0;
@@ -1507,6 +1511,22 @@ a {
 
 /* On phones the hero opens a window at the top for `<AI/>`, above the name. */
 @media (max-width: 1099px) {
+  .scene-presentation[data-hero="true"] .scene-layer,
+  .scene-presentation[data-hero="true"] .scene-caption {
+    transform: translateY(var(--hero-scene-offset, 0px));
+    opacity: var(--hero-scene-opacity, 1);
+  }
+
+  .scene-presentation[data-hero="true"] .scene-layer canvas {
+    mask-image: linear-gradient(
+      to bottom,
+      transparent var(--nav-h),
+      #000 calc(var(--nav-h) + 3rem),
+      #000 calc(var(--nav-h) + 29svh),
+      transparent calc(var(--nav-h) + 34svh)
+    );
+  }
+
   .hero {
     --hero-top: calc(var(--nav-h) + 36svh);
   }

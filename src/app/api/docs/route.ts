@@ -2,7 +2,7 @@ import { NextResponse } from 'next/server';
 
 export async function GET() {
   const apiDocs = {
-    title: "Ricardo Morim — Portfolio API",
+    title: "Ricardo Morim: Portfolio API",
     description: "Structured profile, experience, skills and selected projects in AI engineering, AI security and software engineering.",
     version: "1.0.0",
     last_updated: "2026-11-03",
